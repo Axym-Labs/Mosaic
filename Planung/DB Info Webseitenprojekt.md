@@ -16,7 +16,11 @@ FS = Fremdschlüssel
 
 ### WebsiteContentFragment
 - FS:*WebsiteId*
-- Position (Unique) (Spalten & Zeilen, von & bis) (4x Int)
+- Position (Unique) (Zeile)
+- Color
+- Opacity
+- Spannable (bei größerem screen 1 von 2 spalten)
+(blurred)
 
 ### Plan
 - *PlanId*
@@ -27,6 +31,10 @@ FS = Fremdschlüssel
 ### PlanPermission
 - *PlanPermissionId*
 - BackgroundOption (bool)
-- ...Option (bool)
+- ColorOption
+- OpacityOption
+- FontOption
+- MoreImagesOption
+- ShortLinkOption
 - SubSiteLimit (int)
-- ...Limit (int)
+- MoreImagesLimit
