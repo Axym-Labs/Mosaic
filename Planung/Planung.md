@@ -11,8 +11,3 @@
 ### Vip Version
 - SubSiteLimit
 - MoreImagesLimit
-
-### Block
-- Credentials
-- Image
-- Text
