@@ -1,5 +1,25 @@
 
-### Block
+### Fragments
 - Credentials
 - Image
 - Text
+- WorkExperienceSection
+- LinkSection
+
+### FragmentWorkExperience (mehrere Davon zu WorkExperienceSection)
+- Job Title 
+- From (date)
+- To
+- Description
+- Company
+- Link
+
+### FragmentLink
+- Name
+- Url
+
+### Image
+- [ ] Noch Description Einfügen 
+
+### Credentials
+- [ ] Noch Profile imagd blob einfügen
