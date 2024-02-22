@@ -10,9 +10,11 @@ FS = Fremdschlüssel
 - FK:Plan
 
 ### Website
-- FS: *UserId*
 - *WebsiteId*
-- SubRoute
+- FS: *UserId*
+- Name
+- Route
+- ShortRoute
 
 ### WebsiteContentFragment
 - FS:*WebsiteId*
