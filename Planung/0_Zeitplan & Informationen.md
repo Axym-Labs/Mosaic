@@ -10,13 +10,15 @@ Page: D Backend H Frontend
 ##### Di 27.2
 - Visual Studio Henri aufsetzen
 - Projekt mit repository auf beiden Accounts öffnen
-- alle nötigen Abfragen erstellen und testen (sortieren in Controller) (getrennt)
+- alle nötigen Abfragen erstellen und testen (getrennt)
 ##### Fr 1.3
 - Alle nötigen Features/logischen Schritte notieren
-- Arbeitsteilung: Controller aufteilen (Zusammengehörigkeit beachten)
-- Abfrageneinbindung 50%
+- Seitenplan erstellen (Zusammengehörigkeit beachten)
+- HTML-index datei
+- php & html template mit db verbindung für alle seiten (template gemeinsam, einbetten zusammen)
+- Abfrageneinbindung 50% (parallel/getrennt) (copy pasten, werte-einfügende logik später)
 ##### Di 5.3 (Ph Ka in der Woche)
-- Abfragen ins Programm (einzeln direkt überprüft - konsole, ui absolut minimalistisch)
+- Abfragen ins Programm (einzeln direkt überprüft - noch keine ui sondern nur rohdaten - herausfinden wie daten in query einfügen in php von html input)
 ##### Fr 8.3 (Do In)
 - Account Page
 - Dashboard Sektion von Account Page (subsite page generische standardseite)
