@@ -2,21 +2,6 @@
 Abgabe: Ende der Osterferien
 
 
-- Idee: Vereinfachte Webseiten erstellen
-- Vergleichbares: Linktree, das andere
-
-- ### [[DB Info Webseitenprojekt]]
-- ### [[Frontend Info Webseitenprojekt]]
-- ### [[Programmlogik Info Webseitenprojekt]]
-
-### Organisatorisches
-- Möglichst Github repository verwenden
-	- Internetverbindung muss immer bestehen
-	- Planungsdaten auch im Repository speichern
-- Deadline-Liste machen
-	- Keine Zeitüberschreitung, wenn nicht fertig dann nach Stunde machen
-	- Bis kurz vorm Ende: 1 Std Zeit lassen
-
 # Plan
 Headings = Deadline -> Vorausarbeiten
 Page: D Backend H Frontend
@@ -27,7 +12,7 @@ Page: D Backend H Frontend
 - DB Testdaten
 ##### Di 27.2
 - Alle nötigen Features/logischen Schritte notieren
-- Daraus alle nötigen Abfragen notieren (sortieren in Controller)
+- Daraus alle nötigen Abfragen erstellen und testen (sortieren in Controller)
 - Visual Studio Henri aufsetzen
 - Projekt mit repository auf beiden Accounts öffnen
 ##### Fr 1.3
@@ -48,3 +33,15 @@ Page: D Backend H Frontend
 - Main Page
 ##### Fr 22.3 (Ek Ka)
 - Sontiges, letztes
+
+
+# Organisatorisches
+- Idee: Vereinfachte Webseiten erstellen
+- Vergleichbares: Linktree, das andere (B...)
+- Möglichst Github repository verwenden
+	- Internetverbindung muss immer bestehen
+	- Planungsdaten auch im Repository speichern
+- Deadline-Liste machen
+	- Keine Zeitüberschreitung, wenn nicht fertig dann nach Stunde machen
+	- Bis kurz vorm Ende: 1 Std Zeit lassen
+
