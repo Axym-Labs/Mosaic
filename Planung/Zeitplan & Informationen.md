@@ -28,6 +28,8 @@ Page: D Backend H Frontend
 ##### Di 27.2
 - Alle nötigen Features/logischen Schritte notieren
 - Daraus alle nötigen Abfragen notieren (sortieren in Controller)
+- Visual Studio Henri aufsetzen
+- Projekt mit repository auf beiden Accounts öffnen
 ##### Fr 1.3
 - Arbeitsteilung: Controller aufteilen (Zusammengehörigkeit beachten)
 - Abfragen 50%
