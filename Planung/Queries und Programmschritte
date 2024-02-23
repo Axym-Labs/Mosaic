@@ -6,11 +6,18 @@
 - Name nicht genutzt
 - ShortName nicht genutzt, falls ein wert
 
+### Subsite abfragen
+- nach Nutzer
+
 ### Subsite löschen
+- Nach id
 
 ### Fragment & FragmentContent erstellen
 
 ### Fragment & FragmentContent bearbeiten
+
+### Fragment & FragmentContent abfragen
+- Nach SubsiteId 
 
 ### Fragment & FragmentContent löschen
 
