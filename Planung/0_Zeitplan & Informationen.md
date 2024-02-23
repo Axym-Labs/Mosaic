@@ -1,7 +1,4 @@
 
-Abgabe: Ende der Osterferien
-
-
 # Plan
 Headings = Deadline -> Vorausarbeiten
 Page: D Backend H Frontend
@@ -11,15 +8,15 @@ Page: D Backend H Frontend
 - DB Tabellen
 - DB Testdaten
 ##### Di 27.2
-- Alle nötigen Features/logischen Schritte notieren
-- Daraus alle nötigen Abfragen erstellen und testen (sortieren in Controller)
 - Visual Studio Henri aufsetzen
 - Projekt mit repository auf beiden Accounts öffnen
+- alle nötigen Abfragen erstellen und testen (sortieren in Controller) (getrennt)
 ##### Fr 1.3
+- Alle nötigen Features/logischen Schritte notieren
 - Arbeitsteilung: Controller aufteilen (Zusammengehörigkeit beachten)
-- Abfragen 50%
+- Abfrageneinbindung 50%
 ##### Di 5.3 (Ph Ka in der Woche)
-- Abfragen im Java Programm (einzeln direkt überprüft - konsole - tests schreiben)
+- Abfragen ins Programm (einzeln direkt überprüft - konsole, ui absolut minimalistisch)
 ##### Fr 8.3 (Do In)
 - Account Page
 - Dashboard Sektion von Account Page (subsite page generische standardseite)
@@ -36,6 +33,7 @@ Page: D Backend H Frontend
 
 
 # Organisatorisches
+- Abgabe: Ende der Osterferien
 - Idee: Vereinfachte Webseiten erstellen
 - Vergleichbares: Linktree, das andere (B...)
 - Möglichst Github repository verwenden
