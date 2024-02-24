@@ -15,6 +15,8 @@
 - im browser zu localhost/mosaic navigieren
 - es sollte die datei index.html vom projekt angezeigt werden
 
+- vs code jetzt öffnen, um am projekt zu arbeiten
+
 ### Datenbank
 - datenbank (db/mosaic.sql) downloaden
 - xampp: ggf mysql starten und im browser öffnen
