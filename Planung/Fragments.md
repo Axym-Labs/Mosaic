@@ -17,6 +17,8 @@
 ### FragmentLink
 - Name
 - Url
+- BackgroundImage
+- BackgroundColor
 
 ### Image
 - [ ] Noch Description Einfügen 
