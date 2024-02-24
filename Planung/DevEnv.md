@@ -4,6 +4,7 @@
 - VS Code installieren
 
 ### Entwicklung
+- vs code öffnen
 - Clone git repository drücken in startseite
 - ggf mit github anmelden
 - projekt importieren in den ordner C:xampp/htdocs
@@ -17,6 +18,8 @@
 
 ### Entwickeln
 - vs code jetzt öffnen, um am projekt zu arbeiten
+- entwickeln
+- änderungen speichern, indem das git-symbol (3 kreise mit 2 verbindungen rechte leiste) und "sync changes" geklickt werden
 
 ### Datenbank
 - xampp: ggf mysql starten und im browser öffnen
