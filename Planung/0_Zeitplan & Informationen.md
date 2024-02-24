@@ -14,7 +14,7 @@ Page: D Backend H Frontend
 ##### Fr 1.3
 - Alle nötigen Features/logischen Schritte notieren
 - Seitenplan erstellen (Zusammengehörigkeit beachten)
-- HTML-index datei
+- HTML-index datei (tailwindcss js datei, wenn mögl downloaden und ins repo tun)
 - php & html template mit db verbindung für alle seiten (template gemeinsam, einbetten zusammen)
 - Abfrageneinbindung 50% (parallel/getrennt) (copy pasten, werte-einfügende logik später)
 ##### Di 5.3 (Ph Ka in der Woche)
