@@ -36,8 +36,6 @@ Page: D Backend H Frontend
 
 # Organisatorisches
 - Abgabe: Ende der Osterferien
-- Idee: Vereinfachte Webseiten erstellen
-- Vergleichbares: Linktree, das andere (B...)
 - Möglichst Github repository verwenden
 	- Internetverbindung muss immer bestehen
 	- Planungsdaten auch im Repository speichern
