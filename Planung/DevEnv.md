@@ -1,17 +1,19 @@
 
-### Lokales hosten webseite
+### Programme
 - XAMPP installieren
+- VS Code installieren
 
 ### Entwicklung
-- VS Code installieren
 - Clone git repository drücken in startseite
 - ggf mit github anmelden
-- projekt importieren in den ordner C:xampp (oder wo der sonst installiert wurde)
-- projekt öffnen
+- projekt importieren in den ordner C:xampp/htdocs
+- fenster schließen
 
+### Lokales hosten webseite
 - xampp control panel starten
 - apache und mysql starten
-- im browser zu localhost/mosaic/src navigieren
+- im browser zu localhost/mosaic navigieren
+- es sollte die datei index.html vom projekt angezeigt werden
 
 ### Datenbank
 - datenbank (db/mosaic.sql) downloaden
