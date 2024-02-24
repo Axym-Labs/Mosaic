@@ -8,6 +8,7 @@
 - Clone git repository drücken in startseite
 - ggf mit github anmelden
 - projekt importieren in den ordner C:xampp/htdocs
+- extensions (4 quatrate rechte leiste) klicken und "php intelephense" und "format html in php" installieren
 - fenster schließen
 
 ### Lokales hosten webseite
