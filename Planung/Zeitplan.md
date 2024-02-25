@@ -8,6 +8,7 @@ Page: D Backend H Frontend
 - DB Tabellen
 - DB Testdaten
 ##### Di 27.2
+- Logo auswählen
 - Entwicklungsumgebung auf PCs zu Hause aufsetzen
 - Entwicklungsumgebung in Schul-Accounts aufsetzen (wenn nötig)
 - Projekt mit repository auf beiden Accounts öffnen
