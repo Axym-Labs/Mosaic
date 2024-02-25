@@ -8,7 +8,8 @@ Page: D Backend H Frontend
 - DB Tabellen
 - DB Testdaten
 ##### Di 27.2
-- Visual Studio Henri aufsetzen
+- Entwicklungsumgebung auf PCs zu Hause aufsetzen
+- Entwicklungsumgebung in Schul-Accounts aufsetzen (wenn nötig)
 - Projekt mit repository auf beiden Accounts öffnen
 - alle nötigen Abfragen erstellen und testen (getrennt)
 ##### Fr 1.3
@@ -22,24 +23,15 @@ Page: D Backend H Frontend
 ##### Fr 8.3 (Do In)
 - Account Page
 - Dashboard Sektion von Account Page (subsite page generische standardseite)
-- Subsite Page 40%
+- SubSite Page (ist eh nur gerüst für fragments)
 ##### Di 12.3
-- SubSite Page
-- Fragment Pages 40%
-##### Fr 15.3
 - Fragment Pages
-##### Di 19.3 (M Ka)
+##### Fr 15.3
 - Main Page
+- Code-Dokumentation abschließen
+##### Di 19.3 (M Ka)
+- Datebank-Diagramm
+- Präsentation 40%
 ##### Fr 22.3 (Ek Ka)
-- Sontiges, letztes
-
-
-# Organisatorisches
-- Abgabe: Ende der Osterferien
-- Möglichst Github repository verwenden
-	- Internetverbindung muss immer bestehen
-	- Planungsdaten auch im Repository speichern
-- Deadline-Liste machen
-	- Keine Zeitüberschreitung, wenn nicht fertig dann nach Stunde machen
-	- Bis kurz vorm Ende: 1 Std Zeit lassen
-
+- Präsentation
+- Projektmappe abschließen
