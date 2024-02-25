@@ -5,3 +5,10 @@
 - Deadline-Liste machen
 	- Keine Zeitüberschreitung, wenn nicht fertig dann nach Stunde machen
 	- Bis kurz vorm Ende: 1 Std Zeit lassen
+
+# Arbeitsteilung
+- Datenbank: Beide, parallel
+- Backend: D
+- Frontend: H, teilw D
+- Protokollierung: H
+- Präsentation: H, teilw D
