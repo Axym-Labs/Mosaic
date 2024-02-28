@@ -1,0 +1,1 @@
+UPDATE `plan` SET `[column-1]`='[value-1]' WHERE `PlanId`='[value-2]'

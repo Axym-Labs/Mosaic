@@ -1,0 +1,1 @@
+UPDATE `subsite` SET `[column-1]`='[value-1]' WHERE `SubsiteId`='[value-2]'

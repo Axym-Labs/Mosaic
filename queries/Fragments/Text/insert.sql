@@ -1,0 +1,1 @@
+INSERT INTO `fragmenttext`(`Id`, `Text`, `Titel`) VALUES (NULL,'[value-2]','[value-3]')

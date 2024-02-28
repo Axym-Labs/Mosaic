@@ -1,0 +1,1 @@
+INSERT INTO `subsitenews`(`Id`, `Title`, `Description`, `Link`) VALUES (NULL,'[value-2]','[value-3]','[value-4]')
