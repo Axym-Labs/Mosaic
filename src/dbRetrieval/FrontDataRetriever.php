@@ -8,6 +8,7 @@ class FrontDataRetriever {
 
     public function AssignData($smarty) {
         $smarty->assign('subsiteCount', 1);
+        $smarty->assign("title", "Hello world!");
 
         return $smarty;
     }
