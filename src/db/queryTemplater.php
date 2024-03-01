@@ -15,6 +15,7 @@ class queryTemplater
         $this.$idIdentifier = $this->columnNames[0];
         $columnNameIdentifiers = array_map(function ($x) { return "`$x`"; }, $this->columnNames).join(", ");
         $valueIdentifiers = array_map(function($x) { return "[value-$x]"; }, $this->$columnNames).join(", ");
+        $this->queryTemplates["insertGeneric"] = "INSERT INTO `$tableName` ([columns]) VALUES ([values])";
         $this->queryTemplates["insert"] = "INSERT INTO `$tableName` ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
         $this->queryTemplates["overwrite"] = "UPDATE `$tableName` SET [overwrite] WHERE `$idIdentifier` = [value-Id]";
         $this->queryTemplates["update"] = "UPDATE `$tableName` SET `[column]` = [value] WHERE `$idIdentifier` = [value-Id]";
@@ -44,6 +45,13 @@ class queryTemplater
         $query = $this->queryTemplates["overwrite"];
         $query = $this->ReplaceIdentifier($query, "value", "Id", $id);
         $query = $this->ReplaceTypelessIdentifier($query, "overwrite", join(", ", array_map(function($x) { return $x->ToUpdateFragment(); }, $updateSetArray)));
+        return $query;
+    }
+
+    public function GetInsertWithCvSet($id, $updateSetArray) {
+        $query = $this->queryTemplates["insertGeneric"];
+        $query = $this->ReplaceTypelessIdentifier($query, "columns", join(", ", array_map(function($x) { return $x->GetColumnPart(); }, $updateSetArray)));
+        $query = $this->ReplaceTypelessIdentifier($query, "values", join(", ", array_map(function($x) { return $x->GetValuePart(); }, $updateSetArray)));
         return $query;
     }
 

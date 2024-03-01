@@ -18,22 +18,37 @@ class dbTable
         $this.$dbCon = $dbCon;
     }
 
-    public function Insert($columnValues) {
-        $query = $this->queryTemplater->GetInsert($columnValues);
-        return $this->returnFetchedResult($query);
-    }
-
     public function OverwriteFromPostRequest($postData) {
+        list($id, $updateSetArray) = $this->PrepareUpdateSetArray($postData);
+        $this->Overwrite($id, $updateSetArray);
+    }
+    
+    public function InsertFromPostRequest($postData) {
+        list($id, $updateSetArray) = $this->PrepareUpdateSetArray($postData);
+        $this->InsertWithCvSet($id, $updateSetArray);
+    }
+    
+    private function PrepareUpdateSetArray($postData) {
         $postData = $this->queryTemplater->FilterForColumnNames($postData);
         $id = $postData[$this->idIdentifier];
         $updateSetArray = array();
         // convert to updateSetArray
         foreach ($postData as $column => $value) {
-            array_push($updateSetArray, new UpdateSet($column, $value[0], is_string($value[0])));
+            array_push($updateSetArray, new cvSet($column, $value[0], is_string($value[0])));
         }
-        $this->Overwrite($id, $updateSetArray);
+        return $updateSetArray;
+    }
+    
+    public function Insert($columnValues) {
+        $query = $this->queryTemplater->GetInsert($columnValues);
+        return $this->returnFetchedResult($query);
     }
 
+    public function InsertWithCvSet($id, $updateSetArray) {
+        $query = $this->queryTemplater->GetInsertWithCvSet($id, $updateSetArray);
+        return $this->returnFetchedResult($query);
+    }
+    
     public function Overwrite($id, $updateSetArray) {
         $query = $this->queryTemplater->GetOverwrite($id, $updateSetArray);
         return $this->returnFetchedResult($query);

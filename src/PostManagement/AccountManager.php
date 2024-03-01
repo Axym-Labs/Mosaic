@@ -8,13 +8,13 @@ class AccountManager {
 
     // editView-option
     public function HandleUpdate($userId, $notifier) {
-        list($valid, $notifier) = $this->ValidateData();
+        list($valid, $notifier) = $this->ValidateData($_POST, $notifier);
         if (!$valid) {
             return false;
         }
 
         try {
-            $this->tables->user->OverwriteFromPostRequest($userId, $_POST);
+            $this->tables->user->OverwriteFromPostRequest($_POST);
             return true;
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update your account.", "error");
@@ -22,20 +22,26 @@ class AccountManager {
         }
     }
 
-    public function HandleCreate($userId, $notifier) {
-        list($valid, $notifier) = $this->ValidateData();
+    public function HandleCreate($sessionManager, $notifier) {
+        list($valid, $notifier) = $this->ValidateData($_POST, $notifier);
         if (!$valid) {
             return false;
         }
 
-
+        try {
+            $this->tables->user->InsertFromPostRequest($_POST);
+            return true;
+        } catch (Exception $e) {
+            $notifier->Post("Error: Could not create your account.", "error");
+            return false;
+        }
     }
 
-    public function HandleDelete() {
+    private function ValidateData($postData, $notifier) {
 
-    }
+        // email unique
 
-    private function ValidateData() {
+        // password long enough
 
     }
 

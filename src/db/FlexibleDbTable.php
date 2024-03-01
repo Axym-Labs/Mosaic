@@ -1,6 +1,6 @@
 <?php
 class FlexibleTable {
-    private $dbCon;
+    public $dbCon;
 
     public function __construct($dbCon) {
         $this->dbCon = $dbCon;

@@ -1,5 +1,5 @@
 <?php
-class UpdateSet {
+class cvSet {
     public $column;
     public $value;
     public $isString;
@@ -16,6 +16,17 @@ class UpdateSet {
             $value = "'$value'";
         }
         return "$this->column = $value";
+    }
+
+    public function GetColumnPart() {
+        return $this->column;
+    }
+
+    public function GetValuePart() {
+        if ($this->isString) {
+            return "'$this->value'";
+        }
+        return $this->value;
     }
 }
 ?>
