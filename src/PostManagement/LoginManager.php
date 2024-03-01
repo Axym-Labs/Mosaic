@@ -1,5 +1,5 @@
 <?php
-class AccountDataRetriever {
+class LoginManager {
     public $tables;
 
     public function __construct($dbCon) {
@@ -7,10 +7,10 @@ class AccountDataRetriever {
     }
 
     // editView-option
-    public function AssignData($smarty, $userId) {
+    public function HandlePost($sessionManager, $notifer) {
         
-
-        return $smarty;
+        return array(true, "Success");
     }
+
 }
 ?>

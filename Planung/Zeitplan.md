@@ -27,6 +27,7 @@ Page: D Backend H Frontend
 - Dashboard Sektion von Account Page (subsite page generische standardseite)
 - SubSite Page (ist eh nur gerüst für fragments)
 ##### Di 12.3
+- Message Poster
 - Fragment Pages
 ##### Fr 15.3
 - Main Page

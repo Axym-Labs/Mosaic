@@ -1,5 +1,5 @@
 <?php
-class LoginDataManager {
+class AccountManager {
     public $tables;
 
     public function __construct($dbCon) {
@@ -7,8 +7,9 @@ class LoginDataManager {
     }
 
     // editView-option
-    public function HandlePost($sessionManager) {
+    public function HandlePost($userId, $notifer) {
         
+        return array(true, "Success");
     }
 
 }

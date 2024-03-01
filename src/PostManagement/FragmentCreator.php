@@ -1,5 +1,5 @@
 <?php
-class AccountDataManager {
+class SubsiteManager {
     public $tables;
 
     public function __construct($dbCon) {
@@ -7,8 +7,9 @@ class AccountDataManager {
     }
 
     // editView-option
-    public function HandlePost($sessionManager) {
-        
+    public function CreateNew($subsiteId, $userId, $notifier) {
+
+        return true;
     }
 
 }

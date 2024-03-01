@@ -1,5 +1,5 @@
 <?php
-class SubsiteDataManager {
+class SubsiteManager {
     public $tables;
 
     public function __construct($dbCon) {
@@ -7,8 +7,9 @@ class SubsiteDataManager {
     }
 
     // editView-option
-    public function HandlePost($subsiteId, $sessionManager) {
-        
+    public function Update($fragmentId, $notifier) {
+
+        return true;
     }
 
 }
