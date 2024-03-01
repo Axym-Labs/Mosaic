@@ -1,5 +1,5 @@
 <?php
-class AccountDataRetriever {
+class SubsiteDataManager {
     public $tables;
 
     public function __construct($dbCon) {
@@ -7,12 +7,9 @@ class AccountDataRetriever {
     }
 
     // editView-option
-    public function AssignData($smarty, $userId) {
-
-
-        return $smarty;
+    public function HandlePost($subsiteId, $sessionManager) {
+        
     }
-
 
 }
 ?>

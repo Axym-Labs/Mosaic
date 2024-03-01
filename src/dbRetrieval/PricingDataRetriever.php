@@ -1,17 +1,17 @@
 <?php
-class AccountDataRetriever {
+class PricingDataRetriever {
     public $tables;
 
     public function __construct($dbCon) {
         $this->tables = new tableDefinitions($dbCon);
     }
 
-    // editView-option
-    public function AssignData($smarty, $userId) {
+    public function AssignData($smarty) {
 
 
         return $smarty;
     }
+
 
 
 }

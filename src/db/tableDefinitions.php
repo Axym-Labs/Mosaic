@@ -1,6 +1,6 @@
 
 <?php
-class dbTable
+class tableDefinitions
 {
     private $dbCon;
     private $tableConf;
