@@ -2,12 +2,12 @@
 <?php
 class tableDefinitions
 {
-    private $dbCon;
     private $tableConf;
 
     public $user;
     public $subsitecf;
     public $subsite;
+    public $plan;
     public $planperm;
 
     public $fragments;
@@ -19,6 +19,7 @@ class tableDefinitions
         $this->user = new dbTable("User", $this->tableConf, $dbCon);
         $this->subsitecf = new dbTable("SubsiteContentFragment", $this->tableConf, $dbCon);
         $this->subsite = new dbTable("Subsite", $this->tableConf, $dbCon);
+        $this->planperm = new dbTable("Plan", $this->tableConf, $dbCon);
         $this->planperm = new dbTable("PlanPermission", $this->tableConf, $dbCon);
 
         $this->fragments = new fragmentDefinitions($dbCon);

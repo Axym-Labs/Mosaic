@@ -1,6 +1,6 @@
 <?php
 class SubsiteManager {
-    public $tables;
+    private $tables;
 
     public function __construct($dbCon) {
         $this->tables = new tableDefinitions($dbCon);

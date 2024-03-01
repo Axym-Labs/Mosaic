@@ -6,6 +6,7 @@ class dbTable
     public $tableName;
     public $tableConf;
     private $queryTemplater;
+    public $idIdentifier;
     private $dbCon;
 
     public function __construct($tableName, $tableConf, $dbCon)
@@ -13,27 +14,43 @@ class dbTable
         $this.$tableName = $tableName;
         $this.$tableConf = $tableConf;
         $this.$queryTemplater = new queryTemplater($tableName, $tableConf);
+        $this.$idIdentifier = $queryTemplater->idIdentifier;
         $this.$dbCon = $dbCon;
     }
 
-    public function insert($columnValues) {
+    public function Insert($columnValues) {
         $query = $this->queryTemplater->GetInsert($columnValues);
-        $this->dbCon->Execute($query);
+        return $this->returnFetchedResult($query);
     }
 
-    public function update($columnValues) {
-        $query = $this->queryTemplater->GetUpdate($columnValues);
-        $this->dbCon->Execute($query);
+    public function Update($id, $column, $value, $isString = false) {
+        $query = $this->queryTemplater->GetUpdate($id, $column, $value, $isString);
+        return $this->returnFetchedResult($query);
     }
 
-    public function select($columnValues) {
-        $query = $this->queryTemplater->GetSelect($columnValues);
-        $this->dbCon->Execute($query);
+    public function SelectById($condition, $limit = 0, $orderBy = "") {
+        $query = $this->queryTemplater->GetSelectById($condition, $limit, $orderBy);
+        return $this->returnFetchedResult($query);
     }
 
-    public function delete($columnValues) {
-        $query = $this->queryTemplater->GetDelete($columnValues);
-        $this->dbCon->Execute($query);
+    public function SelectAll($limit = 0, $orderBy = "") {
+        $query = $this->queryTemplater->GetSelect("1", $limit, $orderBy);
+        return $this->returnFetchedResult($query);
+    }
+
+    public function Select($condition, $limit = 0, $orderBy = "") {
+        $query = $this->queryTemplater->GetSelect($condition, $limit, $orderBy);
+        return $this->returnFetchedResult($query);
+    }
+
+    public function Delete($id) {
+        $query = $this->queryTemplater->GetDelete($id);
+        return $this->returnFetchedResult($query);
+    }
+
+    private function returnFetchedResult($query) {
+        $result = $this->dbCon->Execute($query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 }
 ?>

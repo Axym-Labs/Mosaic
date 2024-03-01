@@ -14,7 +14,7 @@ $dbCon = new dbConnection($servername, $username, $password);
 $sessionManager = new SessionManager();
 $notifier = new Notifier();
 
-$FrontpageDataRetriever = new OtherDataRetriever($dbCon);
+$frontDataRetriever = new FrontDataRetriever($dbCon);
 $subsiteDataRetriever = new SubsiteDataRetriever($dbCon);
 $accountDataRetriever = new AccountDataRetriever($dbCon);
 $pricingDataRetriever = new PricingDataRetriever($dbCon);
@@ -26,22 +26,22 @@ $subsitManager = new SubsiteManager($dbCon);
 // ---------- GET ----------
 // equivalent of select
 
-SimpleRouter::get('/', function() use ($FrontpageDataRetriever, $smarty, $sessionManager) {
+SimpleRouter::get('/', function() use ($frontDataRetriever, $smarty, $sessionManager) {
     $userId = $sessionManager::GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
-    $smarty = $FrontpageDataRetriever->AssignData($smarty);
+    $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty->display('index.tpl');
 });
 
-SimpleRouter::get('/front', function() use ($FrontpageDataRetriever, $smarty) {
-    $smarty = $FrontpageDataRetriever->AssignData($smarty);
+SimpleRouter::get('/front', function() use ($frontDataRetriever, $smarty) {
+    $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty->display('index.tpl');
 });
 
-SimpleRouter::get('/pricing', function() use ($FrontpageDataRetriever, $smarty) {
-    $smarty = $FrontpageDataRetriever->AssignData($smarty);
+SimpleRouter::get('/pricing', function() use ($frontDataRetriever, $smarty) {
+    $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty->display('pricing.tpl');
 });
 
@@ -51,16 +51,15 @@ SimpleRouter::get('/a', function() use ($accountDataRetriever, $smarty, $session
     if ($userId == null) {
         header('Location: /login');
     }
-    $smarty = $accountDataRetriever->AssignData($smarty, $userId);
+    $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
     $smarty->display('account.tpl');
 });
 
-SimpleRouter::get('/login', function() use ($accountDataRetriever, $smarty, $sessionManager) {
+SimpleRouter::get('/login', function() use ($smarty, $sessionManager) {
     $userId = $sessionManager::GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
-    $smarty = $accountDataRetriever->AssignData($smarty, $userId);
     $smarty->display('login.tpl');
 });
 
@@ -69,19 +68,24 @@ SimpleRouter::get('/logout', function() use ($sessionManager) {
     header('Location: /login');
 });
 
-SimpleRouter::get('/u/{uid}', function($userId) use ($accountDataRetriever, $smarty) {
-    $smarty = $accountDataRetriever->AssignData($smarty, $userId);
+SimpleRouter::get('/u/{uname}', function($userName) use ($accountDataRetriever, $smarty) {
+    $smarty = $accountDataRetriever->AssignDataByUsername($smarty, $userName, false);
     $smarty->display('account.tpl');
 });
 
 // product
-SimpleRouter::get('/s/{sid}', function($subsiteId) use ($accountDataRetriever, $smarty) {
-    $smarty = $accountDataRetriever->AssignData($smarty, $subsiteId);
+SimpleRouter::get('/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty) {
+    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
     $smarty->display('subsite.tpl');
 });
 
-SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($accountDataRetriever, $smarty) {
-    $smarty = $accountDataRetriever->AssignData($smarty, $subsiteId, true);
+SimpleRouter::get('/s/{sname}', function($subsiteName) use ($subsiteDataRetriever, $smarty) {
+    $smarty = $subsiteDataRetriever->AssignDataBySubsiteName($smarty, $subsiteName, false);
+    $smarty->display('subsite.tpl');
+});
+
+SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty) {
+    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
     $smarty->display('subsiteEdit.tpl');
 });
 
@@ -105,7 +109,7 @@ SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smar
     }
     $accountManager->HandlePost($userId, $notifier);
 
-    $smarty = $accountDataRetriever->AssignData($smarty, $userId);
+    $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
     $smarty->display('account.tpl');
 });
 
@@ -115,7 +119,6 @@ SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $no
     if ($loginSuccess) {
         header('Location: /a');
     } else {
-        $smarty = $accountDataRetriever->AssignData($smarty, $sessionManager::GetUserId());
         $smarty->display('login.tpl');
     }
 });
