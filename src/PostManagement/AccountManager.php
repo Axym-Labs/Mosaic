@@ -7,7 +7,12 @@ class AccountManager {
     }
 
     // editView-option
-    public function HandlePost($userId, $notifier) {
+    public function HandleUpdate($userId, $notifier) {
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
+
         try {
             $this->tables->user->OverwriteFromPostRequest($userId, $_POST);
             return true;
@@ -17,7 +22,12 @@ class AccountManager {
         }
     }
 
-    public function HandleCreate() {
+    public function HandleCreate($userId, $notifier) {
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
+
 
     }
 

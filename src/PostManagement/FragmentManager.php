@@ -7,13 +7,23 @@ class SubsiteManager {
     }
 
     // editView-option
-    public function Update($fragmentId, $userid, $notifier) {
+    public function HandleUpdate($fragmentId, $userid, $notifier) {
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
 
         return true;
     }
 
     public function HandleCreate() {
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
 
+
+        
     }
 
     public function HandleDelete($fragmentId) {

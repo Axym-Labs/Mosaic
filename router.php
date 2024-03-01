@@ -23,9 +23,6 @@ $accountManager = new AccountManager($dbCon);
 $loginManager = new LoginManager($dbCon);
 $subsitManager = new SubsiteManager($dbCon);
 
-$fragmentCreator = new FragmentCreator($dbCon);
-$accountCreator = new AccountCreator($dbCon);
-
 // ---------- GET ----------
 // equivalent of select
 
@@ -140,7 +137,7 @@ SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smar
         $notifier->Post("Log in, then visit the url again", "error");
         header('Location: /login');
     }
-    $accountManager->HandlePost($userId, $notifier);
+    $accountManager->HandleUpdate($userId, $notifier);
 
     $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
     $smarty->display('account.tpl');
@@ -177,7 +174,7 @@ SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $
         $notifier->Post("You are not authorized to edit this subsite", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $editSuccess = $subsiteManager->HandlePost($subsiteId, $userId, $notifier);
+    $editSuccess = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
 
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
     $smarty->display('subsiteEdit.tpl');
@@ -210,7 +207,7 @@ SimpleRouter::post('/edit/s/{sid}/update-f/{fid}', function($subsiteId, $fragmen
         $notifier->Post("You are not authorized to edit this fragment", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $editSuccess = $fragmentManager->Handleupdate($fragmentId, $userId, $notifier);
+    $editSuccess = $fragmentManager->HandleUpdate($fragmentId, $userId, $notifier);
 
     header('Location: /edit/s/' + $subsiteId);
 });

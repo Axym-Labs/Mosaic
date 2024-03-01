@@ -8,13 +8,22 @@ class SubsiteManager {
 
     // editView-option
     public function HandleUpdate($subsiteId, $userId, $notifier) {
-        $notifier->Post("Login successful", "success");
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
 
         return true;
     }
 
     public function HandleCreate() {
+        list($valid, $notifier) = $this->ValidateData();
+        if (!$valid) {
+            return false;
+        }
 
+
+        
     }
 
     public function HandleDelete($subsiteId) {
