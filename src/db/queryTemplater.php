@@ -11,17 +11,25 @@ class queryTemplater
         $this.$tableConf = $tableConf;
         $this.$tableName = $tableName;
 
-        foreach (["insert", "update", ""] as $fileName) {
-            $this->queryTemplates[$fileName] = ReadFile($fileName + ".sql");
-        }
         $this.$columnNames = explode("\n", ReadFile("columnNames.txt"));
         $this.$idIdentifier = $this->columnNames[0];
         $columnNameIdentifiers = array_map(function ($x) { return "`$x`"; }, $this->columnNames).join(", ");
         $valueIdentifiers = array_map(function($x) { return "[value-$x]"; }, $this->$columnNames).join(", ");
         $this->queryTemplates["insert"] = "INSERT INTO `$tableName` ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
+        $this->queryTemplates["overwrite"] = "UPDATE `$tableName` SET [overwrite] WHERE `$idIdentifier` = [value-Id]";
         $this->queryTemplates["update"] = "UPDATE `$tableName` SET `[column]` = [value] WHERE `$idIdentifier` = [value-Id]";
         $this->queryTemplates["select"] = "SELECT [columns] FROM `$tableName` WHERE `[condition]`";
         $this->queryTemplates["delete"] = "DELETE FROM `$tableName` WHERE `$idIdentifier` = [value-Id]"; 
+    }
+
+    public function FilterForColumnNames($kvDict) {
+        $filteredDict = array();
+        foreach ($kvDict as $key => $value) {
+            if (in_array($key, $this->columnNames)) {
+                $filteredDict[$key] = $value;
+            }
+        }
+        return $filteredDict;
     }
 
     public function GetInsert($kvDict) {
@@ -29,6 +37,13 @@ class queryTemplater
         foreach ($kvDict as $key => $value) {
             $query = $this->ReplaceIdentifier($query, "value", $key, $value);
         }
+        return $query;
+    }
+
+    public function GetOverwrite($id, $updateSetArray) {
+        $query = $this->queryTemplates["overwrite"];
+        $query = $this->ReplaceIdentifier($query, "value", "Id", $id);
+        $query = $this->ReplaceTypelessIdentifier($query, "overwrite", join(", ", array_map(function($x) { return $x->ToUpdateFragment(); }, $updateSetArray)));
         return $query;
     }
 

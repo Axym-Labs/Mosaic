@@ -23,6 +23,22 @@ class dbTable
         return $this->returnFetchedResult($query);
     }
 
+    public function OverwriteFromPostRequest($postData) {
+        $postData = $this->queryTemplater->FilterForColumnNames($postData);
+        $id = $postData[$this->idIdentifier];
+        $updateSetArray = array();
+        // convert to updateSetArray
+        foreach ($postData as $column => $value) {
+            array_push($updateSetArray, new UpdateSet($column, $value[0], is_string($value[0])));
+        }
+        $this->Overwrite($id, $updateSetArray);
+    }
+
+    public function Overwrite($id, $updateSetArray) {
+        $query = $this->queryTemplater->GetOverwrite($id, $updateSetArray);
+        return $this->returnFetchedResult($query);
+    }
+
     public function Update($id, $column, $value, $isString = false) {
         $query = $this->queryTemplater->GetUpdate($id, $column, $value, $isString);
         return $this->returnFetchedResult($query);

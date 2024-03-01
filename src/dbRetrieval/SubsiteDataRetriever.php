@@ -22,8 +22,8 @@ class SubsiteDataRetriever {
         $smarty->assign('subsite', $subsite);
         $smarty->assign('isShort', $isShort);
 
-        $genericFragments = $this->tables->subsitecf->Select("WebsiteId = " . $subsite["SubsiteId"], 0, "Position");
-        
+        $genericFragments = $this->GetGenericFragments($subsite["SubsiteId"]);
+
         $fragments = array();
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
@@ -34,6 +34,10 @@ class SubsiteDataRetriever {
 
         $smarty->assign('fragments', $fragments);
         return $smarty;
+    }
+
+    public function GetGenericFragments($subsiteId) {
+        return $this->tables->subsitecf->Select("WebsiteId = $subsiteId", 0, "Position");
     }
 
     private function GetTemplatedFragment($tableName, $fragmentContent) {

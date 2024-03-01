@@ -8,6 +8,7 @@ class LoginManager {
 
     // editView-option
     public function HandlePost($sessionManager, $notifer) {
+        $password = $_POST['password'];
         
         return array(true, "Success");
     }

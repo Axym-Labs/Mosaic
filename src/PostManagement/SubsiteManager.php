@@ -7,17 +7,13 @@ class SubsiteManager {
     }
 
     // editView-option
-    public function HandlePost($subsiteId, $userId, $notifier) {
+    public function HandleUpdate($subsiteId, $userId, $notifier) {
         $notifier->Post("Login successful", "success");
 
         return true;
     }
 
-    public function CheckAuthorized($subsiteId, $userId) {
-        
-    }
-
-    public function HandleUpdate($subsiteId) {
+    public function HandleCreate() {
 
     }
 
@@ -25,5 +21,8 @@ class SubsiteManager {
 
     }
 
+    private function ValidateData() {
+
+    }
 }
 ?>

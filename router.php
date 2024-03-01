@@ -23,6 +23,9 @@ $accountManager = new AccountManager($dbCon);
 $loginManager = new LoginManager($dbCon);
 $subsitManager = new SubsiteManager($dbCon);
 
+$fragmentCreator = new FragmentCreator($dbCon);
+$accountCreator = new AccountCreator($dbCon);
+
 // ---------- GET ----------
 // equivalent of select
 
@@ -63,6 +66,22 @@ SimpleRouter::get('/login', function() use ($smarty, $sessionManager) {
     $smarty->display('login.tpl');
 });
 
+SimpleRouter::get('/create/account', function() use ($smarty, $sessionManager) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId != null) {
+        header('Location: /a');
+    }
+    $smarty->display('createAccount.tpl');
+});
+
+SimpleRouter::get('/create/subsite', function() use ($smarty, $sessionManager) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId != null) {
+        header('Location: /a');
+    }
+    $smarty->display('createSubsite.tpl');
+});
+
 SimpleRouter::get('/logout', function() use ($sessionManager) {
     $sessionManager::SetUserId(null);
     header('Location: /login');
@@ -84,19 +103,32 @@ SimpleRouter::get('/s/{sname}', function($subsiteName) use ($subsiteDataRetrieve
     $smarty->display('subsite.tpl');
 });
 
-SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty) {
+SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $sessionManager, $notifier, $tables) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId != null) {
+        $notifier->Post("Log in, then visit the url again", "error");
+        header('Location: /login');
+    }
+    if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
+        $notifier->Post("You are not authorized to edit this subsite", "error");
+        header('Location: /s/' + $subsiteId);
+    }
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
     $smarty->display('subsiteEdit.tpl');
 });
 
-SimpleRouter::get("/new/s", function($subsiteId) use ($accountDataRetriever, $smarty, $sessionManager, $notifier, $subsiteCreator) {
-    list($creationSuccess, $subsiteId) = $subsiteCreator->CreateNew($subsiteId, $sessionManager::GetUserId(), $notifier);
-    
-    if ($creationSuccess) {
-        header('Location: /edit/s/' + $subsiteId);
-    } else {
-        header('Location: /a');
+SimpleRouter::get('/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $sessionManager, $notifier, $tables) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId == null) {
+        $notifier->Post("Log in, then visit the url again", "error");
+        header('Location: /login');
     }
+    if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
+        $notifier->Post("You are not authorized to edit this fragment", "error");
+        header('Location: /s/' + $subsiteId);
+    }
+
+    $smarty->display('createFragment.tpl');
 });
 
 // ---------- POST ----------
@@ -105,6 +137,7 @@ SimpleRouter::get("/new/s", function($subsiteId) use ($accountDataRetriever, $sm
 SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smarty, $accountDataRetriever, $notifier) {
     $userId = $sessionManager::GetUserId();
     if ($userId != null) {
+        $notifier->Post("Log in, then visit the url again", "error");
         header('Location: /login');
     }
     $accountManager->HandlePost($userId, $notifier);
@@ -113,7 +146,7 @@ SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smar
     $smarty->display('account.tpl');
 });
 
-SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $notifier, $smarty, $accountDataRetriever) {
+SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $notifier, $smarty) {
     $loginSuccess = $loginManager->HandlePost($sessionManager, $notifier);
     
     if ($loginSuccess) {
@@ -123,17 +156,78 @@ SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $no
     }
 });
 
+SimpleRouter::post('/create/account', function() use ($accountManager, $sessionManager, $notifier, $smarty) {
+    $accountcreationSuccess = $accountManager->HandleCreate($sessionManager, $notifier);
+    
+    if ($accountcreationSuccess) {
+        header('Location: /a');
+    } else {
+        $smarty->display('createAccount.tpl');
+    }
+});
+
 // subsite
-SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $sessionManager, $notifier, $smarty, $accountDataRetriever) {
+SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $sessionManager, $notifier, $smarty, $subsiteDataRetriever, $tables) {
     $userId = $sessionManager::GetUserId();
     if ($userId == null) {
         $notifier->Post("Log in, then visit the url again", "error");
         header('Location: /login');
     }
+    if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
+        $notifier->Post("You are not authorized to edit this subsite", "error");
+        header('Location: /s/' + $subsiteId);
+    }
     $editSuccess = $subsiteManager->HandlePost($subsiteId, $userId, $notifier);
 
-    $smarty = $accountDataRetriever->AssignData($smarty, $subsiteId, true);
+    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
     $smarty->display('subsiteEdit.tpl');
+});
+
+// subsite
+SimpleRouter::post('/create/subsite', function() use ($subsiteManager, $sessionManager, $notifier, $smarty, $subsiteDataRetriever, $tables) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId == null) {
+        $notifier->Post("Log in, then visit the url again", "error");
+        header('Location: /login');
+    }
+    list($creationSuccess, $subsiteId) = $subsiteManager->HandleCreate($userId, $notifier);
+
+    if (!$creationSuccess) {
+        $smarty->display('createSubsite.tpl');
+    } else {
+        header('Location: /edit/s/' + $subsiteId);
+    }
+});
+
+// subsite
+SimpleRouter::post('/edit/s/{sid}/update-f/{fid}', function($subsiteId, $fragmentId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId == null) {
+        $notifier->Post("Log in, then visit the url again", "error");
+        header('Location: /login');
+    }
+    if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
+        $notifier->Post("You are not authorized to edit this fragment", "error");
+        header('Location: /s/' + $subsiteId);
+    }
+    $editSuccess = $fragmentManager->Handleupdate($fragmentId, $userId, $notifier);
+
+    header('Location: /edit/s/' + $subsiteId);
+});
+
+SimpleRouter::post('/edit/s/{sid}/create-f', function($subsiteId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
+    $userId = $sessionManager::GetUserId();
+    if ($userId == null) {
+        $notifier->Post("Log in, then visit the url again", "error");
+        header('Location: /login');
+    }
+    if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
+        $notifier->Post("You are not authorized to edit this fragment", "error");
+        header('Location: /s/' + $subsiteId);
+    }
+    $createSuccess = $fragmentManager->HandleCreate($userId, $notifier);
+
+    header('Location: /edit/s/' + $subsiteId);
 });
 
 SimpleRouter::start();
