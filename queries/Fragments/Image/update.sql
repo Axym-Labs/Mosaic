@@ -1,1 +1,1 @@
-UPDATE `fragmentimage` SET `[column-1]`='[value-1]' WHERE `Id`='[value-2]'
+UPDATE `fragmentimage` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

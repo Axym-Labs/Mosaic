@@ -1,1 +1,1 @@
-INSERT INTO `subsitelink`(`Id`, `Title`, `Link`) VALUES (NULL,'[value-2]','[value-3]')
+INSERT INTO `subsitelink`(`Id`, `Title`, `Link`) VALUES (NULL,'[value-Title]','[value-Link]')

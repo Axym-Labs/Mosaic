@@ -1,1 +1,1 @@
-UPDATE `user` SET `[column-1]`='[value-1]' WHERE `UserId`='[value-2]'
+UPDATE `user` SET `[column]`='[value]' WHERE `UserId`='[value-Id]'

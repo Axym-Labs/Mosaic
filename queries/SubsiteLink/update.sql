@@ -1,1 +1,1 @@
-UPDATE `subsitelink` SET `[column-1]`='[value-1]' WHERE `Id`='[value-2]'
+UPDATE `subsitelink` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

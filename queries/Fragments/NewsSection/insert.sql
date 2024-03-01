@@ -1,1 +1,1 @@
-INSERT INTO `fragmentnewssection`(`Id`, `Title`, `Description`, `Link`, `Date`) VALUES (NULL,'[value-2]','[value-3]','[value-4]','[value-5]')
+INSERT INTO `fragmentnewssection`(`Id`, `Title`, `Description`, `Link`, `Date`) VALUES (NULL,'[value-Title]','[value-Description]','[value-Link]','[value-Date]')

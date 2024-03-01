@@ -18,7 +18,8 @@ Page: D Backend H Frontend
 - Seitenplan erstellen (Zusammengehörigkeit beachten)
 - HTML-index datei (tailwindcss js datei, wenn mögl downloaden und ins repo tun)
 - php & html template mit db verbindung für alle seiten (template gemeinsam, einbetten zusammen)
-- Abfrageneinbindung 50% (parallel/getrennt) (copy pasten, werte-einfügende logik später)
+- Abfrageneinbindung
+- Html dateien in .tpl dateien umbennen
 ##### Di 5.3 (Ph Ka in der Woche)
 - Abfragen ins Programm (einzeln direkt überprüft - noch keine ui sondern nur rohdaten - herausfinden wie daten in query einfügen in php von html input)
 ##### Fr 8.3 (Do In)

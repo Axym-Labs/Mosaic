@@ -1,1 +1,1 @@
-UPDATE `subsitecontentfragment` SET `[column-1]`='[value-1]' WHERE `SubsiteContentFragmentId`='[value-2]'
+UPDATE `subsitecontentfragment` SET `[column]`='[value]' WHERE `SubsiteContentFragmentId`='[value-Id]'

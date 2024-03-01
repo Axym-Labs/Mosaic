@@ -1,0 +1,6 @@
+Id
+Title
+Url
+MorePermissions
+Width
+Height

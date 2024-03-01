@@ -11,3 +11,10 @@
 ### Vip Version
 - SubSiteLimit
 - MoreImagesLimit
+
+- AI Assistant
+    - Rewrite
+    - Ordering of subsites
+    - Create subsite from page (e.g. github readme)
+    - (fully automatic research)
+

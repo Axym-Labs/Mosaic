@@ -1,1 +1,1 @@
-INSERT INTO `fragmentcredentials`(`Id`, `Name`, `Occupation`, `Location`, `Description`) VALUES (NULL,'[value-2]','[value-3]','[value-4]','[value-5]')
+INSERT INTO `fragmentcredentials`(`Id`, `Name`, `Occupation`, `Location`, `Description`) VALUES (NULL,'[value-Name]','[value-Occupation]','[value-Location]','[value-Description]')

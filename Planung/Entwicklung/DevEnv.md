@@ -19,6 +19,7 @@
 
 ### Entwickeln
 - vs code jetzt öffnen, um am projekt zu arbeiten
+- Composer downloaden: https://getcomposer.org/download/
 - entwickeln
 - änderungen speichern, indem das git-symbol (3 kreise mit 2 verbindungen rechte leiste) und "sync changes" geklickt werden
 

@@ -8,3 +8,5 @@
 
 - tailwindcss
 - css.gg
+
+- **embyte integration: uses iframe table on backend**

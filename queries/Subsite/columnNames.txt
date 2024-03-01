@@ -1,0 +1,5 @@
+SubSiteId
+UserId
+Name
+Route
+ShortRoute
