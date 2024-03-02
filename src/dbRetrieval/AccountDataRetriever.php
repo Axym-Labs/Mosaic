@@ -8,7 +8,13 @@ class AccountDataRetriever {
 
     // editView-option
     public function AssignData($smarty, $userId, $allowedToEdit) {
-        $smarty->assign('user', $this->tables->user->SelectById($userId));
+        $usersWithId = $this->tables->user->SelectById($userId);
+        if (count($usersWithId) == 0) {
+            $smarty = new Smarty();
+            $smarty->assign('Error', "No user with this id found");
+            return $smarty;
+        }
+        $smarty->assign('user', $usersWithId[0]);
         return $this->AssignDataShared($smarty, $userId, $allowedToEdit);
     }
 

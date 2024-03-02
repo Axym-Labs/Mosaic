@@ -83,5 +83,9 @@ class dbTable
         $result = $this->dbCon->Execute($query);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
+
+    public function GetDbCon() {
+        return $this->dbCon;
+    }
 }
 ?>

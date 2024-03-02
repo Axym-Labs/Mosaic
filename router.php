@@ -96,8 +96,8 @@ SimpleRouter::get('/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $
     $smarty->display('subsite.tpl');
 });
 
-SimpleRouter::get('/s/{sname}', function($subsiteName) use ($subsiteDataRetriever, $smarty) {
-    $smarty = $subsiteDataRetriever->AssignDataBySubsiteName($smarty, $subsiteName, false);
+SimpleRouter::get('/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty) {
+    $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
     $smarty->display('subsite.tpl');
 });
 

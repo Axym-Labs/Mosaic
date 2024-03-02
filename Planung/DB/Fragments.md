@@ -22,7 +22,7 @@
 - **BackgroundColor**
 
 ### Image
-- [ ] Noch **Description** Einfügen 
+- [X] Noch **Description** Einfügen 
 
 ### Credentials
 - [ ] Noch **Profile imagd blob** einfügen

@@ -20,5 +20,22 @@ class fragmentDefinitions {
         $this->texts = new dbTable("Text", $this->tableConf, $this->dbCon);
         $this->iframes = new dbTable("IFrame", $this->tableConf, $this->dbCon);
     }
+
+    public function GetTableByName($tableName) {
+        switch ($tableName) {
+            case "credentials":
+                return $this->credentials;
+            case "fragmentimage":
+                return $this->images;
+            case "LinkSection":
+                return $this->linksection;
+            case "NewsSection":
+                return $this->newsSection;
+            case "Text":
+                return $this->texts;
+            case "IFrame":
+                return $this->iframes;
+        }
+    }
 }
 ?>

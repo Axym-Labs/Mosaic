@@ -1,22 +1,20 @@
 <?php
 class FragmentManager {
     private $tables;
-    private $flexibleTable;
 
     public function __construct($dbCon) {
         $this->tables = new tableDefinitions($dbCon);
-        $this->flexibleTable = new FlexibleTable($dbCon);
     }
 
     // editView-option
     public function HandleUpdate($fragmentId, $subsiteId, $notifier) {
-        list($valid, $notifier) = $this->ValidateData($_POST, $notifier);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
         if (!$valid) {
             return false;
         }
 
         try {
-            $this->tables->subsitecf->OverwriteFromPostRequest($_POST);
+            $this->tables->subsitecf->OverwriteFromPostRequest($postData);
             return true;
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update the fragment.", "error");
@@ -25,25 +23,32 @@ class FragmentManager {
     }
 
     public function HandleCreate($subsiteId, $notifier) {
-        list($valid, $notifier) = $this->ValidateData($_POST, $notifier);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
         if (!$valid) {
             return false;
         }
 
-        $this->flexibleTable->Execute("INSERT INTO " . $_POST["ContentTableName"] . " () VALUES ()");
-        $contentId = $this->flexibleTable->dbCon->lastInsertId();
+        $this->tables->fragments->GetTableByName($postData["ContentTableName"])->InsertFromPostRequest($postData);
+        $contentId = $this->tables->fragments->GetTableByName($postData["ContentTableName"])->GetDbCon()->lastInsertId();
 
-        $_POST["ContentId"] = $contentId;
+        $postData["ContentId"] = $contentId;
 
         try {
-            $this->tables->subsitecf->InsertFromPostRequest($_POST);
-
+            $this->tables->subsitecf->InsertFromPostRequest($postData);
             return true;
         } catch (Exception $e) {
-            $notifier->Post("Error: Could not create your account.", "error");
+            $notifier->Post("Error: Could not create your account. Try again later or contact support.", "error");
             return false;
         }
+    }
 
+    private function ValidateAndFillEntity($subsiteId, $postData, $notifier) {
+        list($valid, $notifier) = $this->ValidateData($subsiteId, $postData, $notifier);
+        if (!$valid) {
+            return array($postData, false, $notifier);
+        }
+        $postData = $this->DefineAutoValues($postData);
+        return array($postData, true, $notifier);
     }
 
     public function HandleDelete($fragmentId) {
@@ -52,16 +57,45 @@ class FragmentManager {
 
         // TODO: implement news/linksection delete via table
 
-        $this->flexibleTable->Execute("DELETE FROM " . $subsitecf["ContentTableName"] . " WHERE Id = " . $subsitecf["ContentId"]);
+        $this->tables->fragments->GetTableByName($subsitecf["ContentTableName"])->Delete($subsitecf["ContentId"]);
         
     }
 
-    private function ValidateData($postData) {
+    private function ValidateData($subsiteId, $postData, $notifier) {
         // numbers positive
-
-        // position unique
-
+        if ($postData["Position"] < 0) {
+            $notifier->Post("Position must be positive");
+            return false;
+        }
+        $subsitesWithId = $this->tables->subsite->SelectById($subsiteId);
+        // subsiteId exists
+        if (count($subsitesWithId) == 0) {
+            $notifier->Post("Subsite does not exist");
+            return false;
+        }
+        
         // maximum fragment count not exceeded
+        // leave this out since its not bound to plan permission - can be implemented later
+        // $subsite = $subsitesWithId[0];
+        // $planId = $this->tables->subsite->SelectById($subsite["userId"])["PlanId"];
+        // $plan = $this->tables->plan->SelectById($planId);
+        // $planPermissions = $this->tables->plan->SelectById($plan["PlanPermissionId"]);
+        
+        $fragments = $this->tables->subsitecf->Select("SubsiteId = $subsiteId");
+        if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
+            $notifier->Post("Maximum fragment count exceeded");
+            return false;
+        }
+
+    }
+
+    private function DefineAutoValues($postData) {
+        if (!array_key_exists("Position", $postData)) {
+            $position = $this->tables->subsitecf->Select("SubsiteId = " . $postData["SubsiteId"], 1, "MAX(Position)")[0]["MAX(Position)"];
+            $postData["Position"] = $position + 1;
+        }
+        
+        return $postData;
     }
 
 }

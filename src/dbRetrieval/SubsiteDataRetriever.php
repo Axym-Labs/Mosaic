@@ -1,11 +1,9 @@
 <?php
 class SubsiteDataRetriever {
     private $tables;
-    private $flexibleTable;
 
     public function __construct($dbCon) {
         $this->tables = new tableDefinitions($dbCon);
-        $this->flexibleTable = new FlexibleTable($dbCon);
     }
 
     public function AssignData($smarty, $subsiteId, $isShort) {
@@ -13,9 +11,32 @@ class SubsiteDataRetriever {
         return $this->AssignDataShared($smarty, $subsite, $isShort);
     }
 
-    public function AssignDataBySubsiteName($smarty, $subsiteName, $isShort) {
-        $subsite = $this->tables->subsite->Select("name = '$subsiteName'");
-        return $this->AssignDataShared($smarty, $subsite, $isShort);
+    public function AssignDataByRoute($smarty, $userName, $subsiteRoute, $isShort) {
+        $usersWithId = $this->tables->user->Select("UserName = '$userName'");
+        if (count($usersWithId) == 0) {
+            $smarty = new Smarty();
+            $smarty->assign('Error', "No user with this username found");
+            return $smarty;
+        }
+        $userId = $usersWithId[0]["UserId"];
+
+        $subsitesWithId = $this->tables->subsite->Select("UserId = '$userId' AND Route = '$subsiteRoute'");
+        if (count($subsitesWithId) == 0) {
+            $smarty = new Smarty();
+            $smarty->assign('Error', "No subsite with this short route found");
+            return $smarty;
+        }
+        return $this->AssignDataShared($smarty, $subsitesWithId[0], $isShort);
+    }
+
+    public function AssignDataByShortRoute($smarty, $subsiteShortRoute, $isShort) {
+        $subsitesWithId = $this->tables->subsite->Select("ShortRoute = '$subsiteShortRoute'");
+        if (count($subsitesWithId) == 0) {
+            $smarty = new Smarty();
+            $smarty->assign('Error', "No subsite with this short route found");
+            return $smarty;
+        }
+        return $this->AssignDataShared($smarty, $subsitesWithId[0], $isShort);
     }
 
     private function AssignDataShared($smarty, $subsite, $isShort) {
@@ -28,7 +49,7 @@ class SubsiteDataRetriever {
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
-            $fragmentContent = $this->flexibleTable->Execute("SELECT * FROM $tableName WHERE Id = $fragmentId");
+            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
             array_push($fragments, $this->GetTemplatedFragment($tableName, $fragmentContent));
         }
 

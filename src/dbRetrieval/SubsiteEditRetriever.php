@@ -1,19 +1,19 @@
 <?php
 class SubsiteEditRetriever {
-    private $dbCon;
     private $tables;
     private $subsiteDataRetriever;
-    private $flexibleTable;
 
     public function __construct($dbCon) {
-        $this->dbCon = $dbCon;
         $this->tables = new tableDefinitions($dbCon);
         $this->subsiteDataRetriever = new SubsiteDataRetriever($dbCon);
-        $this->flexibleTable = new FlexibleTable($dbCon);
     }
 
     public function AssignData($smarty, $subsiteId) {
-        $subsiteData = $this->subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
+        $smarty = $this->subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
+
+        if ($smarty->getTemplateVars('Error')) {
+            return $smarty;
+        }
 
         $genericFragments = $this->subsiteDataRetriever->GetGenericFragments($subsiteId);
 
@@ -21,18 +21,18 @@ class SubsiteEditRetriever {
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
-            $fragmentContent = $this->flexibleTable->Execute("SELECT * FROM $tableName WHERE Id = $fragmentId");
+            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
             array_push($fragments, $this->GetTemplatedEditFragment($tableName, $fragmentContent));
         }
+        $smarty->assign('fragments', $fragments);
 
-
-        return $subsiteData;
+        return $smarty;
     }
     
     private function GetTemplatedEditFragment($tableName, $fragmentContent) {
         $smarty = new Smarty();
         $smarty->assign('fragmentContent', $fragmentContent);
-        return $smarty->fetch("templates/fragments/$tableName.tpl");
+        return $smarty->fetch("templates/editFragments/$tableName.tpl");
     }
 
 }

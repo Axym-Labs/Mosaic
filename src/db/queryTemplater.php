@@ -66,11 +66,11 @@ class queryTemplater
     public function GetSelect($condition, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
         $query = $this->ReplaceTypelessIdentifier($query, "condition", $condition);
-        if ($limit > 0) {
-            $query += " LIMIT " + $limit;
-        }
         if ($orderBy != "") {
             $query += " ORDER BY " + $orderBy;
+        }
+        if ($limit > 0) {
+            $query += " LIMIT " + $limit;
         }
         return $query;
     }
@@ -78,11 +78,11 @@ class queryTemplater
     public function GetSelectById($id, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
         $query = $this->ReplaceTypelessIdentifier($query, "oondition", "`" + $this->idIdentifier + "` = " + $id);
-        if ($limit > 0) {
-            $query += " LIMIT " + $limit;
-        }
         if ($orderBy != "") {
             $query += " ORDER BY " + $orderBy;
+        }
+        if ($limit > 0) {
+            $query += " LIMIT " + $limit;
         }
         return $query;
     }
