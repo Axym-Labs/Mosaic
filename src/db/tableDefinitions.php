@@ -23,7 +23,7 @@ class tableDefinitions
         $this->planperm = new dbTable("PlanPermission", $this->tableConf, $dbCon);
 
         $this->fragments = new fragmentDefinitions($dbCon);
-        $this->contentPieces = new contentPiecesDefinitions($dbCon);
+        // $this->contentPieces = new contentPiecesDefinitions($dbCon);
     }
 
 
