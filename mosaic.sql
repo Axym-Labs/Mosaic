@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Mrz 2024 um 10:17
+-- Erstellungszeit: 03. Mrz 2024 um 22:05
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -29,18 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `fragmentcredentials` (
   `Id` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Occupation` varchar(50) NOT NULL,
-  `Location` varchar(50) NOT NULL,
-  `Description` text NOT NULL
+  `UserId` bigint(20) NOT NULL,
+  `ShowPersonalData` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `fragmentcredentials`
 --
 
-INSERT INTO `fragmentcredentials` (`Id`, `Name`, `Occupation`, `Location`, `Description`) VALUES
-(1, 'Till Meier', 'Lehrer', 'Südpol', 'sdfasdfdfasdf asdf sdfasdfsdfasdfasdfasdfsdfasdffddfaasdf sdfsdafsadfsdf sfsad fsdfsadf asdfsa');
+INSERT INTO `fragmentcredentials` (`Id`, `UserId`, `ShowPersonalData`) VALUES
+(1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -50,8 +48,8 @@ INSERT INTO `fragmentcredentials` (`Id`, `Name`, `Occupation`, `Location`, `Desc
 
 CREATE TABLE `fragmentiframe` (
   `Id` bigint(20) UNSIGNED NOT NULL,
-  `Title` int(11) NOT NULL,
-  `Url` int(11) NOT NULL,
+  `Title` text NOT NULL,
+  `Url` text NOT NULL,
   `MorePermissions` tinyint(1) NOT NULL,
   `Width` int(11) NOT NULL,
   `Height` int(11) NOT NULL
@@ -79,33 +77,65 @@ INSERT INTO `fragmentimage` (`Id`, `ImageContent`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `fragmentlinksection`
+-- Tabellenstruktur für Tabelle `fragmentlink`
 --
 
-CREATE TABLE `fragmentlinksection` (
+CREATE TABLE `fragmentlink` (
   `Id` bigint(20) UNSIGNED NOT NULL,
-  `Title` text NOT NULL
+  `Title` text NOT NULL,
+  `Link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `fragmentlinksection`
---
-
-INSERT INTO `fragmentlinksection` (`Id`, `Title`) VALUES
-(1, 'Link section title');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `fragmentnewssection`
+-- Tabellenstruktur für Tabelle `fragmentnews`
 --
 
-CREATE TABLE `fragmentnewssection` (
-  `Id` bigint(20) NOT NULL,
+CREATE TABLE `fragmentnews` (
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Title` text NOT NULL,
   `Description` text NOT NULL,
   `Link` text NOT NULL,
   `Date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `fragmentnews`
+--
+
+INSERT INTO `fragmentnews` (`Id`, `Title`, `Description`, `Link`, `Date`) VALUES
+(1, '', '', '', '2024-03-03');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `fragmentprojectinfo`
+--
+
+CREATE TABLE `fragmentprojectinfo` (
+  `Id` bigint(20) UNSIGNED NOT NULL,
+  `Description` int(11) NOT NULL,
+  `LogoBlob` blob NOT NULL,
+  `CtaLink` text NOT NULL,
+  `CtaLinkDescription` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `fragmentsocials`
+--
+
+CREATE TABLE `fragmentsocials` (
+  `Id` bigint(20) UNSIGNED NOT NULL,
+  `GithubLink` text NOT NULL,
+  `GitlabLink` text NOT NULL,
+  `XLink` text NOT NULL,
+  `FacebookLink` text NOT NULL,
+  `RedditLink` text NOT NULL,
+  `DiscordLink` text NOT NULL,
+  `RelativeOrder` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,14 +147,14 @@ CREATE TABLE `fragmentnewssection` (
 CREATE TABLE `fragmenttext` (
   `Id` bigint(20) UNSIGNED NOT NULL,
   `Text` text NOT NULL,
-  `Titel` text NOT NULL
+  `Title` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `fragmenttext`
 --
 
-INSERT INTO `fragmenttext` (`Id`, `Text`, `Titel`) VALUES
+INSERT INTO `fragmenttext` (`Id`, `Text`, `Title`) VALUES
 (1, 'Test test test Text asdfljksdfaljkösdfajklasdfjklö', '');
 
 -- --------------------------------------------------------
@@ -135,7 +165,7 @@ INSERT INTO `fragmenttext` (`Id`, `Text`, `Titel`) VALUES
 
 CREATE TABLE `plan` (
   `PlanId` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
   `Visible` tinyint(1) NOT NULL,
   `PlanPermissionId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -146,8 +176,8 @@ CREATE TABLE `plan` (
 
 INSERT INTO `plan` (`PlanId`, `Name`, `Visible`, `PlanPermissionId`) VALUES
 (1, 'Kostenlos', 1, 1),
-(2, 'Pro', 1, 2),
-(3, 'VIP', 1, 3);
+(2, 'Premium', 1, 2),
+(3, 'Professional', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -163,17 +193,19 @@ CREATE TABLE `planpermission` (
   `OpacityOption` tinyint(1) NOT NULL,
   `SubSiteBackgroundImageOption` tinyint(1) NOT NULL,
   `ShortLinkOption` tinyint(1) NOT NULL,
-  `SubSiteLimit` int(11) NOT NULL
+  `SubSiteLimit` int(11) NOT NULL,
+  `FragmentLimit` int(11) NOT NULL,
+  `SocialsOrderOption` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `planpermission`
 --
 
-INSERT INTO `planpermission` (`PlanPermissionId`, `FragmentBackgroundColorOption`, `TextColorOption`, `FontOption`, `OpacityOption`, `SubSiteBackgroundImageOption`, `ShortLinkOption`, `SubSiteLimit`) VALUES
-(1, 1, 0, 0, 1, 0, 0, 0),
-(2, 1, 1, 1, 1, 0, 0, 0),
-(3, 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO `planpermission` (`PlanPermissionId`, `FragmentBackgroundColorOption`, `TextColorOption`, `FontOption`, `OpacityOption`, `SubSiteBackgroundImageOption`, `ShortLinkOption`, `SubSiteLimit`, `FragmentLimit`, `SocialsOrderOption`) VALUES
+(1, 1, 0, 0, 1, 0, 0, 0, 10, 0),
+(2, 1, 1, 1, 1, 0, 0, 0, 100, 1),
+(3, 1, 1, 1, 1, 1, 1, 1, 1000, 1);
 
 -- --------------------------------------------------------
 
@@ -229,38 +261,6 @@ INSERT INTO `subsitecontentfragment` (`SubsiteContentFragmentId`, `WebsiteId`, `
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `subsitelink`
---
-
-CREATE TABLE `subsitelink` (
-  `Id` bigint(20) UNSIGNED NOT NULL,
-  `Title` text NOT NULL,
-  `Link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `subsitenews`
---
-
-CREATE TABLE `subsitenews` (
-  `Id` bigint(20) UNSIGNED NOT NULL,
-  `Title` text NOT NULL,
-  `Description` text NOT NULL,
-  `Link` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `subsitenews`
---
-
-INSERT INTO `subsitenews` (`Id`, `Title`, `Description`, `Link`) VALUES
-(1, '', '', '');
-
--- --------------------------------------------------------
-
---
 -- Tabellenstruktur für Tabelle `user`
 --
 
@@ -269,16 +269,20 @@ CREATE TABLE `user` (
   `Email` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
   `FirstName` varchar(50) NOT NULL,
-  `PlanId` int(11) NOT NULL
+  `PlanId` int(11) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `Salt` varchar(10) NOT NULL,
+  `ProfilePicture` blob NOT NULL,
+  `Username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`UserId`, `Email`, `LastName`, `FirstName`, `PlanId`) VALUES
-(0, 'muster@gmail.com', 'Mustermann Kostenlos', 'Max', 0),
-(1, 'meier@gmail.com', 'Meier Pro', 'Till', 1);
+INSERT INTO `user` (`UserId`, `Email`, `LastName`, `FirstName`, `PlanId`, `Password`, `Salt`, `ProfilePicture`, `Username`) VALUES
+(0, 'muster@gmail.com', 'Mustermann Kostenlos', 'Max', 0, '', '', '', ''),
+(1, 'meier@gmail.com', 'Meier Pro', 'Till', 1, '', '', '', '');
 
 --
 -- Indizes der exportierten Tabellen
@@ -303,16 +307,28 @@ ALTER TABLE `fragmentimage`
   ADD UNIQUE KEY `FragmentImageId` (`Id`);
 
 --
--- Indizes für die Tabelle `fragmentlinksection`
+-- Indizes für die Tabelle `fragmentlink`
 --
-ALTER TABLE `fragmentlinksection`
-  ADD UNIQUE KEY `FragmentId` (`Id`);
+ALTER TABLE `fragmentlink`
+  ADD UNIQUE KEY `LinkId` (`Id`);
 
 --
--- Indizes für die Tabelle `fragmentnewssection`
+-- Indizes für die Tabelle `fragmentnews`
 --
-ALTER TABLE `fragmentnewssection`
-  ADD UNIQUE KEY `Fragmentid` (`Id`);
+ALTER TABLE `fragmentnews`
+  ADD UNIQUE KEY `NewsId` (`Id`);
+
+--
+-- Indizes für die Tabelle `fragmentprojectinfo`
+--
+ALTER TABLE `fragmentprojectinfo`
+  ADD UNIQUE KEY `Id` (`Id`);
+
+--
+-- Indizes für die Tabelle `fragmentsocials`
+--
+ALTER TABLE `fragmentsocials`
+  ADD UNIQUE KEY `Id` (`Id`);
 
 --
 -- Indizes für die Tabelle `fragmenttext`
@@ -345,18 +361,6 @@ ALTER TABLE `subsitecontentfragment`
   ADD UNIQUE KEY `SubsiteContentFragmentId` (`SubsiteContentFragmentId`);
 
 --
--- Indizes für die Tabelle `subsitelink`
---
-ALTER TABLE `subsitelink`
-  ADD UNIQUE KEY `LinkId` (`Id`);
-
---
--- Indizes für die Tabelle `subsitenews`
---
-ALTER TABLE `subsitenews`
-  ADD UNIQUE KEY `NewsId` (`Id`);
-
---
 -- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
@@ -387,16 +391,28 @@ ALTER TABLE `fragmentimage`
   MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT für Tabelle `fragmentlinksection`
+-- AUTO_INCREMENT für Tabelle `fragmentlink`
 --
-ALTER TABLE `fragmentlinksection`
+ALTER TABLE `fragmentlink`
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `fragmentnews`
+--
+ALTER TABLE `fragmentnews`
   MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT für Tabelle `fragmentnewssection`
+-- AUTO_INCREMENT für Tabelle `fragmentprojectinfo`
 --
-ALTER TABLE `fragmentnewssection`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `fragmentprojectinfo`
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `fragmentsocials`
+--
+ALTER TABLE `fragmentsocials`
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `fragmenttext`
@@ -427,18 +443,6 @@ ALTER TABLE `subsite`
 --
 ALTER TABLE `subsitecontentfragment`
   MODIFY `SubsiteContentFragmentId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT für Tabelle `subsitelink`
---
-ALTER TABLE `subsitelink`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT für Tabelle `subsitenews`
---
-ALTER TABLE `subsitenews`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`

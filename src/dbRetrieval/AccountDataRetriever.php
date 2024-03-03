@@ -26,7 +26,7 @@ class AccountDataRetriever {
     
     private function AssignDataShared($smarty, $userId, $allowedToEdit) {
         $smarty->assign('allowedToEdit', $allowedToEdit);
-        $smarty->assign('subsites', $this->tables->subsite->SelectById($userId));
+        $smarty->assign('subsites', $this->tables->subsite->Select("UserId = '$userId'"));
         return $smarty;
     }
 

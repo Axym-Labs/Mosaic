@@ -5,5 +5,8 @@ class BusinessConstants {
 
     public static $USERNAME_FORMAT = "/^[a-zA-Z0-9\-._]*$/";
     public static $USERNAME_FORMAT_EXPLANATION = "Only letters, numbers, hyphens, underscores and dots allowed.";
+
+    public static $ROUTE_FORMAT = "/^[a-zA-Z0-9\-._]*$/";
+    public static $ROUTE_FORMAT_EXPLANATION = "Only letters, numbers, hyphens, underscores and dots allowed.";
 }
 ?>

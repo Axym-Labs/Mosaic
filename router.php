@@ -33,17 +33,17 @@ SimpleRouter::get('/', function() use ($frontDataRetriever, $smarty, $sessionMan
         header('Location: /a');
     }
     $smarty = $frontDataRetriever->AssignData($smarty);
-    $smarty->display('index.tpl');
+    DisplayTemplateOrNotFound($smarty, 'index.tpl');
 });
 
 SimpleRouter::get('/front', function() use ($frontDataRetriever, $smarty) {
     $smarty = $frontDataRetriever->AssignData($smarty);
-    $smarty->display('index.tpl');
+    DisplayTemplateOrNotFound($smarty, 'index.tpl');
 });
 
 SimpleRouter::get('/pricing', function() use ($frontDataRetriever, $smarty) {
     $smarty = $frontDataRetriever->AssignData($smarty);
-    $smarty->display('pricing.tpl');
+    DisplayTemplateOrNotFound($smarty, 'pricing.tpl');
 });
 
 // account
@@ -53,7 +53,7 @@ SimpleRouter::get('/a', function() use ($accountDataRetriever, $smarty, $session
         header('Location: /login');
     }
     $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
-    $smarty->display('account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl');
 });
 
 SimpleRouter::get('/login', function() use ($smarty, $sessionManager) {
@@ -61,7 +61,7 @@ SimpleRouter::get('/login', function() use ($smarty, $sessionManager) {
     if ($userId != null) {
         header('Location: /a');
     }
-    $smarty->display('login.tpl');
+    DisplayTemplateOrNotFound($smarty, 'login.tpl');
 });
 
 SimpleRouter::get('/create/account', function() use ($smarty, $sessionManager) {
@@ -69,7 +69,7 @@ SimpleRouter::get('/create/account', function() use ($smarty, $sessionManager) {
     if ($userId != null) {
         header('Location: /a');
     }
-    $smarty->display('createAccount.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createAccount.tpl');
 });
 
 SimpleRouter::get('/create/subsite', function() use ($smarty, $sessionManager) {
@@ -77,7 +77,7 @@ SimpleRouter::get('/create/subsite', function() use ($smarty, $sessionManager) {
     if ($userId != null) {
         header('Location: /a');
     }
-    $smarty->display('createSubsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createSubsite.tpl');
 });
 
 SimpleRouter::get('/logout', function() use ($sessionManager) {
@@ -87,18 +87,18 @@ SimpleRouter::get('/logout', function() use ($sessionManager) {
 
 SimpleRouter::get('/u/{uname}', function($userName) use ($accountDataRetriever, $smarty) {
     $smarty = $accountDataRetriever->AssignDataByUsername($smarty, $userName, false);
-    $smarty->display('account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl');
 });
 
 // product
 SimpleRouter::get('/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty) {
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
-    $smarty->display('subsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl');
 });
 
 SimpleRouter::get('/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty) {
     $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
-    $smarty->display('subsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl');
 });
 
 SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $sessionManager, $notifier, $tables) {
@@ -112,7 +112,7 @@ SimpleRouter::get('/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriev
         header('Location: /s/' + $subsiteId);
     }
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
-    $smarty->display('subsiteEdit.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl');
 });
 
 SimpleRouter::get('/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $sessionManager, $notifier, $tables) {
@@ -126,7 +126,7 @@ SimpleRouter::get('/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $
         header('Location: /s/' + $subsiteId);
     }
 
-    $smarty->display('createFragment.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createFragment.tpl');
 });
 
 // ---------- POST ----------
@@ -141,7 +141,7 @@ SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smar
     $accountManager->HandleUpdate($userId, $notifier);
 
     $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
-    $smarty->display('account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl');
 });
 
 SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $notifier, $smarty) {
@@ -150,7 +150,7 @@ SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $no
     if ($loginSuccess) {
         header('Location: /a');
     } else {
-        $smarty->display('login.tpl');
+        DisplayTemplateOrNotFound($smarty, 'login.tpl');
     }
 });
 
@@ -165,7 +165,7 @@ SimpleRouter::post('/create/account', function() use ($accountManager, $sessionM
     if ($accountcreationSuccess) {
         header('Location: /a');
     } else {
-        $smarty->display('createAccount.tpl');
+        DisplayTemplateOrNotFound($smarty, 'createAccount.tpl');
     }
 });
 
@@ -183,7 +183,7 @@ SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $
     $editSuccess = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
 
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
-    $smarty->display('subsiteEdit.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl');
 });
 
 // subsite
@@ -264,6 +264,16 @@ SimpleRouter::post('/edit/s/{sid}/delete-f/{fid}', function($subsiteId, $fragmen
 
     header('Location: /edit/s/' + $subsiteId);
 });
+
+
+function DisplayTemplateOrNotFound($smarty, $template) {
+    if (!$smarty->getTemplateVars('NotFoundError') && $smarty->templateExists($template)) {
+        $smarty->display($template);
+    } else {
+        header('HTTP/1.0 404 Not Found');
+        $smarty->display("notFound.tpl");
+    }
+}
 
 
 SimpleRouter::start();

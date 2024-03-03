@@ -14,5 +14,10 @@ class AuthorizationCheck {
         $user = $tables->user->selectById($userId);
         return self::PasswordMatch($user, $password, $tables);
     }
+
+    public static function GenerateSalt() {
+        // of length 10
+        return bin2hex(random_bytes(5));
+    }
 }
 ?>

@@ -15,7 +15,7 @@ class SubsiteDataRetriever {
         $usersWithId = $this->tables->user->Select("UserName = '$userName'");
         if (count($usersWithId) == 0) {
             $smarty = new Smarty();
-            $smarty->assign('Error', "No user with this username found");
+            $smarty->assign('NotFoundError', "No user with this username found");
             return $smarty;
         }
         $userId = $usersWithId[0]["UserId"];
@@ -23,7 +23,7 @@ class SubsiteDataRetriever {
         $subsitesWithId = $this->tables->subsite->Select("UserId = '$userId' AND Route = '$subsiteRoute'");
         if (count($subsitesWithId) == 0) {
             $smarty = new Smarty();
-            $smarty->assign('Error', "No subsite with this short route found");
+            $smarty->assign('NotFoundError', "No subsite with this short route found");
             return $smarty;
         }
         return $this->AssignDataShared($smarty, $subsitesWithId[0], $isShort);
@@ -33,7 +33,7 @@ class SubsiteDataRetriever {
         $subsitesWithId = $this->tables->subsite->Select("ShortRoute = '$subsiteShortRoute'");
         if (count($subsitesWithId) == 0) {
             $smarty = new Smarty();
-            $smarty->assign('Error', "No subsite with this short route found");
+            $smarty->assign('NotFoundError', "No subsite with this short route found");
             return $smarty;
         }
         return $this->AssignDataShared($smarty, $subsitesWithId[0], $isShort);
@@ -50,7 +50,8 @@ class SubsiteDataRetriever {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
             $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
-            array_push($fragments, $this->GetTemplatedFragment($tableName, $fragmentContent));
+            $extraFragmentContent = $this->GetExtraFragmentContent($tableName, $fragmentId, $fragmentContent);
+            array_push($fragments, $this->GetTemplatedFragment($tableName, $fragmentContent, $extraFragmentContent));
         }
 
         $smarty->assign('fragments', $fragments);
@@ -61,10 +62,19 @@ class SubsiteDataRetriever {
         return $this->tables->subsitecf->Select("WebsiteId = $subsiteId", 0, "Position");
     }
 
-    private function GetTemplatedFragment($tableName, $fragmentContent) {
+    private function GetTemplatedFragment($tableName, $fragmentContent, $extraFragmentContent) {
         $smarty = new Smarty();
         $smarty->assign('fragmentContent', $fragmentContent);
+        $smarty->assign('extraFragmentContent', $extraFragmentContent);
         return $smarty->fetch("templates/fragments/$tableName.tpl");
+    }
+
+    private function GetExtraFragmentContent($tableName, $fragmentId, $fragmentContent) {
+        if ($tableName == "FragmentCredentials") {
+            $userId = $fragmentContent["UserId"];
+            return $this->tables->user->SelectById($userId)[0];
+        }
+        return null;
     }
 }
 ?>

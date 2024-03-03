@@ -8,7 +8,7 @@ class AccountManager {
 
     // editView-option
     public function HandleUpdate($userId, $notifier) {
-        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($_POST, $notifier);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($_POST, $notifier, $userId);
         if (!$valid) {
             return false;
         }
@@ -46,7 +46,7 @@ class AccountManager {
         return array($postData, true, $notifier);
     }
 
-    private function ValidateData($postData, $notifier) {
+    private function ValidateData($postData, $notifier, $existingUserId = -1) {
         $success = true;
         // email correct pattern
         if (!filter_var($postData["email"], FILTER_VALIDATE_EMAIL)) {
@@ -65,13 +65,13 @@ class AccountManager {
         }
         // username unique
         $usernames = $this->tables->user->Select("username = "+ $postData["username"]);
-        if (count($usernames) > 0) {
+        if (count($usernames) > 0 && $usernames[0]["UserId"] != $existingUserId) {
             $notifier->Post("Username already exists");
             $success = false;
         }
         // email unique
         $emails = $this->tables->user->Select("email = "+ $postData["email"]);
-        if (count($emails) > 0) {
+        if (count($emails) > 0 && $emails[0]["UserId"] != $existingUserId) {
             $notifier->Post("Email already exists");
             $success = false;
         }
@@ -80,6 +80,7 @@ class AccountManager {
 
     private function DefineAutoValues($postData) {
         $postData["PlanId"] = 1;
+        $postData["Salt"] = AuthorizationCheck::GenerateSalt();
         return $postData;
     }
 

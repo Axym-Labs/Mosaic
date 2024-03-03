@@ -28,7 +28,7 @@ class LoginManager {
             $success = false;
         }
         // user with email exists
-        $email = $_POST['email'];
+        $email = $postData['email'];
         $user = $this->tables->user->Select("Email = '$email'", 1);
         if (count($user) == 0) {
             $notifier->Post("No user with this email found");

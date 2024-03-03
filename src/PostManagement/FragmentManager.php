@@ -62,16 +62,17 @@ class FragmentManager {
     }
 
     private function ValidateData($subsiteId, $postData, $notifier) {
+        $success = false;
         // numbers positive
         if ($postData["Position"] < 0) {
             $notifier->Post("Position must be positive");
-            return false;
+            $success = false;
         }
         $subsitesWithId = $this->tables->subsite->SelectById($subsiteId);
         // subsiteId exists
         if (count($subsitesWithId) == 0) {
             $notifier->Post("Subsite does not exist");
-            return false;
+            $success = false;
         }
         
         // maximum fragment count not exceeded
@@ -84,9 +85,19 @@ class FragmentManager {
         $fragments = $this->tables->subsitecf->Select("SubsiteId = $subsiteId");
         if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
             $notifier->Post("Maximum fragment count exceeded");
-            return false;
+            $success = false;
         }
 
+        // if includes userid: user exists
+        if (array_key_exists("UserId", $postData)) {
+            $usersWithId = $this->tables->user->SelectById($postData["UserId"]);
+            if (count($usersWithId) == 0) {
+                $notifier->Post("No user with this id found");
+                $success = false;
+            }
+        }
+
+        return array($success, $notifier);
     }
 
     private function DefineAutoValues($postData) {

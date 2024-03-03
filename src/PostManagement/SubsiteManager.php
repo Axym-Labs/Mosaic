@@ -50,6 +50,7 @@ class SubsiteManager {
     }
 
     private function ValidateData($userId, $postData, $notifier, $existingSubsiteId = -1) {
+        $success = true;
         // subsite limit not exceeded
         $user = $this->tables->user->SelectById($userId);
         $subsites = $this->tables->subsite->Select("UserId = $userId");
@@ -58,25 +59,36 @@ class SubsiteManager {
 
         if (count($subsites) >= $planPermissions["SubsiteLimit"]) {
             $notifier->Post("You have reached the limit of your subsites: Updating/Creating new subsites is not possible", "error");
-            return false;
+            $success = false;
+        }
+        // route correct pattern
+        if (!preg_match(BusinessConstants::$ROUTE_FORMAT, $postData["Route"])) {
+            $notifier->Post("Invalid route format: " . BusinessConstants::$ROUTE_FORMAT_EXPLANATION, "error");
+            $success = false;
+        }
+        // shortroute correct pattern
+        if (!preg_match(BusinessConstants::$ROUTE_FORMAT, $postData["ShortRoute"])) {
+            $notifier->Post("Invalid short route format: " . BusinessConstants::$ROUTE_FORMAT_EXPLANATION, "error");
+            $success = false;
         }
         // route unique
-        $route = $_POST["Route"];
+        $route = $postData["Route"];
         $subsite = $this->tables->subsite->Select("Route = '$route' AND UserId = $userId");
         if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
             $notifier->Post("This route is already taken", "error");
-            return false;
+            $success = false;
         }
         // if not empty: shortroute unique
-        if ($_POST["ShortRoute"] != "") {
-            $shortRoute = $_POST["ShortRoute"];
+        if ($postData["ShortRoute"] != "") {
+            $shortRoute = $postData["ShortRoute"];
             $subsite = $this->tables->subsite->Select("ShortRoute = '$shortRoute'");
             if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
                 $notifier->Post("This short route is already taken", "error");
-                return false;
+                $success = false;
             }
         }
 
+        return array($success, $notifier);
     }
 }
 ?>
