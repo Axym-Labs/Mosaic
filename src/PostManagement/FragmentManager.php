@@ -64,8 +64,10 @@ class FragmentManager {
     private function ValidateData($subsiteId, $postData, $notifier) {
         $success = false;
         // varchars dont exceed db limits
-        // TODO
-        
+        list($success, $exceededColumns) = $this->tables->subsitecf->CheckStringLengthLimits($postData);
+        if (!$success) {
+            $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+        }
         // numbers positive
         if ($postData["Position"] < 0) {
             $notifier->Post("Position must be positive");
@@ -77,7 +79,7 @@ class FragmentManager {
             $notifier->Post("Subsite does not exist");
             $success = false;
         }
-        
+
         // maximum fragment count not exceeded
         // leave this out since its not bound to plan permission - can be implemented later
         // $subsite = $subsitesWithId[0];

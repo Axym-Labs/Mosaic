@@ -46,6 +46,19 @@ class queryTemplater
         return $filteredDict;
     }
 
+    public function CheckStringLengthLimits($kvDict) {
+        $exceedingColumns = array();
+        foreach ($kvDict as $key => $value) {
+            if ($this->columnTypes[$key] == "varchar" || $this->columnTypes[$key] == "char" || $this->columnTypes[$key] == "binary" || $this->columnTypes[$key] == "varbinary" || $this->columnTypes[$key] == "bit" || $this->columnTypes[$key] == "json" || $this->columnTypes[$key] == "enum" || $this->columnTypes[$key] == "set") {
+                $length_limit = strtok(explode("(", $this->columnTypes[$key]), ")");
+                if (strlen($value) > $length_limit) {
+                    $exceedingColumns[] = $key;
+                }
+            }
+        }
+        return array(count($exceedingColumns) == 0, $exceedingColumns);
+    }
+
     public function GetInsert($kvDict, $removeId) {
         if ($removeId) {
             $kvDict = array_filter($kvDict, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });

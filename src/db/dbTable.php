@@ -18,6 +18,11 @@ class dbTable
         $this.$dbCon = $dbCon;
     }
 
+    public function CheckStringLengthLimits($postData) {
+        $postData = $this->queryTemplater->FilterForColumnNames($postData, true);
+        return $this->queryTemplater->CheckStringLengthLimits($postData);
+    }
+
     public function OverwriteFromPostRequest($postData) {
         list($id, $cvSet) = $this->PrepareUpdateSetArray($postData);
         $this->Overwrite($id, $cvSet);

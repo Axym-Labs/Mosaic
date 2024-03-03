@@ -49,8 +49,10 @@ class AccountManager {
     private function ValidateData($postData, $notifier, $existingUserId = -1) {
         $success = true;
         // varchars dont exceed db limits
-        // TODO
-
+        list($success, $exceededColumns) = $this->tables->user->CheckStringLengthLimits($postData);
+        if (!$success) {
+            $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+        }
         // email correct pattern
         if (!filter_var($postData["email"], FILTER_VALIDATE_EMAIL)) {
             $notifier->Post("Invalid email format");

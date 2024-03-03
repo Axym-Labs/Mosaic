@@ -53,8 +53,10 @@ class SubsiteManager {
         $success = true;
         // subsite limit not exceeded
         // varchars dont exceed db limits
-        // TODO
-        
+        list($success, $exceededColumns) = $this->tables->subsite->CheckStringLengthLimits($postData);
+        if (!$success) {
+            $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+        }
         $user = $this->tables->user->SelectById($userId);
         $subsites = $this->tables->subsite->Select("UserId = $userId");
         $plan = $this->tables->plan->SelectById($user["PlanId"])[0];
