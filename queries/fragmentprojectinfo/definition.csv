@@ -1,0 +1,5 @@
+Id,bigint(20)
+Description,int(11)
+LogoBlob,blob
+CtaLink,text
+CtaLinkDescription,text

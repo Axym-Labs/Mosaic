@@ -1,1 +1,0 @@
-UPDATE `subsitelink` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

@@ -1,0 +1,9 @@
+SubsiteContentFragmentId,bigint(20)
+WebsiteId,int(11)
+Position,int(11)
+BackgroundColor,varchar(6)
+Opacity,float
+Spannable,tinyint(1)
+ContentTableName,varchar(50)
+ContentId,int(11)
+BackgroundImage,blob

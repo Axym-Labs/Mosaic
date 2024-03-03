@@ -1,0 +1,9 @@
+UserId,bigint(20)
+Email,varchar(50)
+LastName,varchar(50)
+FirstName,varchar(50)
+PlanId,int(11)
+Password,varchar(50)
+Salt,varchar(10)
+ProfilePicture,blob
+Username,varchar(50)

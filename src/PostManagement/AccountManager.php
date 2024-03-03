@@ -48,6 +48,9 @@ class AccountManager {
 
     private function ValidateData($postData, $notifier, $existingUserId = -1) {
         $success = true;
+        // varchars dont exceed db limits
+        // TODO
+
         // email correct pattern
         if (!filter_var($postData["email"], FILTER_VALIDATE_EMAIL)) {
             $notifier->Post("Invalid email format");

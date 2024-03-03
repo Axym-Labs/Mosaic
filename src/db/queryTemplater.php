@@ -3,7 +3,9 @@ class queryTemplater
 {
     private $tableConf;
     private $tableName;
-    public $columnNames;
+    private $columnData;
+    private $columnNames;
+    private $columnTypes;
     public $idIdentifier;
     private $queryTemplates = array();
 
@@ -11,7 +13,10 @@ class queryTemplater
         $this.$tableConf = $tableConf;
         $this.$tableName = $tableName;
 
-        $this.$columnNames = explode("\n", ReadFile("columnNames.txt"));
+        $this.$columnData = explode("\n", ReadFile("columnNames.txt"));
+        $this.$columnNames = array_map(function($x) { return explode(" ", $x)[0]; }, $this->columnData);
+        $this->columnTypes = array_combine($this->columnNames, array_map(function($x) { return explode(" ", $x)[1]; }, $this->columnData));
+
         $this.$idIdentifier = $this->columnNames[0];
         $columnNameIdentifiers = array_map(function ($x) { return "`$x`"; }, $this->columnNames).join(", ");
         $valueIdentifiers = array_map(function($x) { return "[value-$x]"; }, $this->$columnNames).join(", ");
@@ -23,17 +28,28 @@ class queryTemplater
         $this->queryTemplates["delete"] = "DELETE FROM `$tableName` WHERE `$idIdentifier` = [value-Id]"; 
     }
 
-    public function FilterForColumnNames($kvDict) {
+    public function ConvertToCvSet($kvDict) {
+        $cvSet = array();
+        foreach ($kvDict as $key => $value) {
+            $cvSet[] = new cvSet($key, $value, $this->columnTypes[$key]);
+        }
+        return $cvSet;
+    }
+
+    public function FilterForColumnNames($kvDict, $removeId = false) {
         $filteredDict = array();
         foreach ($kvDict as $key => $value) {
-            if (in_array($key, $this->columnNames)) {
+            if (in_array($key, $this->columnNames) && !($removeId && $key == $this->idIdentifier)) {
                 $filteredDict[$key] = $value;
             }
         }
         return $filteredDict;
     }
 
-    public function GetInsert($kvDict) {
+    public function GetInsert($kvDict, $removeId) {
+        if ($removeId) {
+            $kvDict = array_filter($kvDict, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
+        }
         $query = $this->queryTemplates["insert"];
         foreach ($kvDict as $key => $value) {
             $query = $this->ReplaceIdentifier($query, "value", $key, $value);
@@ -48,7 +64,10 @@ class queryTemplater
         return $query;
     }
 
-    public function GetInsertWithCvSet($id, $updateSetArray) {
+    public function GetInsertWithCvSet($updateSetArray, $removeId) {
+        if ($removeId) {
+            $updateSetArray = array_filter($updateSetArray, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
+        }
         $query = $this->queryTemplates["insertGeneric"];
         $query = $this->ReplaceTypelessIdentifier($query, "columns", join(", ", array_map(function($x) { return $x->GetColumnPart(); }, $updateSetArray)));
         $query = $this->ReplaceTypelessIdentifier($query, "values", join(", ", array_map(function($x) { return $x->GetValuePart(); }, $updateSetArray)));
@@ -56,6 +75,9 @@ class queryTemplater
     }
 
     public function GetUpdate($id, $column, $value, $isString = false) {
+        if (!in_array($column, $this->columnNames)) {
+            return "";
+        }
         $query = $this->queryTemplates["update"];
         $query = $this->ReplaceTypelessIdentifier($query, "column", $column);
         $query = $this->ReplaceTypelessIdentifier($query, "value", $isString ? "'$value'" : $value);

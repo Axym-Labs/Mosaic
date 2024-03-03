@@ -1,8 +1,0 @@
-PlanPermissionId
-FragmentBackgroundColorOption
-TextColorOption
-FontOption
-OpacityOption
-SubSiteBackgroundImageOption
-ShortLinkOption
-SubSiteLimit

@@ -1,1 +1,0 @@
-UPDATE `planpermission` SET `[column]`='[value]' WHERE `PlanPermissionId`='[value-Id]'

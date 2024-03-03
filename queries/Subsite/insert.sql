@@ -1,1 +1,0 @@
-INSERT INTO `subsite`(`SubSiteId`, `UserId`, `Name`, `Route`, `ShortRoute`) VALUES (NULL,'[value-UserId]','[value-Name]','[value-Route]','[value-ShortRoute]')

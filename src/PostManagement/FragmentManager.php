@@ -63,6 +63,9 @@ class FragmentManager {
 
     private function ValidateData($subsiteId, $postData, $notifier) {
         $success = false;
+        // varchars dont exceed db limits
+        // TODO
+        
         // numbers positive
         if ($postData["Position"] < 0) {
             $notifier->Post("Position must be positive");

@@ -1,1 +1,0 @@
-INSERT INTO `plan`(`PlanId`, `Name`, `Visible`, `PlanPermissionId`) VALUES (NULL,'[value-Name]','[value-Visible]','[value-PlanPermissionId]')

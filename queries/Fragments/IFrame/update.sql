@@ -1,1 +1,0 @@
-UPDATE `fragmentiframe` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

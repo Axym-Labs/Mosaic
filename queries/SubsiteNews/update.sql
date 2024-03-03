@@ -1,1 +1,0 @@
-UPDATE `subsitenews` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

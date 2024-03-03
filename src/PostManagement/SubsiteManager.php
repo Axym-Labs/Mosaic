@@ -52,6 +52,9 @@ class SubsiteManager {
     private function ValidateData($userId, $postData, $notifier, $existingSubsiteId = -1) {
         $success = true;
         // subsite limit not exceeded
+        // varchars dont exceed db limits
+        // TODO
+        
         $user = $this->tables->user->SelectById($userId);
         $subsites = $this->tables->subsite->Select("UserId = $userId");
         $plan = $this->tables->plan->SelectById($user["PlanId"])[0];

@@ -1,0 +1,3 @@
+Id,bigint(20)
+Title,text
+Link,text

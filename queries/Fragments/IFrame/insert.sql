@@ -1,1 +1,0 @@
-INSERT INTO `fragmentiframe`(`Id`, `Title`, `Url`, `MorePermissions`, `Width`, `Height`) VALUES ('[value-Id]','[value-Title]','[value-Url]','[value-MorePermissions]','[value-Width]','[value-Height]')

@@ -1,1 +1,0 @@
-INSERT INTO `subsitelink`(`Id`, `Title`, `Link`) VALUES (NULL,'[value-Title]','[value-Link]')

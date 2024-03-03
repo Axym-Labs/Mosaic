@@ -1,1 +1,0 @@
-UPDATE `fragmenttext` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

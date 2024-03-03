@@ -1,0 +1,6 @@
+Id,bigint(20)
+Title,text
+Url,text
+MorePermissions,tinyint(1)
+Width,int(11)
+Height,int(11)

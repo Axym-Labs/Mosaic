@@ -1,1 +1,0 @@
-INSERT INTO `user`(`UserId`, `Email`, `LastName`, `FirstName`, `PlanId`) VALUES (NULL,'[value-Email]','[value-LastName]','[value-FirstName]','[value-PlanId]')

@@ -1,9 +1,0 @@
-SubsiteContentFragmentId
-WebsiteId
-Position
-BackgroundColor
-Opacity
-Spannable
-ContentTableName
-ContentId
-BackgroundImage

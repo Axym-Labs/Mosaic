@@ -1,1 +1,0 @@
-INSERT INTO `subsitecontentfragment`(`SubsiteContentFragmentId`, `WebsiteId`, `Position`, `BackgroundColor`, `Opacity`, `Spannable`, `ContentTableName`, `ContentId`, `BackgroundImage`) VALUES (NULL,'[value-WebsiteId]','[value-Position]','[value-BackgroundColor]','[value-Opacity]','[value-Spannable]','[value-ContentTableName]','[value-ContentId]','[value-BackgroundImage]')

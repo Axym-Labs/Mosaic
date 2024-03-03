@@ -1,1 +1,0 @@
-UPDATE `fragmentimage` SET `[column]`='[value]' WHERE `Id`='[value-Id]'

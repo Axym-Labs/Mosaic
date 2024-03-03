@@ -1,0 +1,5 @@
+SubSiteId,bigint(20)
+UserId,int(11)
+Name,varchar(50)
+Route,varchar(50)
+ShortRoute,varchar(50)
