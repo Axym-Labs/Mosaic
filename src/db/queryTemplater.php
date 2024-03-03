@@ -13,9 +13,9 @@ class queryTemplater
         $this.$tableConf = $tableConf;
         $this.$tableName = $tableName;
 
-        $this.$columnData = explode("\n", ReadFile("columnNames.txt"));
-        $this.$columnNames = array_map(function($x) { return explode(" ", $x)[0]; }, $this->columnData);
-        $this->columnTypes = array_combine($this->columnNames, array_map(function($x) { return explode(" ", $x)[1]; }, $this->columnData));
+        $this.$columnData = explode("\n", ReadFile("definition.csv"));
+        $this.$columnNames = array_map(function($x) { return explode(",", $x)[0]; }, $this->columnData);
+        $this->columnTypes = array_combine($this->columnNames, array_map(function($x) { return explode(",", $x)[1]; }, $this->columnData));
 
         $this.$idIdentifier = $this->columnNames[0];
         $columnNameIdentifiers = array_map(function ($x) { return "`$x`"; }, $this->columnNames).join(", ");
