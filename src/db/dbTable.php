@@ -6,7 +6,6 @@ class dbTable
     public $tableName;
     public $tableConf;
     private $queryTemplater;
-    public $idIdentifier;
     private $dbCon;
 
     public function __construct($tableName, $tableConf, $dbCon)
@@ -14,7 +13,6 @@ class dbTable
         $this.$tableName = strtolower($tableName);
         $this.$tableConf = $tableConf;
         $this.$queryTemplater = new queryTemplater($tableName, $tableConf);
-        $this.$idIdentifier = $queryTemplater->idIdentifier;
         $this.$dbCon = $dbCon;
     }
 
