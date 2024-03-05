@@ -50,12 +50,12 @@ class SubsiteManager {
     }
 
     private function ValidateData($userId, $postData, $notifier, $existingSubsiteId = -1) {
-        $success = true;
         // subsite limit not exceeded
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->subsite->CheckStringLengthLimits($postData);
         if (!$success) {
             $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+            return array(false, $notifier);
         }
         $user = $this->tables->user->SelectById($userId);
         $subsites = $this->tables->subsite->Select("UserId = $userId");
@@ -64,24 +64,24 @@ class SubsiteManager {
 
         if (count($subsites) >= $planPermissions["SubsiteLimit"]) {
             $notifier->Post("You have reached the limit of your subsites: Updating/Creating new subsites is not possible", "error");
-            $success = false;
+            return array(false, $notifier);
         }
         // route correct pattern
         if (!preg_match(BusinessConstants::$ROUTE_FORMAT, $postData["Route"])) {
             $notifier->Post("Invalid route format: " . BusinessConstants::$ROUTE_FORMAT_EXPLANATION, "error");
-            $success = false;
+            return array(false, $notifier);
         }
         // shortroute correct pattern
         if (!preg_match(BusinessConstants::$ROUTE_FORMAT, $postData["ShortRoute"])) {
             $notifier->Post("Invalid short route format: " . BusinessConstants::$ROUTE_FORMAT_EXPLANATION, "error");
-            $success = false;
+            return array(false, $notifier);
         }
         // route unique
         $route = $postData["Route"];
         $subsite = $this->tables->subsite->Select("Route = '$route' AND UserId = $userId");
         if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
             $notifier->Post("This route is already taken", "error");
-            $success = false;
+            return array(false, $notifier);
         }
         // if not empty: shortroute unique
         if ($postData["ShortRoute"] != "") {
@@ -89,11 +89,11 @@ class SubsiteManager {
             $subsite = $this->tables->subsite->Select("ShortRoute = '$shortRoute'");
             if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
                 $notifier->Post("This short route is already taken", "error");
-                $success = false;
+                return array(false, $notifier);
             }
         }
 
-        return array($success, $notifier);
+        return array(true, $notifier);
     }
 }
 ?>

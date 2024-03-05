@@ -62,22 +62,22 @@ class FragmentManager {
     }
 
     private function ValidateData($subsiteId, $postData, $notifier) {
-        $success = false;
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->subsitecf->CheckStringLengthLimits($postData);
         if (!$success) {
             $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+            return array(false, $notifier);
         }
         // numbers positive
         if ($postData["Position"] < 0) {
             $notifier->Post("Position must be positive");
-            $success = false;
+            return array(false, $notifier);
         }
         $subsitesWithId = $this->tables->subsite->SelectById($subsiteId);
         // subsiteId exists
         if (count($subsitesWithId) == 0) {
             $notifier->Post("Subsite does not exist");
-            $success = false;
+            return array(false, $notifier);
         }
 
         // maximum fragment count not exceeded
@@ -90,19 +90,20 @@ class FragmentManager {
         $fragments = $this->tables->subsitecf->Select("SubsiteId = $subsiteId");
         if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
             $notifier->Post("Maximum fragment count exceeded");
-            $success = false;
+            return array(false, $notifier);
         }
 
         // if includes userid: user exists
+        // not a user bound field
         if (array_key_exists("UserId", $postData)) {
             $usersWithId = $this->tables->user->SelectById($postData["UserId"]);
             if (count($usersWithId) == 0) {
                 $notifier->Post("No user with this id found");
-                $success = false;
+                return array(false, $notifier);
             }
         }
 
-        return array($success, $notifier);
+        return array(true, $notifier);
     }
 
     private function DefineAutoValues($postData) {

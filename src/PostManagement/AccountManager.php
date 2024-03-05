@@ -47,40 +47,41 @@ class AccountManager {
     }
 
     private function ValidateData($postData, $notifier, $existingUserId = -1) {
-        $success = true;
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->user->CheckStringLengthLimits($postData);
         if (!$success) {
             $notifier->Post("The following fields exceed the maximum length: " . implode(", ", $exceededColumns));
+            return array(false, $notifier);
         }
         // email correct pattern
         if (!filter_var($postData["email"], FILTER_VALIDATE_EMAIL)) {
             $notifier->Post("Invalid email format");
-            $success = false;
+            return array(false, $notifier);
         }
         // username correct pattern
         if (!preg_match(BusinessConstants::$USERNAME_FORMAT, $postData["username"])) {
             $notifier->Post("Invalid username format: " . BusinessConstants::$USERNAME_FORMAT_EXPLANATION);
-            $success = false;
+            return array(false, $notifier);
         }
         // password long enough
         if (strlen($postData["password"]) < BusinessConstants::$MIN_PASSWORD_LENGTH) {
             $notifier->Post("Password must be at least 8 characters long");
-            $success = false;
+            return array(false, $notifier);
         }
         // username unique
         $usernames = $this->tables->user->Select("username = "+ $postData["username"]);
         if (count($usernames) > 0 && $usernames[0]["UserId"] != $existingUserId) {
             $notifier->Post("Username already exists");
-            $success = false;
+            return array(false, $notifier);
         }
         // email unique
         $emails = $this->tables->user->Select("email = "+ $postData["email"]);
         if (count($emails) > 0 && $emails[0]["UserId"] != $existingUserId) {
             $notifier->Post("Email already exists");
-            $success = false;
+            return array(false, $notifier);
         }
-        return array($success, $notifier);
+
+        return array(true, $notifier);
     }
 
     private function DefineAutoValues($postData) {

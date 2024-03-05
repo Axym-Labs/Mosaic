@@ -11,7 +11,7 @@ class dbTable
 
     public function __construct($tableName, $tableConf, $dbCon)
     {
-        $this.$tableName = $tableName;
+        $this.$tableName = strtolower($tableName);
         $this.$tableConf = $tableConf;
         $this.$queryTemplater = new queryTemplater($tableName, $tableConf);
         $this.$idIdentifier = $queryTemplater->idIdentifier;
