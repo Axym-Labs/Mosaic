@@ -16,7 +16,7 @@ class fragmentDefinitions {
 
     public function __construct($dbCon) {
         $this->dbCon = $dbCon;
-        $this->tableConf = new tableConfiguration("queries/Fragments/", "Fragment");
+        $this->tableConf = new tableConfiguration("queries", "Fragment");
         $this->credentials = new dbTable("Credentials", $this->tableConf, $this->dbCon);
         $this->projectinfo = new dbTable("ProjectInfo", $this->tableConf, $this->dbCon);
         $this->socials = new dbTable("Socials", $this->tableConf, $this->dbCon);

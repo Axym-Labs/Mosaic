@@ -10,10 +10,10 @@ class dbTable
 
     public function __construct($tableName, $tableConf, $dbCon)
     {
-        $this.$tableName = strtolower($tableName);
-        $this.$tableConf = $tableConf;
-        $this.$queryTemplater = new queryTemplater($tableName, $tableConf);
-        $this.$dbCon = $dbCon;
+        $this->tableName = strtolower($tableName);
+        $this->tableConf = $tableConf;
+        $this->queryTemplater = new queryTemplater($tableName, $tableConf);
+        $this->dbCon = $dbCon;
     }
 
     public function CheckStringLengthLimits($postData) {

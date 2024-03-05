@@ -14,7 +14,7 @@ class tableDefinitions
     public $contentPieces;
 
     public function __construct($dbCon)
-    {        $this->tableConf = new tableConfiguration("queries/", "");
+    {        $this->tableConf = new tableConfiguration("queries", "");
 
         $this->user = new dbTable("User", $this->tableConf, $dbCon);
         $this->subsitecf = new dbTable("SubsiteContentFragment", $this->tableConf, $dbCon);

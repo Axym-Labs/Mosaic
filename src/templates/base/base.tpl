@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
 
-    <link href="/static/css/site.css" rel="stylesheet" />
+    <link href="{BusinessConstants::$STATIC_URL_PREFIX|escape}/static/css/site.css" rel="stylesheet" />
 
-    <link rel="icon" type="image/png" href="static/assets/favicon.jpg" />
+    <link rel="icon" type="image/png" href="{BusinessConstants::$STATIC_URL_PREFIX}/static/assets/favicon.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,15 +18,15 @@
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/static/js/twConfig.js"></script>
+    <script src="{BusinessConstants::$STATIC_URL_PREFIX}/static/js/twConfig.js"></script>
 
+    {block name=head}{/block}
     
-    
-    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 
 <body class="bg-bgcol text-gray-200">
 
+    {block name=content}{/block}
 
     <script src="/static/js/baseDomManagement.js"></script>
 </body>

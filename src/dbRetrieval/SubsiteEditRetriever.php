@@ -3,9 +3,9 @@ class SubsiteEditRetriever {
     private $tables;
     private $subsiteDataRetriever;
 
-    public function __construct($dbCon) {
-        $this->tables = new tableDefinitions($dbCon);
-        $this->subsiteDataRetriever = new SubsiteDataRetriever($dbCon);
+    public function __construct($tables) {
+        $this->tables = $tables;
+        $this->subsiteDataRetriever = new SubsiteDataRetriever($tables);
     }
 
     public function AssignData($smarty, $subsiteId) {

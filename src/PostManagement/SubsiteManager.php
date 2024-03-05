@@ -3,9 +3,9 @@ class SubsiteManager {
     private $tables;
     private $fragmentManager;
 
-    public function __construct($dbCon) {
-        $this->tables = new tableDefinitions($dbCon);
-        $this->fragmentManager = new FragmentManager($dbCon);
+    public function __construct($tables) {
+        $this->tables = $tables;
+        $this->fragmentManager = new FragmentManager($tables);
     }
 
     // editView-option

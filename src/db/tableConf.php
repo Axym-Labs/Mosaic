@@ -4,8 +4,8 @@ class tableConfiguration {
     public $tableNamePrefix;
 
     public function __construct($tableDataDir, $tableNamePrefix) {
-        $this.$tableDataDir = $tableDataDir;
-        $this.$tableNamePrefix = $tableNamePrefix;
+        $this->tableDataDir = $tableDataDir;
+        $this->tableNamePrefix = $tableNamePrefix;
     }
 
 

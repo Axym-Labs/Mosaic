@@ -2,8 +2,8 @@
 class SubsiteDataRetriever {
     private $tables;
 
-    public function __construct($dbCon) {
-        $this->tables = new tableDefinitions($dbCon);
+    public function __construct($tables) {
+        $this->tables = $tables;
     }
 
     public function AssignData($smarty, $subsiteId, $isShort) {

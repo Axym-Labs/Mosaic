@@ -10,5 +10,8 @@ class BusinessConstants {
     public static $ROUTE_FORMAT_EXPLANATION = "Only letters, numbers, hyphens, underscores and dots allowed.";
 
     public static $TEXT_LENGTH_LIMIT = 2000;
+    public static $UNIVERSAL_PAGE_ROUTE_PREFIX = "/Mosaic";
+
+    public static $STATIC_URL_PREFIX = "/Mosaic";
 }
 ?>
