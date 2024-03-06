@@ -43,78 +43,78 @@ $smarty->assign('BusinessConstants', new BusinessConstants());
 // ---------- GET ----------
 // equivalent of select
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $smarty, $sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
     $smarty = $frontDataRetriever->AssignData($smarty);
-    DisplayTemplateOrNotFound($smarty, 'index.tpl');
+    DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/front', function() use ($frontDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/front', function() use ($frontDataRetriever, $smarty, $notifier) {
     $smarty = $frontDataRetriever->AssignData($smarty);
-    DisplayTemplateOrNotFound($smarty, 'index.tpl');
+    DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $smarty, $notifier) {
     $smarty = $frontDataRetriever->AssignData($smarty);
-    DisplayTemplateOrNotFound($smarty, 'pricing.tpl');
+    DisplayTemplateOrNotFound($smarty, 'pricing.tpl', $notifier);
 });
 
 // account
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/a', function() use ($accountDataRetriever, $smarty, $sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/a', function() use ($accountDataRetriever, $smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId == null) {
         header('Location: /login');
     }
     $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
-    DisplayTemplateOrNotFound($smarty, 'account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/login', function() use ($smarty, $sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/login', function() use ($smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
-    DisplayTemplateOrNotFound($smarty, 'login.tpl');
+    DisplayTemplateOrNotFound($smarty, 'login.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/account', function() use ($smarty, $sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/account', function() use ($smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
-    DisplayTemplateOrNotFound($smarty, 'createAccount.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createAccount.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
         header('Location: /a');
     }
-    DisplayTemplateOrNotFound($smarty, 'createSubsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createSubsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/logout', function() use ($sessionManager) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/logout', function() use ($sessionManager, $notifier) {
     $sessionManager->SetUserId(null);
     header('Location: /login');
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}', function($userName) use ($accountDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}', function($userName) use ($accountDataRetriever, $smarty, $notifier) {
     $smarty = $accountDataRetriever->AssignDataByUsername($smarty, $userName, false);
-    DisplayTemplateOrNotFound($smarty, 'account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl', $notifier);
 });
 
 // product
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $notifier) {
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
-    DisplayTemplateOrNotFound($smarty, 'subsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute, $notifier) use ($subsiteDataRetriever, $smarty) {
     $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
-    DisplayTemplateOrNotFound($smarty, 'subsite.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
 SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $sessionManager, $notifier, $tables) {
@@ -128,7 +128,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{si
         header('Location: /s/' + $subsiteId);
     }
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
-    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl', $notifier);
 });
 
 SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $sessionManager, $notifier, $tables) {
@@ -142,7 +142,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{si
         header('Location: /s/' + $subsiteId);
     }
 
-    DisplayTemplateOrNotFound($smarty, 'createFragment.tpl');
+    DisplayTemplateOrNotFound($smarty, 'createFragment.tpl', $notifier);
 });
 
 // ---------- POST ----------
@@ -154,19 +154,19 @@ SimpleRouter::post('/a', function() use ($accountManager, $sessionManager, $smar
         $notifier->Post("Log in, then visit the url again", "error");
         header('Location: /login');
     }
-    $accountManager->HandleUpdate($userId, $notifier);
+    list($updateSuccess, $notifier) = $accountManager->HandleUpdate($userId, $notifier);
 
     $smarty = $accountDataRetriever->AssignData($smarty, $userId, true);
-    DisplayTemplateOrNotFound($smarty, 'account.tpl');
+    DisplayTemplateOrNotFound($smarty, 'account.tpl', $notifier);
 });
 
 SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $notifier, $smarty) {
-    $loginSuccess = $loginManager->HandlePost($sessionManager, $notifier);
+    list($loginSuccess, $notifier) = $loginManager->HandlePost($sessionManager, $notifier);
     
     if ($loginSuccess) {
         header('Location: /a');
     } else {
-        DisplayTemplateOrNotFound($smarty, 'login.tpl');
+        DisplayTemplateOrNotFound($smarty, 'login.tpl', $notifier);
     }
 });
 
@@ -176,12 +176,12 @@ SimpleRouter::post('/create/account', function() use ($accountManager, $sessionM
         header('Location: /a');
     }
 
-    $accountcreationSuccess = $accountManager->HandleCreate($sessionManager, $notifier);
+    list($accountcreationSuccess, $notifier) = $accountManager->HandleCreate($sessionManager, $notifier);
     
     if ($accountcreationSuccess) {
         header('Location: /a');
     } else {
-        DisplayTemplateOrNotFound($smarty, 'createAccount.tpl');
+        DisplayTemplateOrNotFound($smarty, 'createAccount.tpl', $notifier);
     }
 });
 
@@ -196,10 +196,10 @@ SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $
         $notifier->Post("You are not authorized to edit this subsite", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $editSuccess = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
+    list($editSuccess, $notifier) = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
 
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
-    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl');
+    DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl', $notifier);
 });
 
 // subsite
@@ -229,7 +229,7 @@ SimpleRouter::post('/edit/s/{sid}/update-f/{fid}', function($subsiteId, $fragmen
         $notifier->Post("You are not authorized to edit this fragment", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $editSuccess = $fragmentManager->HandleUpdate($fragmentId, $subsiteId, $notifier);
+    list($editSuccess, $notifier) = $fragmentManager->HandleUpdate($fragmentId, $subsiteId, $notifier);
 
     header('Location: /edit/s/' + $subsiteId);
 });
@@ -244,7 +244,7 @@ SimpleRouter::post('/edit/s/{sid}/create-f', function($subsiteId) use ($fragment
         $notifier->Post("You are not authorized to edit this fragment", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $createSuccess = $fragmentManager->HandleCreate($subsiteId, $notifier);
+    list($createSuccess, $notifier) = $fragmentManager->HandleCreate($subsiteId, $notifier);
 
     header('Location: /edit/s/' + $subsiteId);
 });
@@ -261,7 +261,7 @@ SimpleRouter::post('/delete/s/{sid}', function($subsiteId) use ($subsiteManager,
         $notifier->Post("You are not authorized to edit this subsite", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $deleteSuccess = $subsiteManager->HandleDelete($subsiteId);
+    list($deleteSuccess, $notifier) = $subsiteManager->HandleDelete($subsiteId, $notifier);
 
     header('Location: /a');
 });
@@ -276,13 +276,16 @@ SimpleRouter::post('/edit/s/{sid}/delete-f/{fid}', function($subsiteId, $fragmen
         $notifier->Post("You are not authorized to edit this fragment", "error");
         header('Location: /s/' + $subsiteId);
     }
-    $deleteSuccess = $fragmentManager->HandleDelete($fragmentId);
+    list($deleteSuccess, list($notifier, $notifier)) = $fragmentManager->HandleDelete($fragmentId, $notifier);
 
     header('Location: /edit/s/' + $subsiteId);
 });
 
 
-function DisplayTemplateOrNotFound($smarty, $template) {
+function DisplayTemplateOrNotFound($smarty, $template, $notifier) {
+    if ($notifier != null) {
+        $smarty->assign('notifier', $notifier);
+    }
     if (!$smarty->getTemplateVars('NotFoundError') && $smarty->templateExists($template)) {
         $smarty->display($template);
     } else {

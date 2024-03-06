@@ -12,41 +12,42 @@ class SubsiteManager {
     public function HandleUpdate($subsiteId, $userId, $notifier) {
         list($valid, $notifier) = $this->ValidateData($userId, $_POST, $notifier, $subsiteId);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         try {
             $this->tables->subsite->OverwriteFromPostRequest($_POST);
-            return true;
+            return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update your site.", "error");
-            return false;
+            return array(false, $notifier);
         }
     }
 
     public function HandleCreate($userId, $notifier) {
         list($valid, $notifier) = $this->ValidateData($userId, $_POST, $notifier);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         try {
             $this->tables->subsite->InsertFromPostRequest($_POST);
-            return true;
+            return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not create your account.", "error");
-            return false;
+            return array(false, $notifier);
         }
     }
 
-    public function HandleDelete($subsiteId) {
+    public function HandleDelete($subsiteId, $notifier) {
         $fragments = $this->tables->subsitecf->Select("WebsiteId = $subsiteId");
         
         foreach ($fragments as $fragment) {
-            $this->fragmentManager->HandleDelete($fragment["SubsiteContentFragmentId"]);
+            $this->fragmentManager->HandleDelete($fragment["SubsiteContentFragmentId"], $notifier);
         }
 
         $this->tables->subsite->Delete($subsiteId);
+        return array(true, $notifier);
     }
 
     private function ValidateData($userId, $postData, $notifier, $existingSubsiteId = -1) {

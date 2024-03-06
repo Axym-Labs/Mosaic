@@ -11,11 +11,11 @@ class AccountDataRetriever {
         $usersWithId = $this->tables->user->SelectById($userId);
         if (count($usersWithId) == 0) {
             $smarty = new Smarty();
-            $smarty->assign('Error', "No user with this id found");
+            $smarty->assign('NotFoundError', "No user with this id found");
             return $smarty;
         }
         $smarty->assign('user', $usersWithId[0]);
-        return $this->AssignDataShared($smarty, $userId, $allowedToEdit);
+        return array($this->AssignDataShared($smarty, $userId, $allowedToEdit));
     }
 
     public function AssignDataByUsername($smarty, $userName, $allowedToEdit) {

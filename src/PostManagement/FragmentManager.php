@@ -10,7 +10,7 @@ class FragmentManager {
     public function HandleUpdate($fragmentId, $subsiteId, $notifier) {
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         try {
@@ -18,14 +18,14 @@ class FragmentManager {
             return true;
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update the fragment.", "error");
-            return false;
+            return array(false, $notifier);
         }
     }
 
     public function HandleCreate($subsiteId, $notifier) {
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         $this->tables->fragments->GetTableByName($postData["ContentTableName"])->InsertFromPostRequest($postData);
@@ -35,10 +35,10 @@ class FragmentManager {
 
         try {
             $this->tables->subsitecf->InsertFromPostRequest($postData);
-            return true;
+            return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not create your account. Try again later or contact support.", "error");
-            return false;
+            return array(true, $notifier);
         }
     }
 
@@ -51,14 +51,14 @@ class FragmentManager {
         return array($postData, true, $notifier);
     }
 
-    public function HandleDelete($fragmentId) {
+    public function HandleDelete($fragmentId, $notifier) {
         $subsitecf = $this->tables->subsitecf->SelectById($fragmentId);
         $this->tables->subsitecf->Delete($fragmentId);
 
         // TODO: implement news/linksection delete via table
 
         $this->tables->fragments->GetTableByName($subsitecf["ContentTableName"])->Delete($subsitecf["ContentId"]);
-        
+        return array(true, $notifier);
     }
 
     private function ValidateData($subsiteId, $postData, $notifier) {

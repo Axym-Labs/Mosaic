@@ -26,6 +26,7 @@
 
 <body class="bg-bgcol text-gray-200">
     {include file="base/header.tpl"}
+    {include file="base/messages.tpl"}
     {block name=content}{/block}
     {include file="base/footer.tpl"}
 

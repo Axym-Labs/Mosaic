@@ -10,30 +10,30 @@ class AccountManager {
     public function HandleUpdate($userId, $notifier) {
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($_POST, $notifier, $userId);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         try {
             $this->tables->user->OverwriteFromPostRequest($postData);
-            return true;
+            return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update your account.", "error");
-            return false;
+            return array(false, $notifier);
         }
     }
 
     public function HandleCreate($sessionManager, $notifier) {
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($_POST, $notifier);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         try {
             $this->tables->user->InsertFromPostRequest($postData);
-            return true;
+            return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not create your account.", "error");
-            return false;
+            return array(false, $notifier);
         }
     }
 

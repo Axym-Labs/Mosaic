@@ -1,0 +1,11 @@
+{
+    "emmet.syntaxProfiles": {
+        "smarty": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "beautify.language": {
+        "html": [
+            "smarty"
+        ]
+    }
+}

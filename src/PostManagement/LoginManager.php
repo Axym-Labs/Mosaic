@@ -12,12 +12,12 @@ class LoginManager {
         
         list($valid, $notifier, $maybeUser) = $this->ValidateData($postData, $notifier);
         if (!$valid) {
-            return false;
+            return array(false, $notifier);
         }
 
         $sessionManager::SetUserId($maybeUser["UserId"]);
         
-        return true;
+        return array(true, $notifier);
     }
 
     private function ValidateData($postData, $notifier) {
