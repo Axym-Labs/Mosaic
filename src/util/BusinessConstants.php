@@ -12,6 +12,6 @@ class BusinessConstants {
     public static $TEXT_LENGTH_LIMIT = 2000;
     public static $UNIVERSAL_PAGE_ROUTE_PREFIX = "/Mosaic";
 
-    public static $STATIC_URL_PREFIX = "/Mosaic";
+    public static $STATIC_URL_PREFIX = "/Mosaic/static";
 }
 ?>
