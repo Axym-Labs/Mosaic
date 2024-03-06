@@ -1,4 +1,4 @@
-{foreach $message in $notifier.GetMessages()}
+{foreach from=$notifier->GetMessages() item=message}
     <div class="card">
         <div class="card-body message-{$message["messageType"]}">
             <p>{$message["message"]}</p>

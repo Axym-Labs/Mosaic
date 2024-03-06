@@ -1,5 +1,7 @@
 function toggleNavMobile(elem) {
+    console.log("text");
     const div = document.querySelector('#navbar-links');
+    div.classList.add("translate-y-14");
     if (div != null) {
         if (div.classList.contains("hidden")) {
             div.classList.remove("hidden");

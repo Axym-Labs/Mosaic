@@ -38,8 +38,16 @@ $loginManager = new LoginManager($tables);
 $subsiteManager = new SubsiteManager($tables);
 $fragmentManager = new FragmentManager($tables);
 
+// base data
 $smarty->assign('BusinessConstants', new BusinessConstants());
+$smarty->assign('GenericRender', new GenericRender());
+$smarty->assign('sessionManager', $sessionManager);
 
+if ($sessionManager->GetUserId() != null) {
+    $smarty->assign('maybeUsername', $tables->user->SelectById($sessionManager->GetUserId()));
+} else {
+    $smarty->assign('maybeUsername', null);
+}
 // ---------- GET ----------
 // equivalent of select
 

@@ -26,8 +26,13 @@
 
 <body class="bg-bgcol text-gray-200">
     {include file="base/header.tpl"}
+
     {include file="base/messages.tpl"}
-    {block name=content}{/block}
+    <div class="flex justify-center">
+        <div style="max-width: 1000px; width: 100%;">
+            {block name=content}{/block}
+        </div>
+    </div>
     {include file="base/footer.tpl"}
 
     <script src="{BusinessConstants::$STATIC_URL_PREFIX}/js/baseDomManagement.js"></script>
