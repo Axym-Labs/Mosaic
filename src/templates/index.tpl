@@ -7,4 +7,5 @@
 {include file='components/linkbutton.tpl' text="Test 1" route="/" type="soft"}
 {include file='components/linkbutton.tpl' text="Test 1" route="/" type="warn"}
 
+
 {/block}
