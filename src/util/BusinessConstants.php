@@ -13,5 +13,7 @@ class BusinessConstants {
     public static $UNIVERSAL_PAGE_ROUTE_PREFIX = "/Mosaic";
 
     public static $STATIC_URL_PREFIX = "/Mosaic/static";
+
+    public static $HOSTMODE = "dev";
 }
 ?>
