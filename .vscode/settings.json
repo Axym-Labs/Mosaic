@@ -1,4 +1,7 @@
 {
+    "emmet.includeLanguages": {
+        "smarty": "html"
+    },
     "emmet.syntaxProfiles": {
         "smarty": "html"
     },

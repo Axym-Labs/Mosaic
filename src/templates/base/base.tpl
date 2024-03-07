@@ -29,7 +29,7 @@
 
     {include file="base/messages.tpl"}
     <div class="flex justify-center">
-        <div style="max-width: 1000px; width: 100%;">
+        <div class="mx-4 md:mx-6" style="max-width: 1000px; width: 100%;">
             {block name=content}{/block}
         </div>
     </div>

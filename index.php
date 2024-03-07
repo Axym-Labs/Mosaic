@@ -29,6 +29,8 @@ $sessionManager = new SessionManager();
 $notifier = new Notifier();
 $tables = new tableDefinitions($dbCon);
 
+$logger = new FileLogger("log.txt");
+
 $frontDataRetriever = new FrontDataRetriever($tables);
 $subsiteDataRetriever = new SubsiteDataRetriever($tables);
 $accountDataRetriever = new AccountDataRetriever($tables);
@@ -95,9 +97,11 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/login', fu
     DisplayTemplateOrNotFound($smarty, 'login.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/account', function() use ($smarty, $sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/account', function() use ($smarty, $sessionManager, $notifier, $logger) {
+    $logger->Log("create/account");
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
+        $logger->Log("create/account: redirecting to /a");
         Redirect('Location: /a');
     }
     DisplayTemplateOrNotFound($smarty, 'createAccount.tpl', $notifier);

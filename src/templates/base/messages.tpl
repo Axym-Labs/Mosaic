@@ -1,8 +1,5 @@
-{foreach from=$notifier->GetMessages() item=message}
-    <div class="card">
-        <div class="card-body message-{$message["messageType"]}">
-            <p>{$message["message"]}</p>
-            <button class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Remove</button>
-        </div>
-    </div>
-{/foreach}
+<div class="sticky right-6 bottom-6 w-64 md:w-96" style="position:fixed;">
+    {foreach from=$notifier->GetMessages() item=message}
+        {include file="components/message.tpl" message=$message["message"] type=$message["messageType"]}
+    {/foreach}
+</div>
