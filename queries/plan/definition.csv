@@ -2,3 +2,4 @@ PlanId,bigint(20)
 Name,varchar(50)
 Visible,tinyint(1)
 PlanPermissionId,int(11)
+Preis,text

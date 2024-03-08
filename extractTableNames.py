@@ -24,7 +24,10 @@ for match in matches:
             break
 
     # open text file with the same name as the table
-    os.makedirs("queries/" + tableName)
+    try:
+        os.makedirs("queries/" + tableName)
+    except:
+        pass # already exists
     with open("queries/" + tableName + "/definition.csv", 'w') as file:
         # write the column definitions to the text file
         for columnDefinition in columnData:
