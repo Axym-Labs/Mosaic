@@ -57,12 +57,13 @@ if (BusinessConstants::$HOSTMODE == "dev") {
 // ---------- GET ----------
 // equivalent of select
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $smarty, $sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($userId != null) {
         Redirect('Location: /a');
     }
     $smarty = $frontDataRetriever->AssignData($smarty);
+    $smarty = $pricingDataRetriever->AssignData($smarty);
     DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
@@ -71,8 +72,9 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/front', fu
     DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $smarty, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $notifier) {
     $smarty = $frontDataRetriever->AssignData($smarty);
+    $smarty = $pricingDataRetriever->AssignData($smarty);
     DisplayTemplateOrNotFound($smarty, 'pricing.tpl', $notifier);
 });
 
