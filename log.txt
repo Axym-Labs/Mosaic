@@ -1,17 +1,30 @@
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-SELECT * FROM `User` WHERE `1`
-Reading file at: queries/mosaic.user/definition.csv
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+extra fragmentcontent: {"UserId":"1","Email":"meier@gmail.com","LastName":"Meier Pro","FirstName":"Till","PlanId":"1","Password":"","Salt":"","ProfilePicture":"","Username":"meiermeier"}
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+extra fragmentcontent: {"UserId":"1","Email":"meier@gmail.com","LastName":"Meier Pro","FirstName":"Till","PlanId":"1","Password":"","Salt":"","ProfilePicture":"","Username":"meiermeier"}
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+extra fragmentcontent: []
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+extra fragmentcontent: {"UserId":"1","Email":"meier@gmail.com","LastName":"Meier Pro","FirstName":"Till","PlanId":"1","Password":"","Salt":"","ProfilePicture":"","Username":"meiermeier"}

@@ -1,7 +1,6 @@
 <?php
 use Pecee\SimpleRouter\SimpleRouter;
-
-// include 'src/db/dbConnection.php';
+require 'vendor/autoload.php';
 
 foreach (glob("src/*.php") as $filename)
 {
@@ -12,19 +11,15 @@ foreach (glob("src/**/*.php") as $filename)
     require $filename;
 }
 
-
-// use Smarty\Smarty\Smarty;
-require 'vendor/autoload.php';
-
+// ---------- CREATE CLASSES ----------
 $smarty = new Smarty();
 $smarty->setTemplateDir('src/templates/');
 
 $servername = "localhost";
 $username = "root";
 $password = "";
-
-// ---------- CREATE CLASSES ----------
 $dbCon = new dbConnection($servername, $username, $password);
+
 $sessionManager = new SessionManager();
 $notifier = new Notifier();
 $tables = new tableDefinitions($dbCon);
@@ -56,6 +51,7 @@ if ($sessionManager->GetUserId() != null) {
 if (BusinessConstants::$HOSTMODE == "dev") {
     $notifier->Post("You are in dev mode. This is a test", "warning");
     $smarty->assign("users", $tables->user->SelectAll());
+    $smarty->assign("userColumnTypeData", $tables->user->GetColumnTypeData());
 }
 
 // ---------- GET ----------
@@ -127,12 +123,18 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}'
 });
 
 // product
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $notifier) {
+
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s-id/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $notifier) {
     $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute, $notifier) use ($subsiteDataRetriever, $smarty) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
+    $smarty = $subsiteDataRetriever->AssignDataByShortRoute($smarty, $subsiteShortRoute, false);
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
+});
+
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
     $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
@@ -159,7 +161,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{si
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this fragment", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('Location: /edit/s/' . $subsiteId);
     }
 
     DisplayTemplateOrNotFound($smarty, 'createFragment.tpl', $notifier);
@@ -302,15 +304,17 @@ SimpleRouter::post('/edit/s/{sid}/delete-f/{fid}', function($subsiteId, $fragmen
 });
 
 
-function DisplayTemplateOrNotFound($smarty, $template, $notifier) {
-    if ($notifier != null) {
-        $smarty->assign('notifier', $notifier);
+function DisplayTemplateOrNotFound($smarty, $template, $maybeNotifier) {
+    if ($maybeNotifier != null) {
+        $smarty->assign('notifier', $maybeNotifier);
     }
     if (!$smarty->getTemplateVars('NotFoundError') && $smarty->templateExists($template)) {
         $smarty->display($template);
     } else {
-        $smarty->display("notFound.tpl");
-        // Redirect('HTTP/1.0 404 Not Found');
+        if (!$smarty->getTemplateVars('NotFoundError')) {
+            $smarty->assign('NotFoundError', "Page not found");
+        }
+        $smarty->display('notfound.tpl');
     }
 }
 
@@ -319,6 +323,11 @@ function Redirect($url, $statuscode = 303) {
     Redirect('Location: ' . $url, true, $statuscode);
     die();
 }
+
+SimpleRouter::error(function($exception) use ($smarty) {
+    $smarty->assign('NotFoundError', "Page not found");
+    $smarty->display('notfound.tpl');
+});
 
 SimpleRouter::start();
 

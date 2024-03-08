@@ -9,6 +9,8 @@ class dbConnection {
 
     public function Execute($query) {
         $query = str_replace("`", "", $query);
+        $logger = new FileLogger("log.txt");
+        $logger->Log($query);
         return $this->con->query($query);
     }
 }

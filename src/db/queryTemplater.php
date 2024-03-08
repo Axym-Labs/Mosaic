@@ -12,6 +12,10 @@ class queryTemplater
     public function __construct($tableName, $tableConf) {
         $this->tableConf = $tableConf;
         $this->tableName = strtolower($tableName);
+        if ($this->tableConf->tableNamePrefix != "") {
+            $this->tableName = $this->tableConf->tableNamePrefix . $this->tableName;
+        }
+        
         $database = $this->tableConf->database;
 
         $this->columnData = explode("\n", $this->ReadFile("definition.csv"));
@@ -19,16 +23,20 @@ class queryTemplater
         array_pop($this->columnData);
         $this->columnNames = array_map(function($x) { return explode(",", $x)[0]; }, $this->columnData);
         $this->columnTypes = array_combine($this->columnNames, array_map(function($x) { return explode(",", $x)[1]; }, $this->columnData));
-        
+
         $this->idIdentifier = $this->columnNames[0];
-        $columnNameIdentifiers = implode(", ", array_map(function ($x) { return "`$x`"; }, $this->columnNames));
+        $columnNameIdentifiers = implode(", ", array_map(function ($x) { return "$x"; }, $this->columnNames));
         $valueIdentifiers = implode(", ", array_map(function($x) { return "[value-$x]"; }, $this->columnNames));
-        $this->queryTemplates["insertGeneric"] = "INSERT INTO $database.$tableName ([columns]) VALUES ([values])";
-        $this->queryTemplates["insert"] = "INSERT INTO $database.$tableName ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
-        $this->queryTemplates["overwrite"] = "UPDATE $database.$tableName SET [overwrite] WHERE `" . $this->idIdentifier . "` = [value-Id]";
-        $this->queryTemplates["update"] = "UPDATE $database.$tableName SET `[column]` = [value] WHERE `" . $this->idIdentifier . "` = [value-Id]";
-        $this->queryTemplates["select"] = "SELECT [columns] FROM $database.$tableName WHERE `[condition]`";
-        $this->queryTemplates["delete"] = "DELETE FROM $database.$tableName WHERE `" . $this->idIdentifier . "` = [value-Id]"; 
+        $this->queryTemplates["insertGeneric"] = "INSERT INTO " . $database . "." . $this->tableName . " ([columns]) VALUES ([values])";
+        $this->queryTemplates["insert"] = "INSERT INTO " . $database . "." . $this->tableName . " ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
+        $this->queryTemplates["overwrite"] = "UPDATE " . $database . "." . $this->tableName . " SET [overwrite] WHERE " . $this->idIdentifier . " = [value-Id]";
+        $this->queryTemplates["update"] = "UPDATE " . $database . "." . $this->tableName . " SET [column] = [value] WHERE " . $this->idIdentifier . " = [value-Id]";
+        $this->queryTemplates["select"] = "SELECT [columns] FROM " . $database . "." . $this->tableName . " WHERE [condition]";
+        $this->queryTemplates["delete"] = "DELETE FROM " . $database . "." . $this->tableName . " WHERE " . $this->idIdentifier . " = [value-Id]"; 
+    }
+
+    public function GetColumnTypeData() {
+        return $this->columnTypes;
     }
 
     public function ConvertToCvSet($kvArray) {
@@ -60,6 +68,10 @@ class queryTemplater
             }
         }
         return array(count($exceedingColumns) == 0, $exceedingColumns);
+    }
+
+    public function GetCount() {
+        return "SELECT COUNT(*) FROM " . $this->tableConf->database . "." . $this->tableName;
     }
 
     public function GetInsert($kvArray, $removeId) {
@@ -118,10 +130,10 @@ class queryTemplater
         $query = $this->ReplaceTypelessIdentifier($query, "columns", "*");
         $query = $this->ReplaceTypelessIdentifier($query, "condition", $condition);
         if ($orderBy != "") {
-            $query += " ORDER BY " . $orderBy;
+            $query = $query . " ORDER BY " . $orderBy;
         }
         if ($limit > 0) {
-            $query += " LIMIT " . (string)$limit;
+            $query = $query . " LIMIT " . (string)$limit;
         }
         return $query;
     }
@@ -129,12 +141,12 @@ class queryTemplater
     public function GetSelectById($id, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
         $query = $this->ReplaceTypelessIdentifier($query, "columns", "*");
-        $query = $this->ReplaceTypelessIdentifier($query, "condition", "`" . $this->idIdentifier . "` = " . (string)$id);
+        $query = $this->ReplaceTypelessIdentifier($query, "condition", $this->idIdentifier . " = " . (string)$id);
         if ($orderBy != "") {
-            $query += " ORDER BY " . $orderBy;
+            $query = $query . " ORDER BY " . $orderBy;
         }
         if ($limit > 0) {
-            $query += " LIMIT " . (string)$limit;
+            $query = $query . " LIMIT " . (string)$limit;
         }
         return $query;
     }
@@ -146,7 +158,7 @@ class queryTemplater
     }
 
     private function ReadFile($relFileName) {
-        $fileLocation = $this->tableConf->tableDataDir . "/" . $this->tableConf->tableNamePrefix . $this->tableName . "/" . $relFileName;
+        $fileLocation = $this->tableConf->tableDataDir . "/" . $this->tableName . "/" . $relFileName;
         $file = fopen($fileLocation, "r") or die("Unable to open file at: " . $fileLocation);
         $fileContent = fread($file,filesize($fileLocation));
         return $fileContent;

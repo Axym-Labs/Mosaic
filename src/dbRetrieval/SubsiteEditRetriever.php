@@ -31,6 +31,7 @@ class SubsiteEditRetriever {
     
     private function GetTemplatedEditFragment($tableName, $fragmentContent) {
         $smarty = new Smarty();
+        $smarty->setTemplateDir('src/templates/');
         $smarty->assign('fragmentContent', $fragmentContent);
         return $smarty->fetch("templates/editFragments/$tableName.tpl");
     }

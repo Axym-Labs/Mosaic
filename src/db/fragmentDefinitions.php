@@ -17,27 +17,28 @@ class fragmentDefinitions {
     public function __construct($dbCon) {
         $this->dbCon = $dbCon;
         $this->tableConf = new tableConfiguration("mosaic", "queries", "fragment");
-        $this->credentials = new dbTable("Credentials", $this->tableConf, $this->dbCon);
-        $this->projectinfo = new dbTable("ProjectInfo", $this->tableConf, $this->dbCon);
-        $this->socials = new dbTable("Socials", $this->tableConf, $this->dbCon);
-        $this->images = new dbTable("Image", $this->tableConf, $this->dbCon);
-        $this->link = new dbTable("Link", $this->tableConf, $this->dbCon);
-        $this->news = new dbTable("News", $this->tableConf, $this->dbCon);
+        $this->credentials = new dbTable("credentials", $this->tableConf, $this->dbCon);
+        $this->projectinfo = new dbTable("projectinfo", $this->tableConf, $this->dbCon);
+        $this->socials = new dbTable("socials", $this->tableConf, $this->dbCon);
+        $this->images = new dbTable("image", $this->tableConf, $this->dbCon);
+        $this->link = new dbTable("link", $this->tableConf, $this->dbCon);
+        $this->news = new dbTable("news", $this->tableConf, $this->dbCon);
         // $this->linksection = new dbTable("LinkSection", $this->tableConf, $this->dbCon);
         // $this->newsSection = new dbTable("NewsSection", $this->tableConf, $this->dbCon);
-        $this->texts = new dbTable("Text", $this->tableConf, $this->dbCon);
-        $this->iframes = new dbTable("IFrame", $this->tableConf, $this->dbCon);
+        $this->texts = new dbTable("text", $this->tableConf, $this->dbCon);
+        $this->iframes = new dbTable("iframe", $this->tableConf, $this->dbCon);
     }
 
     public function GetTableByName($tableName) {
-        switch ($tableName->lower()) {
+        $count = 1;
+        switch (str_replace("fragment", "", strtolower($tableName), $count)) {
             case "credentials":
                 return $this->credentials;
-            case "ProjectInfo":
+            case "projectinfo":
                 return $this->projectinfo;
-            case "Socials":
+            case "socials":
                 return $this->socials;
-            case "Image":
+            case "image":
                 return $this->images;
             case "link":
                 return $this->link;

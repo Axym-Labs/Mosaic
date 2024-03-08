@@ -7,7 +7,8 @@ class FrontDataRetriever {
     }
 
     public function AssignData($smarty) {
-        $smarty->assign('subsiteCount', 1);
+        $subsiteCount = $this->tables->subsite->Count();
+        $smarty->assign('subsiteCount', $subsiteCount[0]["COUNT(*)"]);
         $smarty->assign("title", "Hello world!");
 
         return $smarty;

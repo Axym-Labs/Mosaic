@@ -1,14 +1,10 @@
 {extends file='base/base.tpl'}
 {block name=content}
-{$canEdit|default:false}
+{if !isset($canEdit)}
+    {assign var="canEdit" value=false}
+{/if}
 
-<div>
-    <h1>{$user["Username"]}</h1>
-</div>
 
-<div>
-    {GenericRender::RenderDict($user)}
-</div>
-
+{include file='user/userProfile.tpl' canEdit=$canEdit}
 
 {/block}

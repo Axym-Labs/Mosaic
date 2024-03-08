@@ -16,6 +16,16 @@ class dbTable
         $this->dbCon = $dbCon;
     }
 
+    public function Count() {
+        $query = $this->queryTemplater->GetCount();
+        return $this->returnFetchedResult($query);
+    }
+
+    public function GetColumnTypeData()
+    {
+        return $this->queryTemplater->GetColumnTypeData();
+    }
+
     public function CheckStringLengthLimits($postData) {
         $postData = $this->queryTemplater->FilterForColumnNames($postData, true);
         return $this->queryTemplater->CheckStringLengthLimits($postData);

@@ -87,7 +87,7 @@ class FragmentManager {
         // $plan = $this->tables->plan->SelectById($planId);
         // $planPermissions = $this->tables->plan->SelectById($plan["PlanPermissionId"]);
         
-        $fragments = $this->tables->subsitecf->Select("SubsiteId = $subsiteId");
+        $fragments = $this->tables->subsitecf->Select("SubSiteId = $subsiteId");
         if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
             $notifier->Post("Maximum fragment count exceeded");
             return array(false, $notifier);
@@ -108,7 +108,7 @@ class FragmentManager {
 
     private function DefineAutoValues($postData) {
         if (!array_key_exists("Position", $postData)) {
-            $position = $this->tables->subsitecf->Select("SubsiteId = " . $postData["SubsiteId"], 1, "MAX(Position)")[0]["MAX(Position)"];
+            $position = $this->tables->subsitecf->Select("SubSiteId = " . $postData["SubSiteId"], 1, "MAX(Position)")[0]["MAX(Position)"];
             $postData["Position"] = $position + 1;
         }
         

@@ -11,7 +11,7 @@
                 {include file="components/textlink.tpl" text="Start Page" route="/"}
             </li>
             <li class="p-1.5 my-2 md:my-1 m-1">
-                {include file="components/textlink.tpl" text="User" route="/a"}
+                {include file="components/textlink.tpl" text="My Account" route="/a"}
             </li>
         </ul>
     </div>

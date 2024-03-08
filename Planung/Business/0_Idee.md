@@ -7,5 +7,5 @@
 - exportable as html
 
 # Such Seite
-- zentrales Logo
-- unter dem Logo Suchleiste (Username suche --> Websiten anschauen)
+- Suchleiste (Username suche --> Websiten anschauen)
+- Unter suchleiste ausgewählte (oder beliebteste - aber zu wenig zeit dafür)

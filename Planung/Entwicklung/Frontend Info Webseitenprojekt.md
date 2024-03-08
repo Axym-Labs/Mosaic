@@ -10,3 +10,5 @@
 - css.gg
 
 - **embyte integration: uses iframe table on backend**
+
+- user accesses his own subsite: add link to edit as overlaid icon on top right

@@ -1,45 +1,45 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-08 10:46:07
+/* Smarty version 4.4.1, created on 2024-03-08 12:49:16
   from 'C:\xampp\htdocs\Mosaic\src\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65eade5f42e386_91975874',
+  'unifunc' => 'content_65eafb3c0196b1_05574016',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3b76bb31bfcafb036d29e05d99aaa72df372c3e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\index.tpl',
-      1 => 1709891166,
+      1 => 1709898550,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:components/linkbutton.tpl' => 4,
-    'file:user.tpl' => 1,
+    'file:user/userProfile.tpl' => 1,
   ),
 ),false)) {
-function content_65eade5f42e386_91975874 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65eafb3c0196b1_05574016 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_45280361665eade5f411b25_75291002', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_212866229465eafb3bf42243_92079371', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_45280361665eade5f411b25_75291002 extends Smarty_Internal_Block
+class Block_212866229465eafb3bf42243_92079371 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_45280361665eade5f411b25_75291002',
+    0 => 'Block_212866229465eafb3bf42243_92079371',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -54,6 +54,11 @@ $_smarty_tpl->_subTemplateRender('file:components/linkbutton.tpl', $_smarty_tpl-
 $_smarty_tpl->_subTemplateRender('file:components/linkbutton.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Test 1",'route'=>"/",'type'=>"warn"), 0, true);
 ?>
 
+<div class="flex justify-center">
+    <h1 class="text-3xl font-bold">Created Subsites: <?php echo $_smarty_tpl->tpl_vars['subsiteCount']->value;?>
+</h1>
+</div>
+
 <?php  $_prefixVariable1 = $_smarty_tpl->tpl_vars['BusinessConstants']->value;
 if ($_prefixVariable1::$HOSTMODE == "dev") {?>
     <?php
@@ -62,7 +67,7 @@ $_smarty_tpl->tpl_vars['user']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['user']->value) {
 $_smarty_tpl->tpl_vars['user']->do_else = false;
 ?>
-        <?php $_smarty_tpl->_subTemplateRender('file:user.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('user'=>$_smarty_tpl->tpl_vars['user']->value), 0, true);
+        <?php $_smarty_tpl->_subTemplateRender('file:user/userProfile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('user'=>$_smarty_tpl->tpl_vars['user']->value,'userColumnTypeData'=>$_smarty_tpl->tpl_vars['userColumnTypeData']->value), 0, true);
 ?>
     <?php
 }

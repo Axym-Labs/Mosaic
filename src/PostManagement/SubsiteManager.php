@@ -50,7 +50,7 @@ class SubsiteManager {
         return array(true, $notifier);
     }
 
-    private function ValidateData($userId, $postData, $notifier, $existingSubsiteId = -1) {
+    private function ValidateData($userId, $postData, $notifier, $existingSubSiteId = -1) {
         // subsite limit not exceeded
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->subsite->CheckStringLengthLimits($postData);
@@ -80,7 +80,7 @@ class SubsiteManager {
         // route unique
         $route = $postData["Route"];
         $subsite = $this->tables->subsite->Select("Route = '$route' AND UserId = $userId");
-        if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
+        if (count($subsite) > 0 && $subsite[0]["SubSiteId"] != $existingSubSiteId) {
             $notifier->Post("This route is already taken", "error");
             return array(false, $notifier);
         }
@@ -88,7 +88,7 @@ class SubsiteManager {
         if ($postData["ShortRoute"] != "") {
             $shortRoute = $postData["ShortRoute"];
             $subsite = $this->tables->subsite->Select("ShortRoute = '$shortRoute'");
-            if (count($subsite) > 0 && $subsite[0]["SubsiteId"] != $existingSubsiteId) {
+            if (count($subsite) > 0 && $subsite[0]["SubSiteId"] != $existingSubSiteId) {
                 $notifier->Post("This short route is already taken", "error");
                 return array(false, $notifier);
             }
