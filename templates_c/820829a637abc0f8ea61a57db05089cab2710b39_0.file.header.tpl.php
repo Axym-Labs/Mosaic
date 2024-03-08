@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-07 11:28:16
+/* Smarty version 4.4.1, created on 2024-03-08 10:41:20
   from 'C:\xampp\htdocs\Mosaic\src\templates\base\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65e996c08a5d45_53971604',
+  'unifunc' => 'content_65eadd4055be57_35262496',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '820829a637abc0f8ea61a57db05089cab2710b39' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\base\\header.tpl',
-      1 => 1709807295,
+      1 => 1709882655,
       2 => 'file',
     ),
   ),
@@ -21,12 +21,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:components/linkbutton.tpl' => 3,
   ),
 ),false)) {
-function content_65e996c08a5d45_53971604 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65eadd4055be57_35262496 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav id="nav" class="sticky top-0">
     <div id="navbar-contents" class="flex" style="height: 62px;">
         <div id="navbar-logo" class="w-full md:w-1/5 lg:w-1/6 2xl:w-1/12 bg-bgcol flex justify-between md:justify-center items-center">
-            <a href="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;?>
-/" class="flex items-center">
+            <a href="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;
+if ($_smarty_tpl->tpl_vars['redirectToFront']->value) {?>/front<?php } else { ?>/<?php }?>" class="flex items-center">
                 <img src="<?php echo BusinessConstants::$STATIC_URL_PREFIX;?>
 /assets/logo.png" alt="Mosaic" class="w-12 ml-4 md:ml-0">
                 <p class="text-lg text-b500 p-4" >Mosaic</p>
@@ -55,10 +55,10 @@ function content_65e996c08a5d45_53971604 (Smarty_Internal_Template $_smarty_tpl)
                         Welcome, <?php echo $_smarty_tpl->tpl_vars['maybeUsername']->value;?>
 !
                     </div>
-                    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"My Account",'route'=>"/a",'type'=>"primary"), 0, false);
+                    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"My User",'route'=>"/a",'type'=>"primary"), 0, false);
 ?>
                 <?php } else { ?>
-                    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Get Started",'route'=>"/create/account",'type'=>"primary"), 0, true);
+                    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Get Started",'route'=>"/create/user",'type'=>"primary"), 0, true);
 ?>
                     <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Login",'route'=>"/login",'type'=>"secondary"), 0, true);
 ?>

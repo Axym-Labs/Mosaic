@@ -1,12 +1,17 @@
-create/account
-create/account
-Displaying template: createAccount.tpl
-create/account
-Displaying template: createAccount.tpl
-create/account
-create/account
-create/account
-create/account
-create/account
-create/account
-create/account
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+SELECT * FROM `User` WHERE `1`
+Reading file at: queries/mosaic.user/definition.csv

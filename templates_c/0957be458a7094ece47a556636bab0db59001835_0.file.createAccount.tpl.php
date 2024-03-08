@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 4.4.1, created on 2024-03-07 11:26:22
-  from 'C:\xampp\htdocs\Mosaic\src\templates\createAccount.tpl' */
+  from 'C:\xampp\htdocs\Mosaic\src\templates\createUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '0957be458a7094ece47a556636bab0db59001835' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\createAccount.tpl',
+      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\createUser.tpl',
       1 => 1709807086,
       2 => 'file',
     ),

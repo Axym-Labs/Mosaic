@@ -11,7 +11,8 @@ class queryTemplater
 
     public function __construct($tableName, $tableConf) {
         $this->tableConf = $tableConf;
-        $this->tableName = $tableName;
+        $this->tableName = strtolower($tableName);
+        $database = $this->tableConf->database;
 
         $this->columnData = explode("\n", $this->ReadFile("definition.csv"));
         // Remove last element, which is an empty string
@@ -22,12 +23,12 @@ class queryTemplater
         $this->idIdentifier = $this->columnNames[0];
         $columnNameIdentifiers = implode(", ", array_map(function ($x) { return "`$x`"; }, $this->columnNames));
         $valueIdentifiers = implode(", ", array_map(function($x) { return "[value-$x]"; }, $this->columnNames));
-        $this->queryTemplates["insertGeneric"] = "INSERT INTO `$tableName` ([columns]) VALUES ([values])";
-        $this->queryTemplates["insert"] = "INSERT INTO `$tableName` ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
-        $this->queryTemplates["overwrite"] = "UPDATE `$tableName` SET [overwrite] WHERE `" . $this->idIdentifier . "` = [value-Id]";
-        $this->queryTemplates["update"] = "UPDATE `$tableName` SET `[column]` = [value] WHERE `" . $this->idIdentifier . "` = [value-Id]";
-        $this->queryTemplates["select"] = "SELECT [columns] FROM `$tableName` WHERE `[condition]`";
-        $this->queryTemplates["delete"] = "DELETE FROM `$tableName` WHERE `" . $this->idIdentifier . "` = [value-Id]"; 
+        $this->queryTemplates["insertGeneric"] = "INSERT INTO $database.$tableName ([columns]) VALUES ([values])";
+        $this->queryTemplates["insert"] = "INSERT INTO $database.$tableName ($columnNameIdentifiers) VALUES ($valueIdentifiers)";
+        $this->queryTemplates["overwrite"] = "UPDATE $database.$tableName SET [overwrite] WHERE `" . $this->idIdentifier . "` = [value-Id]";
+        $this->queryTemplates["update"] = "UPDATE $database.$tableName SET `[column]` = [value] WHERE `" . $this->idIdentifier . "` = [value-Id]";
+        $this->queryTemplates["select"] = "SELECT [columns] FROM $database.$tableName WHERE `[condition]`";
+        $this->queryTemplates["delete"] = "DELETE FROM $database.$tableName WHERE `" . $this->idIdentifier . "` = [value-Id]"; 
     }
 
     public function ConvertToCvSet($kvArray) {
@@ -114,24 +115,26 @@ class queryTemplater
 
     public function GetSelect($condition, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
+        $query = $this->ReplaceTypelessIdentifier($query, "columns", "*");
         $query = $this->ReplaceTypelessIdentifier($query, "condition", $condition);
         if ($orderBy != "") {
-            $query += " ORDER BY " + $orderBy;
+            $query += " ORDER BY " . $orderBy;
         }
         if ($limit > 0) {
-            $query += " LIMIT " + $limit;
+            $query += " LIMIT " . (string)$limit;
         }
         return $query;
     }
 
     public function GetSelectById($id, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
-        $query = $this->ReplaceTypelessIdentifier($query, "oondition", "`" + $this->idIdentifier + "` = " + $id);
+        $query = $this->ReplaceTypelessIdentifier($query, "columns", "*");
+        $query = $this->ReplaceTypelessIdentifier($query, "condition", "`" . $this->idIdentifier . "` = " . (string)$id);
         if ($orderBy != "") {
-            $query += " ORDER BY " + $orderBy;
+            $query += " ORDER BY " . $orderBy;
         }
         if ($limit > 0) {
-            $query += " LIMIT " + $limit;
+            $query += " LIMIT " . (string)$limit;
         }
         return $query;
     }
@@ -144,17 +147,17 @@ class queryTemplater
 
     private function ReadFile($relFileName) {
         $fileLocation = $this->tableConf->tableDataDir . "/" . $this->tableConf->tableNamePrefix . $this->tableName . "/" . $relFileName;
-        $file = fopen($fileLocation, "r") or die("Unable to open file at: " + $fileLocation);
+        $file = fopen($fileLocation, "r") or die("Unable to open file at: " . $fileLocation);
         $fileContent = fread($file,filesize($fileLocation));
         return $fileContent;
     }
 
     private function ReplaceIdentifier($string, $identifierType, $identifier, $value) {
-        return str_replace("[" + $identifierType + "-" + $identifier + "]", $value, $string);
+        return str_replace("[" . $identifierType . "-" . (string)$identifier . "]", $value, $string);
     }
 
     private function ReplaceTypelessIdentifier($string, $identifier, $value) {
-        return str_replace("[" + $identifier + "]", $value, $string);
+        return str_replace("[" . (string)$identifier . "]", $value, $string);
     }
 }
 ?>

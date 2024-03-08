@@ -8,8 +8,8 @@ class dbConnection {
     }
 
     public function Execute($query) {
+        $query = str_replace("`", "", $query);
         return $this->con->query($query);
     }
-
 }
 ?>

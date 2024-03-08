@@ -1,5 +1,5 @@
 <?php
-class AccountDataRetriever {
+class UserDataRetriever {
     private $tables;
 
     public function __construct($tables) {
@@ -14,13 +14,13 @@ class AccountDataRetriever {
             $smarty->assign('NotFoundError', "No user with this id found");
             return $smarty;
         }
-        $smarty->assign('user', $usersWithId[0]);
+        $smarty->assign("user", $usersWithId[0]);
         return array($this->AssignDataShared($smarty, $userId, $allowedToEdit));
     }
 
     public function AssignDataByUsername($smarty, $userName, $allowedToEdit) {
         $user = $this->tables->user->Select("name = '$userName'");
-        $smarty->assign('user', $user);
+        $smarty->assign("user", $user);
         return $this->AssignDataShared($smarty, $user["UserId"], $allowedToEdit);
     }
     

@@ -34,7 +34,7 @@ class SubsiteManager {
             $this->tables->subsite->InsertFromPostRequest($_POST);
             return array(true, $notifier);
         } catch (Exception $e) {
-            $notifier->Post("Error: Could not create your account.", "error");
+            $notifier->Post("Error: Could not create your user.", "error");
             return array(false, $notifier);
         }
     }

@@ -37,7 +37,7 @@ class FragmentManager {
             $this->tables->subsitecf->InsertFromPostRequest($postData);
             return array(true, $notifier);
         } catch (Exception $e) {
-            $notifier->Post("Error: Could not create your account. Try again later or contact support.", "error");
+            $notifier->Post("Error: Could not create your user. Try again later or contact support.", "error");
             return array(true, $notifier);
         }
     }

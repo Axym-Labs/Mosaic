@@ -25,7 +25,12 @@
 </head>
 
 <body class="bg-bgcol text-gray-200">
-    {include file="base/header.tpl"}
+    {$redirectToFront|default:false}
+    {if !isset($redirectToFront)}
+        {assign var="redirectToFront" value=false}
+    {/if}
+
+    {include file="base/header.tpl" redirectToFront=$redirectToFront}
 
     {include file="base/messages.tpl"}
     <div class="flex justify-center">

@@ -1,5 +1,5 @@
 <?php
-class AccountManager {
+class UserManager {
     private $tables;
 
     public function __construct($tables) {
@@ -17,7 +17,7 @@ class AccountManager {
             $this->tables->user->OverwriteFromPostRequest($postData);
             return array(true, $notifier);
         } catch (Exception $e) {
-            $notifier->Post("Error: Could not update your account.", "error");
+            $notifier->Post("Error: Could not update your user.", "error");
             return array(false, $notifier);
         }
     }
@@ -32,7 +32,7 @@ class AccountManager {
             $this->tables->user->InsertFromPostRequest($postData);
             return array(true, $notifier);
         } catch (Exception $e) {
-            $notifier->Post("Error: Could not create your account.", "error");
+            $notifier->Post("Error: Could not create your user.", "error");
             return array(false, $notifier);
         }
     }

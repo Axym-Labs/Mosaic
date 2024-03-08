@@ -1,7 +1,7 @@
 <nav id="nav" class="sticky top-0">
     <div id="navbar-contents" class="flex" style="height: 62px;">
         <div id="navbar-logo" class="w-full md:w-1/5 lg:w-1/6 2xl:w-1/12 bg-bgcol flex justify-between md:justify-center items-center">
-            <a href="{BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX}/" class="flex items-center">
+            <a href="{BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX}{if $redirectToFront}/front{else}/{/if}" class="flex items-center">
                 <img src="{BusinessConstants::$STATIC_URL_PREFIX}/assets/logo.png" alt="Mosaic" class="w-12 ml-4 md:ml-0">
                 <p class="text-lg text-b500 p-4" >Mosaic</p>
             </a>
@@ -28,9 +28,9 @@
                     <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 text-lg">
                         Welcome, {$maybeUsername}!
                     </div>
-                    {include file="components/linkbutton.tpl" text="My Account" route="/a" type="primary"}
+                    {include file="components/linkbutton.tpl" text="My User" route="/a" type="primary"}
                 {else}
-                    {include file="components/linkbutton.tpl" text="Get Started" route="/create/account" type="primary"}
+                    {include file="components/linkbutton.tpl" text="Get Started" route="/create/user" type="primary"}
                     {include file="components/linkbutton.tpl" text="Login" route="/login" type="secondary"}
                 {/if}
             </div>

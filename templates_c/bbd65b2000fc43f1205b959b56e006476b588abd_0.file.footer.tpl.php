@@ -37,7 +37,7 @@ function content_65e8a10ec89464_27708196 (Smarty_Internal_Template $_smarty_tpl)
 ?>
             </li>
             <li class="p-1.5 my-2 md:my-1 m-1">
-                <?php $_smarty_tpl->_subTemplateRender("file:components/textlink.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Account",'route'=>"/a"), 0, true);
+                <?php $_smarty_tpl->_subTemplateRender("file:components/textlink.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"User",'route'=>"/a"), 0, true);
 ?>
             </li>
         </ul>

@@ -22,16 +22,16 @@ class dbTable
     }
 
     public function OverwriteFromPostRequest($postData) {
-        list($id, $cvSet) = $this->PrepareUpdateSetArray($postData);
+        list($id, $cvSet) = $this->PrepareCvSetArray($postData);
         $this->Overwrite($id, $cvSet);
     }
     
     public function InsertFromPostRequest($postData) {
-        list($id, $cvSet) = $this->PrepareUpdateSetArray($postData);
+        list($id, $cvSet) = $this->PrepareCvSetArray($postData);
         $this->InsertWithCvSet($id, $cvSet);
     }
     
-    private function PrepareUpdateSetArray($postData) {
+    private function PrepareCvSetArray($postData) {
         $postData = $this->queryTemplater->FilterForColumnNames($postData, true);
         $cvSet = $this->queryTemplater->ConvertToCvSet($postData);
 

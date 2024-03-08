@@ -21,7 +21,7 @@ class cvSet {
 
     public function GetValuePart() {
         if ($this->TypeIsString()) {
-            return "\"" + $this->value +"\"";
+            return "\"" . $this->value . "\"";
         }
         return $this->value;
     }
