@@ -7,8 +7,8 @@
 	- Bis kurz vorm Ende: 1 Std Zeit lassen
 
 # Arbeitsteilung
-- Datenbank: Beide, parallel
+- Datenbank: D, teilw H
 - Backend: D
+- Kommentare: H
 - Frontend: H, teilw D
 - Protokollierung: H
-- Präsentation: H, teilw D
