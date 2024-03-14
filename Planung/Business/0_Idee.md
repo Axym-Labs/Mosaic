@@ -6,6 +6,8 @@
 - embeddable iframe
 - exportable as html
 
+# Non-MVP Features
+
 # Such Seite
 - Suchleiste (Username suche --> Websiten anschauen)
 - Unter suchleiste ausgewählte (oder beliebteste - aber zu wenig zeit dafür)
@@ -18,3 +20,15 @@
 # Neue Farben
 - dark mode bleibt
 - secondary, primary uä ersetzen (zb mindzgrün + irgendwas)
+
+### Falls Zeit übrig ist
+- Embyte integration
+- Socials order
+- FragmentCredentials -> UserId referenzieren (case dafür in dataretriever)
+- On create subsite: create default fragments with default data (fragmentprojectinfo, fragmentcredentials)
+- Default user profile picture
+
+### Eher generell nicht implementieren
+- Link-/Newssection
+- Javascript clientside input validation
+- fragments input validation
