@@ -1,5 +1,5 @@
-{if !isset($canEdit)}
-    {assign var="canEdit" value=false}
+{if !isset($isOwner)}
+    {assign var="isOwner" value=false}
 {/if}
 
 <div>

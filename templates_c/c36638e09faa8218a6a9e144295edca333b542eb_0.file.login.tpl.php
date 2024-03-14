@@ -45,7 +45,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 
 <div>
-    <form action="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;?>
+    <form action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /login">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">

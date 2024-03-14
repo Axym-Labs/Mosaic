@@ -2,8 +2,11 @@
 class AuthorizationCheck {
 
     public static function IsAuthorizedSubsite($subsiteId, $userId, $tables) {
-        $subsite = $tables->subsite->selectById($subsiteId);
-        return $subsite["UserId"] == $userId;
+        $subsitesWithId = $tables->subsite->selectById($subsiteId);
+        if (count($subsitesWithId) == 0) {
+            return false;
+        }
+        return $subsitesWithId[0]["UserId"] == $userId;
     }
 
     public static function PasswordMatch($user, $password, $tables) {

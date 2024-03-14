@@ -2,7 +2,7 @@
 {block name=content}
 
 <div>
-    <form action="{BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX}/create/user">
+    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/create/user">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" required><br>
 

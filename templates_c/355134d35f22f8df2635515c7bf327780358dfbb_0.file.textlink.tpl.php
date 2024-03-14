@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
 ),false)) {
 function content_65e8a13714b9b6_19758231 (Smarty_Internal_Template $_smarty_tpl) {
-?><a href="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;
+?><a href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
 echo $_smarty_tpl->tpl_vars['route']->value;?>
 " class="underline underline-offset-2 transition ease-in-out duration-400 hover:text-primaryLight underline-offset-2 whitespace-nowrap">
     <?php echo $_smarty_tpl->tpl_vars['text']->value;?>

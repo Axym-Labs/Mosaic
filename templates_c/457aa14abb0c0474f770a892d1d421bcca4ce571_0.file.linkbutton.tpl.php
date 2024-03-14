@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
 ),false)) {
 function content_65e8a18fba5fd1_14695584 (Smarty_Internal_Template $_smarty_tpl) {
 ?><a id="primary-button" 
-    href="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;
+    href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
 echo $_smarty_tpl->tpl_vars['route']->value;?>
 " 
     class="inline-block rounded-full p-2 px-6 m-2 md:m-2 text-sm text-white shadow-lg transition duration-500 ease-in-out mr-3 hover:shadow-lg 

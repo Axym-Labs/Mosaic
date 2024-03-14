@@ -7,7 +7,7 @@ class UserDataRetriever {
     }
 
     // editView-option
-    public function AssignData($smarty, $userId, $allowedToEdit) {
+    public function AssignData($smarty, $userId, $isOwner) {
         if (!is_numeric($userId) || (int)$userId < 0) {
             $smarty->assign('NotFoundError', "No user with this id found");
             return $smarty;
@@ -18,23 +18,24 @@ class UserDataRetriever {
             return $smarty;
         }
         $smarty->assign("user", $usersWithId[0]);
-        return array($this->AssignDataShared($smarty, $userId, $allowedToEdit));
+        return $this->AssignDataShared($smarty, $userId, $isOwner);
     }
 
-    public function AssignDataByUsername($smarty, $userName, $allowedToEdit) {
+    public function AssignDataByUsername($smarty, $userName, $isOwner) {
         $usersWithName = $this->tables->user->Select("Username = '$userName'");
         if (count($usersWithName) == 0) {
             $smarty->assign('NotFoundError', "No user with this username found");
             return $smarty;
         }
         $smarty->assign("user", $usersWithName[0]);
-        return $this->AssignDataShared($smarty, $usersWithName[0]["UserId"], $allowedToEdit);
+        return $this->AssignDataShared($smarty, $usersWithName[0]["UserId"], $isOwner);
     }
     
-    private function AssignDataShared($smarty, $userId, $allowedToEdit) {
-        $smarty->assign('allowedToEdit', $allowedToEdit);
+    private function AssignDataShared($smarty, $userId, $isOwner) {
+        $smarty->assign('isOwner', $isOwner);
         $smarty->assign('subsites', $this->tables->subsite->Select("UserId = '$userId'"));
         $smarty->assign('columnTypeData', $this->tables->user->GetColumnTypeData());
+
         return $smarty;
     }
 

@@ -29,6 +29,7 @@ $tables = new tableDefinitions($dbCon);
 
 $frontDataRetriever = new FrontDataRetriever($tables);
 $subsiteDataRetriever = new SubsiteDataRetriever($tables);
+$subsiteEditDataRetriever = new SubsiteEditDataRetriever($tables);
 $userDataRetriever = new UserDataRetriever($tables);
 $pricingDataRetriever = new PricingDataRetriever($tables);
 
@@ -37,14 +38,10 @@ $loginManager = new LoginManager($tables);
 $subsiteManager = new SubsiteManager($tables);
 $fragmentManager = new FragmentManager($tables);
 
-// ---------- ASSIGN BASE DATA ----------
-$smarty->assign('BusinessConstants', new BusinessConstants());
-$smarty->assign('GenericRender', new GenericRender());
-$smarty->assign('sessionManager', $sessionManager);
 
 // ---------- DEV EXTRA ----------
 if (BusinessConstants::$HOSTMODE == "dev") {
-    $notifier->Post("You are in dev mode. This is a test", "warning");
+    $notifier->Post("You are in dev mode. This is a test", "info");
     $smarty->assign("users", $tables->user->SelectAll());
     $smarty->assign("userColumnTypeData", $tables->user->GetColumnTypeData());
 
@@ -52,126 +49,138 @@ if (BusinessConstants::$HOSTMODE == "dev") {
 }
 
 // ---------- ASSIGN USER DATA ----------
-if ($sessionManager->GetUserId() != null) {
-    $smarty->assign('maybeUsername', $tables->user->SelectById($sessionManager->GetUserId()));
+if ($sessionManager->IsUserLoggedIn()) {
+    $smarty->assign('maybeUsername', $tables->user->SelectById($sessionManager->GetUserId())[0]["Username"]);
 } else {
     $smarty->assign('maybeUsername', "User");
 }
 
 
+// ---------- ASSIGN BASE DATA ----------
+$smarty->assign('BusinessConstants', new BusinessConstants());
+$smarty->assign('GenericRender', new GenericRender());
+$smarty->assign('sessionManager', $sessionManager);
 
 // ---------- GET ----------
 // equivalent of select
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $sessionManager, $notifier, $logger) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $sessionManager, $notifier, $logger) {
     $userId = $sessionManager->GetUserId();
     $logger->Log("userid: $userId");
     if ($sessionManager->IsUserLoggedIn()) {
-        Redirect('Location: /a');
+        $logger->Log("user not logged in - redirecting to /a");
+        Redirect('/a');
     }
     $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty = $pricingDataRetriever->AssignData($smarty);
     DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/front', function() use ($frontDataRetriever, $smarty, $notifier, $pricingDataRetriever) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/front', function() use ($frontDataRetriever, $smarty, $notifier, $pricingDataRetriever) {
     $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty = $pricingDataRetriever->AssignData($smarty);
     DisplayTemplateOrNotFound($smarty, 'index.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/pricing', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $notifier) {
     $smarty = $frontDataRetriever->AssignData($smarty);
     $smarty = $pricingDataRetriever->AssignData($smarty);
     DisplayTemplateOrNotFound($smarty, 'pricing.tpl', $notifier);
 });
 
 // user
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/a', function() use ($userDataRetriever, $smarty, $sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/a', function() use ($userDataRetriever, $smarty, $sessionManager, $notifier, $logger) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
-        Redirect('Location: /login');
+        $logger->Log("user not logged in - redirecting to /login");
+        Redirect('/login');
     }
     $smarty = $userDataRetriever->AssignData($smarty, $userId, true);
     DisplayTemplateOrNotFound($smarty, 'user.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/login', function() use ($smarty, $sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/login', function() use ($smarty, $sessionManager, $notifier, $logger) {
     $userId = $sessionManager->GetUserId();
     if ($sessionManager->IsUserLoggedIn()) {
-        Redirect('Location: /a');
+        $logger->Log("user logged in - redirecting to /a");
+        Redirect('/a');
     }
     DisplayTemplateOrNotFound($smarty, 'login.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/user', function() use ($smarty, $sessionManager, $notifier, $logger) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/user', function() use ($smarty, $sessionManager, $notifier, $logger) {
     $logger->Log("create/user");
     $userId = $sessionManager->GetUserId();
     if ($sessionManager->IsUserLoggedIn()) {
         $logger->Log("create/user: redirecting to /a");
-        Redirect('Location: /a');
+        Redirect('/a');
     }
     DisplayTemplateOrNotFound($smarty, 'createUser.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager, $notifier) {
     $userId = $sessionManager->GetUserId();
     if ($sessionManager->IsUserLoggedIn()) {
-        Redirect('Location: /a');
+        Redirect('/a');
     }
     DisplayTemplateOrNotFound($smarty, 'createSubsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/logout', function() use ($sessionManager, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/logout', function() use ($sessionManager, $notifier) {
     $sessionManager->SetUserId(null);
-    Redirect('Location: /login');
+    Redirect('/login');
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}', function($userName) use ($userDataRetriever, $smarty, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/u/{uname}', function($userName) use ($userDataRetriever, $smarty, $notifier) {
     $smarty = $userDataRetriever->AssignDataByUsername($smarty, $userName, false);
     DisplayTemplateOrNotFound($smarty, 'user.tpl', $notifier);
 });
 
 // product
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s-id/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $notifier) {
-    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
-    DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s-id/{sid}', function($subsiteId) use ($notifier, $tables) {
+    $subsitesWithId = $tables->subsite->SelectById($subsiteId);
+    if (count($subsitesWithId) == 0) {
+        $notifier->Post("No subsite with this id found", "error");
+        Redirect('/');
+    }
+    $username = $tables->user->SelectById($subsitesWithId[0]["UserId"])[0]["Username"];
+    Redirect("/u/" . $username . '/' . $subsitesWithId[0]["Route"]);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/s/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
     $smarty = $subsiteDataRetriever->AssignDataByShortRoute($smarty, $subsiteShortRoute, false);
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
     $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{sid}', function($subsiteId) use ($subsiteDataRetriever, $smarty, $sessionManager, $notifier, $tables) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}', function($subsiteId) use ($subsiteEditDataRetriever, $smarty, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this subsite", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
-    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
+    $smarty = $subsiteEditDataRetriever->AssignData($smarty, $subsiteId, true);
     DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX . '/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $sessionManager, $notifier, $tables) {
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/create-f', function($subsiteId) use ($smarty, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this fragment", "error");
-        Redirect('Location: /edit/s/' . $subsiteId);
+        Redirect('/edit/s/' . $subsiteId);
     }
 
     DisplayTemplateOrNotFound($smarty, 'createFragment.tpl', $notifier);
@@ -184,7 +193,7 @@ SimpleRouter::post('/a', function() use ($userManager, $sessionManager, $smarty,
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     list($updateSuccess, $notifier) = $userManager->HandleUpdate($userId, $notifier);
 
@@ -196,7 +205,7 @@ SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $no
     list($loginSuccess, $notifier) = $loginManager->HandlePost($sessionManager, $notifier);
     
     if ($loginSuccess) {
-        Redirect('Location: /a');
+        Redirect('/a');
     } else {
         DisplayTemplateOrNotFound($smarty, 'login.tpl', $notifier);
     }
@@ -205,13 +214,13 @@ SimpleRouter::post('/login', function() use ($loginManager, $sessionManager, $no
 SimpleRouter::post('/create/user', function() use ($userManager, $sessionManager, $notifier, $smarty) {
     $userId = $sessionManager->GetUserId();
     if ($sessionManager->IsUserLoggedIn()) {
-        Redirect('Location: /a');
+        Redirect('/a');
     }
 
     list($usercreationSuccess, $notifier) = $userManager->HandleCreate($sessionManager, $notifier);
     
     if ($usercreationSuccess) {
-        Redirect('Location: /a');
+        Redirect('/a');
     } else {
         DisplayTemplateOrNotFound($smarty, 'createUser.tpl', $notifier);
     }
@@ -222,11 +231,11 @@ SimpleRouter::post('/edit/s/{sid}', function($subsiteId) use ($subsiteManager, $
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this subsite", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
     list($editSuccess, $notifier) = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
 
@@ -239,14 +248,14 @@ SimpleRouter::post('/create/subsite', function() use ($subsiteManager, $sessionM
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     list($creationSuccess, $subsiteId) = $subsiteManager->HandleCreate($userId, $notifier);
 
     if (!$creationSuccess) {
         $smarty->display('createSubsite.tpl');
     } else {
-        Redirect('Location: /edit/s/' . $subsiteId);
+        Redirect('/edit/s/' . $subsiteId);
     }
 });
 
@@ -255,30 +264,30 @@ SimpleRouter::post('/edit/s/{sid}/update-f/{fid}', function($subsiteId, $fragmen
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this fragment", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
     list($editSuccess, $notifier) = $fragmentManager->HandleUpdate($fragmentId, $subsiteId, $notifier);
 
-    Redirect('Location: /edit/s/' . $subsiteId);
+    Redirect('/edit/s/' . $subsiteId);
 });
 
 SimpleRouter::post('/edit/s/{sid}/create-f', function($subsiteId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this fragment", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
     list($createSuccess, $notifier) = $fragmentManager->HandleCreate($subsiteId, $notifier);
 
-    Redirect('Location: /edit/s/' . $subsiteId);
+    Redirect('/edit/s/' . $subsiteId);
 });
 
 // delete
@@ -287,30 +296,30 @@ SimpleRouter::post('/delete/s/{sid}', function($subsiteId) use ($subsiteManager,
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this subsite", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
     list($deleteSuccess, $notifier) = $subsiteManager->HandleDelete($subsiteId, $notifier);
 
-    Redirect('Location: /a');
+    Redirect('/a');
 });
 
 SimpleRouter::post('/edit/s/{sid}/delete-f/{fid}', function($subsiteId, $fragmentId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
-        Redirect('Location: /login');
+        Redirect('/login');
     }
     if (!AuthorizationCheck::IsAuthorizedSubsite($subsiteId, $userId, $tables)) {
         $notifier->Post("You are not authorized to edit this fragment", "error");
-        Redirect('Location: /s/' . $subsiteId);
+        Redirect('/s-id/' . $subsiteId);
     }
     list($deleteSuccess, list($notifier, $notifier)) = $fragmentManager->HandleDelete($fragmentId, $notifier);
 
-    Redirect('Location: /edit/s/' . $subsiteId);
+    Redirect('/edit/s/' . $subsiteId);
 });
 
 
@@ -329,8 +338,9 @@ function DisplayTemplateOrNotFound($smarty, $template, $maybeNotifier) {
 }
 
 function Redirect($url, $statuscode = 303) {
-    echo "Attempting redirect to: $url\n";
-    Redirect('Location: ' . $url, true, $statuscode);
+    $logger = new FileLogger("log.txt");
+    $logger->Log("Redirecting to: " . $url . " with statuscode: " . $statuscode);
+    header('Location: ' . BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . $url, true, $statuscode);
     die();
 }
 

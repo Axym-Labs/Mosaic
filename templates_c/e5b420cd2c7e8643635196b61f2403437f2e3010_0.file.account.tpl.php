@@ -41,7 +41,7 @@ public $subBlocks = array (
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-<?php echo (($tmp = $_smarty_tpl->tpl_vars['canEdit']->value ?? null)===null||$tmp==='' ? false ?? null : $tmp);?>
+<?php echo (($tmp = $_smarty_tpl->tpl_vars['isOwner']->value ?? null)===null||$tmp==='' ? false ?? null : $tmp);?>
 
 
 <div>

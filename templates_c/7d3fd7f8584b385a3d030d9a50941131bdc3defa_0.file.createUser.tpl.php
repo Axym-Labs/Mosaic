@@ -45,7 +45,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 
 <div>
-    <form action="<?php echo BusinessConstants::$UNIVERSAL_PAGE_ROUTE_PREFIX;?>
+    <form action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /create/user">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" required><br>

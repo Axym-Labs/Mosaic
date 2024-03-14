@@ -1,5 +1,5 @@
 <?php
-class SubsiteEditRetriever {
+class SubsiteEditDataRetriever {
     private $tables;
     private $subsiteDataRetriever;
 
@@ -11,7 +11,7 @@ class SubsiteEditRetriever {
     public function AssignData($smarty, $subsiteId) {
         $smarty = $this->subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
 
-        if ($smarty->getTemplateVars('Error')) {
+        if ($smarty->getTemplateVars('NotFoundError')) {
             return $smarty;
         }
 
@@ -22,18 +22,32 @@ class SubsiteEditRetriever {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
             $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
-            array_push($fragments, $this->GetTemplatedEditFragment($tableName, $fragmentContent));
+            $extraFragmentContent = $this->GetExtraEditFragmentContent($tableName, $fragmentId, $fragmentContent);
+            array_push($fragments, $this->GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent));
         }
-        $smarty->assign('fragments', $fragments);
+        $smarty->assign('editFragments', $fragments);
 
         return $smarty;
     }
     
-    private function GetTemplatedEditFragment($tableName, $fragmentContent) {
+    private function GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent) {
+        $count = 1;
+        $templateName = strtolower($tableName);
+        $templateName = str_replace("fragment", "", $templateName, $count);
+
         $smarty = new Smarty();
-        $smarty->setTemplateDir('src/templates/');
+        $smarty->setTemplateDir('src/templates/editFragments/');
         $smarty->assign('fragmentContent', $fragmentContent);
-        return $smarty->fetch("templates/editFragments/$tableName.tpl");
+        $smarty->assign('extraFragmentContent', $extraFragmentContent);
+        return $smarty->fetch("$templateName.tpl");
+    }
+
+    private function GetExtraEditFragmentContent($tableName, $fragmentId, $fragmentContent) {
+        if ($tableName == "FragmentCredentials") {
+            $userId = $fragmentContent["UserId"];
+            return $this->tables->user->SelectById($userId)[0];
+        }
+        return array();
     }
 
 }
