@@ -2,22 +2,22 @@
 socials
 
 <label for="GithubLink">Github Link:</label>
-<input type="text" id="GithubLink" name="GithubLink">
+<input type="text" id="fragment-socials-GithubLink" name="fragment-socials-GithubLink">
 
 <label for="GitlabLink">Gitlab Link:</label>
-<input type="text" id="GitlabLink" name="GitlabLink">
+<input type="text" id="fragment-socials-GitlabLink" name="fragment-socials-GitlabLink">
 
 <label for="XLink">X Link:</label>
-<input type="text" id="XLink" name="XLink">
+<input type="text" id="fragment-socials-XLink" name="fragment-socials-XLink">
 
 <label for="FacebookLink">Facebook Link:</label>
-<input type="text" id="FacebookLink" name="FacebookLink">
+<input type="text" id="fragment-socials-FacebookLink" name="fragment-socials-FacebookLink">
 
 <label for="RedditLink">Reddit Link:</label>
-<input type="text" id="RedditLink" name="RedditLink">
+<input type="text" id="fragment-socials-RedditLink" name="fragment-socials-RedditLink">
 
 <label for="DiscordLink">Discord Link:</label>
-<input type="text" id="DiscordLink" name="DiscordLink">
+<input type="text" id="fragment-socials-DiscordLink" name="fragment-socials-DiscordLink">
 
 <label for="RelativeOrder">Relative Order:</label>
-<input type="text" id="RelativeOrder" name="RelativeOrder">
+<input type="text" id="fragment-socials-RelativeOrder" name="fragment-socials-RelativeOrder">
