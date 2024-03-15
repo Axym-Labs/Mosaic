@@ -18,14 +18,13 @@ class Notifier {
         }
     }
 
-    public function GetMessages() {
-        return $this->sessionManager->GetMessages();
+    public function GetMessages($MarkMessagesAsRead = true) {
+        return $this->sessionManager->GetMessages($MarkMessagesAsRead);
     }
 
     public function MarkMessagesAsRead() {
         $this->sessionManager->MarkMessagesAsRead();
     }
-
 
 }
 ?>

@@ -50,24 +50,9 @@ class SessionManager {
     }
 
     public function MarkMessagesAsRead() {
-        $logger = new FileLogger("Logs/log.txt");
-        $messages = array_filter($_SESSION['messages'], function($message) {
-            return !$message['read'];
-        });
-        $logger->Log("Marking " . count($messages) . " messages as read");
-
-        foreach ($_SESSION['messages'] as $message) {
-            $message['read'] = true;
+        for ($i = 0; $i < count($_SESSION['messages']); $i++) {
+            $_SESSION['messages'][$i]["read"] = true;
         }
-        
-        $messages = array_filter($_SESSION['messages'], function($message) {
-            return !$message['read'];
-        });
-        $logger->Log("222 Marking " . count($messages) . " messages as read");
-
-        // for ($i = 0; $i < count($_SESSION['messages']); $i++){
-        //     $_SESSION['messages'][$i]["read"] = true;
-        // }
     }
 
 }
