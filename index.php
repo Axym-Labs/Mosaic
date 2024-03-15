@@ -1,6 +1,8 @@
 <?php
 use Pecee\SimpleRouter\SimpleRouter;
 require 'vendor/autoload.php';
+// require 'vendor/smarty/smarty/libs/Smarty.class.php';
+// require 'vendor\pecee\simple-router\src\Pecee\SimpleRouter\SimpleRouter.php';
 
 foreach (glob("src/*.php") as $filename)
 {

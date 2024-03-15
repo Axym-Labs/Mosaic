@@ -1,0 +1,46 @@
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [2] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [3] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [4] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [5] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
