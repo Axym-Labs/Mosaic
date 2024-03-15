@@ -98,3 +98,235 @@ messages: Array
 
 )
 
+Fragment update attempt: {"Position":"9","BackgroundColor":"","Opacity":"1","BackgroundImage":"","fragment-FragmentCredentials-ShowPersonalData":"1"}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"2","BackgroundColor":"","Opacity":"1","BackgroundImage":"","fragment-FragmentCredentials-ShowPersonalData":"1"}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"2","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"2","BackgroundColor":"","Opacity":"1","BackgroundImage":"","fragment-FragmentCredentials-ShowPersonalData":"1"}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"2","BackgroundColor":"","Opacity":"1","BackgroundImage":"","fragment-FragmentCredentials-ShowPersonalData":"1"}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"2","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"1","BackgroundColor":"","Opacity":"1","BackgroundImage":"","fragment-text-Text":"","fragment-text-Title":"lalala"}
+Fragment table name: FragmentText

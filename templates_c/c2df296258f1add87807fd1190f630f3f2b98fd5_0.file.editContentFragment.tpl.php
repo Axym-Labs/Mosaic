@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 23:38:22
+/* Smarty version 4.4.1, created on 2024-03-16 00:13:24
   from 'C:\xampp\htdocs\Mosaic\src\templates\fragment_components\editContentFragment.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f4cdde3017a7_08450673',
+  'unifunc' => 'content_65f4d614d999c0_87440977',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c2df296258f1add87807fd1190f630f3f2b98fd5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\fragment_components\\editContentFragment.tpl',
-      1 => 1710542057,
+      1 => 1710544399,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65f4cdde3017a7_08450673 (Smarty_Internal_Template $_smarty_tpl) {
-?>subsiteCf
+function content_65f4d614d999c0_87440977 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-<input type="number" name="Position" placeholder="Enter Position" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Position'];?>
+<div>
+    <label for="Position">Position:</label>
+    <input type="number" id="Position" name="Position" placeholder="Enter Position" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Position'];?>
 ">
-<input type="text" name="BackgroundColor" maxlength="6" placeholder="Enter BackgroundColor" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundColor'];?>
+</div>
+<div>
+    <label for="BackgroundColor">Background Color (HEX):</label>
+    <input type="text" id="BackgroundColor" name="BackgroundColor" maxlength="6" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundColor'];?>
 ">
-<input type="number" name="Opacity" step="0.01" placeholder="Enter Opacity (between 0.0 and 1.0)" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'];?>
+</div>
+<div>
+    <label for="Opacity">Opacity (0-1):</label>
+    <input type="number" id="Opacity" name="Opacity" step="0.01" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'];?>
 ">
-<input type="file" name="BackgroundImage" accept="image/*">
-
-<?php }
+</div>
+<div>
+    <label for="BackgroundImage">Background Image:</label>
+    <input type="file" id="BackgroundImage" name="BackgroundImage" accept="image/*">
+</div><?php }
 }
