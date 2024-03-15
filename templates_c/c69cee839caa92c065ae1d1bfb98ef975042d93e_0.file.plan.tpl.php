@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 4.4.1, created on 2024-03-08 14:41:35
-  from 'C:\xampp\htdocs\Mosaic\src\templates\larger_components\plan.tpl' */
+  from 'C:\xampp\htdocs\Mosaic\src\templates\site_components\plan.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'c69cee839caa92c065ae1d1bfb98ef975042d93e' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\larger_components\\plan.tpl',
+      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\site_components\\plan.tpl',
       1 => 1709905278,
       2 => 'file',
     ),

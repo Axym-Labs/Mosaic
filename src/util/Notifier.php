@@ -1,24 +1,29 @@
 <?php
 class Notifier {
 
-    private $messages;
+    private $sessionManager;
     private $logger;
 
-    public function __construct()
+    public function __construct($sessionManager)
     {
-        $this->messages = array();
+        $this->sessionManager = $sessionManager;
         $this->logger = new FileLogger("Logs/notifier.txt");
     }
 
     public function Post($message, $messageType = "error") {
-        array_push($this->messages, array("message" => $message, "messageType" => $messageType));
+        $this->sessionManager->AddToMessageContainer(array("message" => $message, "messageType" => $messageType));
         if ($messageType != "info") {
-            $this->logger->Log("Posted message [$messageType]: " . $message);
+            $date = date("Y-m-d H:i:s");
+            $this->logger->Log("[$date] [$messageType]: " . $message);
         }
     }
 
     public function GetMessages() {
-        return $this->messages;
+        return $this->sessionManager->GetMessages();
+    }
+
+    public function MarkMessagesAsRead() {
+        $this->sessionManager->MarkMessagesAsRead();
     }
 
 

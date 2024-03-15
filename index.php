@@ -23,7 +23,7 @@ $dbCon = new dbConnection($servername, $username, $password);
 $logger = new FileLogger("Logs/log.txt");
 
 $sessionManager = new SessionManager();
-$notifier = new Notifier();
+$notifier = new Notifier($sessionManager);
 $tables = new tableDefinitions($dbCon);
 
 
@@ -43,7 +43,9 @@ $fragmentManager = new FragmentManager($tables);
 if (BusinessConstants::$HOSTMODE == "dev") {
     $notifier->Post("You are in dev mode. This is a test", "info");
     // $smarty->assign("users", $tables->user->SelectAll());
-    // $smarty->assign("userColumnTypeData", $tables->user->GetColumnTypeData());
+
+    // for generic renderer
+    $smarty->assign("userColumnTypeData", $tables->user->GetColumnTypeData());
 
     // $sessionManager->SetUserId(1);
 }
@@ -66,7 +68,6 @@ $smarty->assign('sessionManager', $sessionManager);
 
 SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/', function() use ($frontDataRetriever, $pricingDataRetriever, $smarty, $sessionManager, $notifier, $logger) {
     $userId = $sessionManager->GetUserId();
-    $logger->Log("userid: $userId");
     if ($sessionManager->IsUserLoggedIn()) {
         $logger->Log("user not logged in - redirecting to /a");
         Redirect('/a');
@@ -326,6 +327,8 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/d
 function DisplayTemplateOrNotFound($smarty, $template, $maybeNotifier) {
     if ($maybeNotifier != null) {
         $smarty->assign('notifier', $maybeNotifier);
+        $logger = new FileLogger("Logs/log.txt");
+        $logger->Log("messages: " . print_r($maybeNotifier->GetMessages(false), true));
     }
     if (!$smarty->getTemplateVars('NotFoundError') && $smarty->templateExists($template)) {
         $smarty->display($template);

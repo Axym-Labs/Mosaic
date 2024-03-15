@@ -1,9 +1,0 @@
-Posted message [error]: Username already exists
-Posted message [error]: Username already exists
-Posted message [error]: Invalid email format
-Posted message [error]: Invalid email format
-Posted message [error]: Password does not match
-Posted message [error]: Password does not match
-Posted message [error]: Password does not match
-Posted message [error]: Password does not match
-Posted message [error]: Password does not match

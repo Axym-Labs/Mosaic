@@ -19,7 +19,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'includes' => 
   array (
     'file:components/linkbutton.tpl' => 4,
-    'file:larger_components/planOverview.tpl' => 1,
+    'file:site_components/planOverview.tpl' => 1,
     'file:user/userProfile.tpl' => 1,
   ),
 ),false)) {
@@ -60,7 +60,7 @@ $_smarty_tpl->_subTemplateRender('file:components/linkbutton.tpl', $_smarty_tpl-
 </h1>
 </div>
 
-<?php $_smarty_tpl->_subTemplateRender("file:larger_components/planOverview.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('plans'=>$_smarty_tpl->tpl_vars['plans']->value,'planperms'=>$_smarty_tpl->tpl_vars['planperms']->value,'planColumnTypeData'=>$_smarty_tpl->tpl_vars['planColumnTypeData']->value,'planpermColumnTypeData'=>$_smarty_tpl->tpl_vars['planpermColumnTypeData']->value), 0, false);
+<?php $_smarty_tpl->_subTemplateRender("file:site_components/planOverview.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('plans'=>$_smarty_tpl->tpl_vars['plans']->value,'planperms'=>$_smarty_tpl->tpl_vars['planperms']->value,'planColumnTypeData'=>$_smarty_tpl->tpl_vars['planColumnTypeData']->value,'planpermColumnTypeData'=>$_smarty_tpl->tpl_vars['planpermColumnTypeData']->value), 0, false);
 ?>
 
 

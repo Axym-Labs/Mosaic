@@ -5,7 +5,7 @@
 <br>
 <br>
 
-{include file='larger_components/subsiteView.tpl'}
+{include file='site_components/subsiteView.tpl'}
 
 <br>
 <br>

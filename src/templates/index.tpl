@@ -11,7 +11,7 @@
     <h1 class="text-3xl font-bold">Created Subsites: {$subsiteCount}</h1>
 </div>
 
-{include "larger_components/planOverview.tpl" plans=$plans planperms=$planperms planColumnTypeData=$planColumnTypeData planpermColumnTypeData=$planpermColumnTypeData}
+{include "site_components/planOverview.tpl" plans=$plans planperms=$planperms planColumnTypeData=$planColumnTypeData planpermColumnTypeData=$planpermColumnTypeData}
 
 
 {/block}
