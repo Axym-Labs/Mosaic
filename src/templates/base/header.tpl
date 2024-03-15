@@ -1,3 +1,7 @@
+{if !isset($redirectToFront)}
+    {assign var="redirectToFront" value=false}
+{/if}
+
 <nav id="nav" class="sticky top-0">
     <div id="navbar-contents" class="flex" style="height: 62px;">
         <div id="navbar-logo" class="w-full md:w-1/5 lg:w-1/6 2xl:w-1/12 bg-bgcol flex justify-between md:justify-center items-center">

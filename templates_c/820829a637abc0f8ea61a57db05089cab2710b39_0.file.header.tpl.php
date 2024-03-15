@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-14 22:00:21
+/* Smarty version 4.4.1, created on 2024-03-15 14:18:46
   from 'C:\xampp\htdocs\Mosaic\src\templates\base\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f365655d9825_49079198',
+  'unifunc' => 'content_65f44ab643bf14_93890236',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '820829a637abc0f8ea61a57db05089cab2710b39' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\base\\header.tpl',
-      1 => 1710450019,
+      1 => 1710508701,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:components/linkbutton.tpl' => 3,
   ),
 ),false)) {
-function content_65f365655d9825_49079198 (Smarty_Internal_Template $_smarty_tpl) {
-?><nav id="nav" class="sticky top-0">
+function content_65f44ab643bf14_93890236 (Smarty_Internal_Template $_smarty_tpl) {
+if (!(isset($_smarty_tpl->tpl_vars['redirectToFront']->value))) {?>
+    <?php $_smarty_tpl->_assignInScope('redirectToFront', false);
+}?>
+
+<nav id="nav" class="sticky top-0">
     <div id="navbar-contents" class="flex" style="height: 62px;">
         <div id="navbar-logo" class="w-full md:w-1/5 lg:w-1/6 2xl:w-1/12 bg-bgcol flex justify-between md:justify-center items-center">
             <a href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;

@@ -98,6 +98,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/a', function() 
         $logger->Log("user not logged in - redirecting to /login");
         Redirect('/login');
     }
+    $smarty->assign("redirectToFront", true); // for the navbar (to show the front link instead of the user link
     $smarty = $userDataRetriever->AssignData($smarty, $userId, true);
     DisplayTemplateOrNotFound($smarty, 'user.tpl', $notifier);
 });
