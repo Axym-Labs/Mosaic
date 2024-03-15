@@ -15,7 +15,7 @@ class LoginManager {
             return array(false, $notifier);
         }
 
-        $sessionManager::SetUserId($maybeUser["UserId"]);
+        $sessionManager->SetUserId($maybeUser["UserId"]);
         
         return array(true, $notifier);
     }

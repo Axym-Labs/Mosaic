@@ -101,3 +101,14 @@ SELECT * FROM mosaic.user WHERE email = "b@b.b"
 INSERT INTO mosaic.user (Email, LastName, FirstName, Password, ProfilePicture, Username, PlanId, Salt) VALUES ("b@b.b", "b", "b", "47840e235b21c7af0ef0a43fd8d03a2f48e479c434226d0440cc64764e3e7ba4", "", "b", 1, "28458aba1d")
 SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
 SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
