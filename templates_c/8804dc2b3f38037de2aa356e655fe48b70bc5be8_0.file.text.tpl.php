@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-08 14:25:26
+/* Smarty version 4.4.1, created on 2024-03-15 15:08:27
   from 'C:\xampp\htdocs\Mosaic\src\templates\fragments\text.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65eb11c6ca5867_41291281',
+  'unifunc' => 'content_65f4565b3d1bc7_43638644',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8804dc2b3f38037de2aa356e655fe48b70bc5be8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\fragments\\text.tpl',
-      1 => 1709904268,
+      1 => 1710511278,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65eb11c6ca5867_41291281 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f4565b3d1bc7_43638644 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 text
+
+<div class="bg-gray-100 p-4 rounded-md">
+    <?php if (strpos($_smarty_tpl->tpl_vars['fragmentContent']->value["Text"],"base64")) {?>
+        <img src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['fragmentContent']->value['Text'];?>
+" alt="Image" class="mb-4 rounded-lg">
+    <?php } else { ?>
+        <h2 class="text-xl font-bold mb-2"><?php echo $_smarty_tpl->tpl_vars['fragmentContent']->value["Title"];?>
+</h2>
+        <p><?php echo $_smarty_tpl->tpl_vars['fragmentContent']->value["Text"];?>
+</p>
+    <?php }?>
+</div>
+
 
 <?php echo GenericRender::RenderDict($_smarty_tpl->tpl_vars['fragmentContent']->value,$_smarty_tpl->tpl_vars['fragmentColumnTypeData']->value);?>
 

@@ -9,7 +9,6 @@ image
         </div>
     {/if}
     <div class="mb-4">
-        <span class="font-bold">Description:</span>
         <p>{$fragmentContent["Description"]}</p>
     </div>
 </div>

@@ -21,7 +21,7 @@ class SubsiteEditDataRetriever {
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
-            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
+            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId)[0];
             $extraFragmentContent = $this->GetExtraEditFragmentContent($tableName, $fragmentId, $fragmentContent);
             array_push($fragments, $this->GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent));
         }

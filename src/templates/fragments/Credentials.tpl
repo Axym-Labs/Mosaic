@@ -12,17 +12,14 @@ credentials
         <span>{$fragmentContent["Username"]}</span>
     </div>
     <div class="flex items-center mb-2">
-        <span class="font-bold mr-2">First Name:</span>
         <span>{$fragmentContent["FirstName"]}</span>
     </div>
     <div class="flex items-center mb-2">
-        <span class="font-bold mr-2">Last Name:</span>
         <span>{$fragmentContent["LastName"]}</span>
     </div>
     {if $fragmentContent["ShowPersonalData"]}
         <div class="flex items-center mb-2">
-            <span class="font-bold mr-2">Email:</span>
-            <span>{$extraFragmentContent["Email"]}</span>
+            <a href="mailto:{$extraFragmentContent["Email"]}">{$extraFragmentContent["Email"]}</a>
         </div>
     {/if}
 </div>
