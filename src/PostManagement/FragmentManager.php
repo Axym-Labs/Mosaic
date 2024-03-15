@@ -8,7 +8,9 @@ class FragmentManager {
 
     // editView-option
     public function HandleUpdate($fragmentId, $subsiteId, $notifier) {
-        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
+        $postData = $_POST;
+        $postData = $this->reduceFragmentSpecificPostData($postData);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $postData, $notifier);
         if (!$valid) {
             return array(false, $notifier);
         }
@@ -23,7 +25,9 @@ class FragmentManager {
     }
 
     public function HandleCreate($subsiteId, $notifier) {
-        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $_POST, $notifier);
+        $postData = $_POST;
+        $postData = $this->reduceFragmentSpecificPostData($postData);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $postData, $notifier);
         if (!$valid) {
             return array(false, $notifier);
         }
@@ -42,12 +46,24 @@ class FragmentManager {
         }
     }
 
+    private function reduceFragmentSpecificPostData($postData) {
+        $tableName = $postData["ContentTableName"];
+        $newPostData = array();
+        foreach ($postData as $key => $value) {
+            if (!str_starts_with($key, "fragment-") || str_starts_with($key, "fragment-" . $tableName . "-")) {
+                $newKey = str_replace("fragment-" . $tableName . "-", "", $key);
+                $newPostData[$newKey] = $value;
+            }
+        }
+        return $newPostData;
+    }
+
     private function ValidateAndFillEntity($subsiteId, $postData, $notifier) {
         list($valid, $notifier) = $this->ValidateData($subsiteId, $postData, $notifier);
         if (!$valid) {
             return array($postData, false, $notifier);
         }
-        $postData = $this->DefineAutoValues($postData);
+        $postData = $this->DefineAutoValues($postData, $subsiteId);
         return array($postData, true, $notifier);
     }
 
@@ -106,11 +122,17 @@ class FragmentManager {
         return array(true, $notifier);
     }
 
-    private function DefineAutoValues($postData) {
+    private function DefineAutoValues($postData, $subsiteId) {
+        $postData["WebsiteId"] = $subsiteId;
         if (!array_key_exists("Position", $postData)) {
-            $position = $this->tables->subsitecf->Select("SubSiteId = " . $postData["SubSiteId"], 1, "MAX(Position)")[0]["MAX(Position)"];
-            $postData["Position"] = $position + 1;
+            $cfEntries = $this->tables->subsitecf->Select("SubSiteId = " . $postData["SubSiteId"], 1, "MAX(Position)");
+            if (count($cfEntries) == 0) {
+                $postData["Position"] = 1;
+            } else {
+                $postData["Position"] = $cfEntries[0]["MAX(Position)"] + 1;
+            }
         }
+        $postData["Spannable"] = 1;
         
         return $postData;
     }

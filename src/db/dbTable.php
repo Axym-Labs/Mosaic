@@ -32,40 +32,40 @@ class dbTable
     }
 
     public function OverwriteFromPostRequest($postData) {
-        list($id, $cvSet) = $this->PrepareCvSetArray($postData);
-        $this->Overwrite($id, $cvSet);
+        $cvSets = $this->PrepareCvSetArray($postData);
+        $id = $postData[$this->queryTemplater->idIdentifier];
+        $this->Overwrite($id, $cvSets);
     }
     
     public function InsertFromPostRequest($postData) {
-        list($id, $cvSet) = $this->PrepareCvSetArray($postData);
-        $this->InsertWithCvSet($id, $cvSet);
+        $cvSets = $this->PrepareCvSetArray($postData);
+        $this->InsertWithCvSet($cvSets);
     }
     
     private function PrepareCvSetArray($postData) {
         $postData = $this->queryTemplater->FilterForColumnNames($postData, true);
-        $cvSet = $this->queryTemplater->ConvertToCvSet($postData);
-
-        return $cvSet;
+        $cvSets = $this->queryTemplater->ConvertToCvSetArray($postData);
+        return $cvSets;
     }
     
     public function Insert($columnValues) {
         $query = $this->queryTemplater->GetInsert($columnValues, true);
-        return $this->returnFetchedResult($query);
+        return $this->returnRawResultWithExecution($query);
     }
 
     public function InsertWithCvSet($cvSet) {
         $query = $this->queryTemplater->GetInsertWithCvSet($cvSet, true);
-        return $this->returnFetchedResult($query);
+        return $this->returnRawResultWithExecution($query);
     }
     
     public function Overwrite($id, $cvSet) {
         $query = $this->queryTemplater->GetOverwrite($id, $cvSet);
-        return $this->returnFetchedResult($query);
+        return $this->returnRawResultWithExecution($query);
     }
 
     public function Update($id, $column, $value, $isString = false) {
         $query = $this->queryTemplater->GetUpdate($id, $column, $value, $isString);
-        return $this->returnFetchedResult($query);
+        return $this->returnRawResultWithExecution($query);
     }
 
     public function SelectById($condition, $limit = 0, $orderBy = "") {
@@ -85,7 +85,11 @@ class dbTable
 
     public function Delete($id) {
         $query = $this->queryTemplater->GetDelete($id);
-        return $this->returnFetchedResult($query);
+        return $this->returnRawResultWithExecution($query);
+    }
+
+    private function returnRawResultWithExecution($query) {
+        return $this->dbCon->Execute($query);
     }
 
     private function returnFetchedResult($query) {

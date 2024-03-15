@@ -7,10 +7,10 @@ class Notifier {
     public function __construct()
     {
         $this->messages = array();
-        $this->logger = new FileLogger("notifier.txt");
+        $this->logger = new FileLogger("Logs/notifier.txt");
     }
 
-    public function Post($message, $messageType) {
+    public function Post($message, $messageType = "error") {
         array_push($this->messages, array("message" => $message, "messageType" => $messageType));
         if ($messageType != "info") {
             $this->logger->Log("Posted message [$messageType]: " . $message);

@@ -10,7 +10,5 @@ class tableConfiguration {
         $this->tableNamePrefix = $tableNamePrefix;
     }
 
-
-
 }
 ?>

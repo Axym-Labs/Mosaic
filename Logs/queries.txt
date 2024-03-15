@@ -1,0 +1,103 @@
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
+SELECT * FROM mosaic.fragmenttext WHERE Id = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
+SELECT * FROM mosaic.fragmenttext WHERE Id = 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
+SELECT * FROM mosaic.fragmenttext WHERE Id = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
+SELECT * FROM mosaic.fragmenttext WHERE Id = 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = '1'
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = '1'
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = '1'
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = '1'
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE 1
+SELECT * FROM mosaic.user WHERE username = a
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Email = 'a@a.a' LIMIT 1
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+INSERT INTO mosaic.user (Email, LastName, FirstName, Password, ProfilePicture, Username, PlanId, Salt) VALUES ("a@a.a", "a", "a", "aaaaaaaa", "", "a", 1, "8308c11579")
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE email = "a@a.a"
+INSERT INTO mosaic.user (Email, LastName, FirstName, Password, ProfilePicture, Username, PlanId, Salt) VALUES ("a@a.a", "a", "a", "2d35e3848b26a937281fbaa42f425bb283d02bd914a9026f3c2dbc3494eccf3c", "", "a", 1, "f37de5e5e5")
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.user WHERE Email = 'a@a.a' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'a@a.a' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'a@a.a' LIMIT 1
+SELECT * FROM mosaic.user WHERE Username = "b"
+SELECT * FROM mosaic.user WHERE email = "b@b.b"
+INSERT INTO mosaic.user (Email, LastName, FirstName, Password, ProfilePicture, Username, PlanId, Salt) VALUES ("b@b.b", "b", "b", "47840e235b21c7af0ef0a43fd8d03a2f48e479c434226d0440cc64764e3e7ba4", "", "b", 1, "28458aba1d")
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1

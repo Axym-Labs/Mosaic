@@ -2,26 +2,32 @@
 {block name=content}
 
 <div>
-    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/create/user">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/create/user" method="POST">
+        <label for="Email">Email:</label>
+        <input class="bg-bgcol border-b border-white" type="text" id="Email" name="Email" required><br>
 
-        <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" required><br>
+        <label for="LastName">Last Name:</label>
+        <input class="bg-bgcol border-b border-white" type="text" id="LastName" name="LastName" required><br>
 
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname" required><br>
+        <label for="FirstName">First Name:</label>
+        <input class="bg-bgcol border-b border-white" type="text" id="FirstName" name="FirstName" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+        <label for="Password">Password:</label>
+        <input class="bg-bgcol border-b border-white" type="password" id="Password" name="Password" required><br>
 
-        <label for="profilepicture">Profile Picture:</label>
-        <input type="file" id="profilepicture" name="profilepicture" accept="image/*"><br>
+        <label for="ConfirmPassword">Confirm password:</label>
+        <input class="bg-bgcol border-b border-white" type="password" id="ConfirmPassword" name="ConfirmPassword" required><br>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        <input type="submit" value="Submit">
+        <label for="ProfilePicture">Profile Picture:</label>
+        <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept="image/*"><br>
+
+        <label for="Username">Username:</label>
+        <input class="bg-bgcol border-b border-white" type="text" id="Username" name="Username" required><br>
+        
+        {include file='components/submitbutton.tpl' text="Create User"}
     </form>
 </div>
+
+
 
 {/block}

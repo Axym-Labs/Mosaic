@@ -9,8 +9,10 @@ class AuthorizationCheck {
         return $subsitesWithId[0]["UserId"] == $userId;
     }
 
-    public static function PasswordMatch($user, $password, $tables) {
-        return $user["Password"] == PasswordEntryption::Encrypt($password, $user["Salt"]);
+    public static function PasswordMatch($user, $password) {
+        $logger = new FileLogger("Logs/log.txt");
+        $logger->Log("PasswordMatch: " . $user["Password"] . " " . AuthorizationCheck::HashPassword($password, $user["Salt"]));
+        return str_starts_with(AuthorizationCheck::HashPassword($password, $user["Salt"]), $user["Password"]);
     }
 
     public static function PasswordMatchById($userId, $password, $tables) {
@@ -21,6 +23,10 @@ class AuthorizationCheck {
     public static function GenerateSalt() {
         // of length 10
         return bin2hex(random_bytes(5));
+    }
+
+    public static function HashPassword($password, $salt) {
+        return PasswordEntryption::Encrypt($password, $salt);
     }
 }
 ?>

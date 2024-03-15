@@ -13,10 +13,6 @@ class PricingDataRetriever {
         for ($i = 0; $i < count($plans); $i++) {
             array_push($planPerms, $this->tables->planperm->SelectById($plans[$i]["PlanPermissionId"])[0]);
         }
-
-        $log = new FileLogger("log.txt");
-        $log->Log("Plans: " . json_encode($plans));
-        $log->Log("Planperm: " . json_encode($planPerms));
         
         $smarty->assign('plans', $plans);
         $smarty->assign('planperms', $planPerms);

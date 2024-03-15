@@ -78,8 +78,8 @@ class SubsiteDataRetriever {
         $smarty->assign('fragmentContent', $fragmentContent);
         $smarty->assign('extraFragmentContent', $extraFragmentContent);
         
-        $log = new FileLogger("log.txt");
-        $log->Log("extra fragmentcontent: " . json_encode($extraFragmentContent));
+        // $log = new FileLogger("Logs/log.txt");
+        // $log->Log("extra fragmentcontent: " . json_encode($extraFragmentContent));
 
         $smarty->assign("fragmentColumnTypeData", $this->tables->fragments->GetTableByName($tableName)->GetColumnTypeData());
         return $smarty->fetch("$templateName.tpl");

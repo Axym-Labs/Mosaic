@@ -9,4 +9,10 @@
 
 {include file='user/subsiteList.tpl'}
 
+{if $isOwner}
+    <a href="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/logout">
+        Logout
+    </a>
+{/if}
+
 {/block}

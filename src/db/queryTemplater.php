@@ -39,12 +39,12 @@ class queryTemplater
         return $this->columnTypes;
     }
 
-    public function ConvertToCvSet($kvArray) {
-        $cvSet = array();
+    public function ConvertToCvSetArray($kvArray) {
+        $cvSets = array();
         foreach ($kvArray as $key => $value) {
-            $cvSet[] = new cvSet($key, $value, $this->columnTypes[$key]);
+            array_push($cvSets, new cvSet($key, $value, $this->columnTypes[$key]));
         }
-        return $cvSet;
+        return $cvSets;
     }
 
     public function FilterForColumnNames($kvArray, $removeId = false) {
@@ -79,7 +79,9 @@ class queryTemplater
             $kvArray = array_filter($kvArray, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
         }
         // if not all columns are present, throw error
-        if (count(array_diff($this->columnNames, array_keys($kvArray))) > 0) {
+        $testKvArray = $kvArray;
+        $testKvArray[$this->idIdentifier] = 0; // for checking if all columns are present
+        if (count(array_diff($this->columnNames, array_keys($testKvArray))) > 0) {
             throw new Exception("Difference in keys of the passed set and the table columns.");
         }
         $query = $this->queryTemplates["insert"];
@@ -105,8 +107,10 @@ class queryTemplater
             $updateSetArray = array_filter($updateSetArray, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
         }
         // if not all columns are present, throw error
-        if (count(array_diff($this->columnNames, array_map(function($x) { return $x->column; }, $updateSetArray))) > 0) {
-            throw new Exception("Difference in keys of the update set and the table columns.");
+        $testKvArray = array_map(function($x) { return $x->column; }, $updateSetArray);
+        array_push($testKvArray, $this->idIdentifier); // for checking if all columns are present
+        if (count(array_diff($this->columnNames, $testKvArray)) > 0) {
+            throw new Exception("Difference in keys of the update set and the table columns: " . var_dump($this->columnNames) . " - " . var_dump($testKvArray) . " - " . print_r(array_diff($this->columnNames, $testKvArray), true));
         }
         $query = $this->queryTemplates["insertGeneric"];
         $query = $this->ReplaceTypelessIdentifier($query, "columns", join(", ", array_map(function($x) { return $x->GetColumnPart(); }, $updateSetArray)));
@@ -137,7 +141,7 @@ class queryTemplater
         }
         return $query;
     }
-
+    
     public function GetSelectById($id, $limit = 0, $orderBy = "") {
         $query = $this->queryTemplates["select"];
         $query = $this->ReplaceTypelessIdentifier($query, "columns", "*");
