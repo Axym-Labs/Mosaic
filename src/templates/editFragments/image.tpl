@@ -1,6 +1,4 @@
 
-image
-
 <label for="ImageContent">ImageContent:</label>
 <input type="file" id="ImageContent" name="ImageContent" accept="image/*">
 

@@ -34,6 +34,7 @@ $subsiteDataRetriever = new SubsiteDataRetriever($tables);
 $subsiteEditDataRetriever = new SubsiteEditDataRetriever($tables);
 $userDataRetriever = new UserDataRetriever($tables);
 $pricingDataRetriever = new PricingDataRetriever($tables);
+$createSubsiteDataRetriever = new CreateSubsiteDataRetriever($tables);
 
 $userManager = new UserManager($tables);
 $loginManager = new LoginManager($tables);
@@ -122,11 +123,11 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/user', f
     DisplayTemplateOrNotFound($smarty, 'createUser.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager, $notifier) {
-    $userId = $sessionManager->GetUserId();
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/subsite', function() use ($smarty, $sessionManager, $notifier, $createSubsiteDataRetriever) {
     if ($sessionManager->IsUserLoggedIn()) {
         Redirect('/a');
     }
+    $smarty = $createSubsiteDataRetriever->AssignData($smarty, $sessionManager->GetUserId());
     DisplayTemplateOrNotFound($smarty, 'createSubsite.tpl', $notifier);
 });
 
@@ -172,6 +173,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}', 
         $notifier->Post("You are not authorized to edit this subsite", "error");
         Redirect('/s-id/' . $subsiteId);
     }
+    $smarty->assign("contentMaxWidth", "2000px"); // allow for horizontal layout
     $smarty = $subsiteEditDataRetriever->AssignData($smarty, $subsiteId, true);
     DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl', $notifier);
 });
@@ -186,7 +188,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/cr
         $notifier->Post("You are not authorized to edit this fragment", "error");
         Redirect('/edit/s/' . $subsiteId);
     }
-
+    $smarty->assign("subsiteId", $subsiteId);
     DisplayTemplateOrNotFound($smarty, 'createFragment.tpl', $notifier);
 });
 
@@ -264,7 +266,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/create/subsite
 });
 
 // subsite
-SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/update-f/{fid}', function($subsiteId, $fragmentId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
+SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/update-f/{cfid}', function($subsiteId, $subsiteCfId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
@@ -274,7 +276,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/u
         $notifier->Post("You are not authorized to edit this fragment", "error");
         Redirect('/s-id/' . $subsiteId);
     }
-    list($editSuccess, $notifier) = $fragmentManager->HandleUpdate($fragmentId, $subsiteId, $notifier);
+    list($editSuccess, $notifier) = $fragmentManager->HandleUpdate($subsiteCfId, $subsiteId, $notifier);
 
     Redirect('/edit/s/' . $subsiteId);
 });
@@ -311,7 +313,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/delete/s/{sid}
     Redirect('/a');
 });
 
-SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/delete-f/{fid}', function($subsiteId, $fragmentId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
+SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/delete-f/{cfid}', function($subsiteId, $subsiteCfId) use ($fragmentManager, $sessionManager, $notifier, $tables) {
     $userId = $sessionManager->GetUserId();
     if (!$sessionManager->IsUserLoggedIn()) {
         $notifier->Post("Log in, then visit the url again", "error");
@@ -321,7 +323,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}/d
         $notifier->Post("You are not authorized to edit this fragment", "error");
         Redirect('/s-id/' . $subsiteId);
     }
-    list($deleteSuccess, list($notifier, $notifier)) = $fragmentManager->HandleDelete($fragmentId, $notifier);
+    list($deleteSuccess, $nofitier) = $fragmentManager->HandleDelete($subsiteCfId, $notifier);
 
     Redirect('/edit/s/' . $subsiteId);
 });
@@ -333,13 +335,21 @@ function DisplayTemplateOrNotFound($smarty, $template, $maybeNotifier) {
         $logger = new FileLogger("Logs/log.txt");
         $logger->Log("messages: " . print_r($maybeNotifier->GetMessages(false), true));
     }
-    if (!$smarty->getTemplateVars('NotFoundError') && $smarty->templateExists($template)) {
+    if (!$smarty->getTemplateVars('NotFoundError') && !$smarty->getTemplateVars("Error") && $smarty->templateExists($template)) {
         $smarty->display($template);
+    }
+    elseif ($smarty->getTemplateVars('Error')) {
+        if ($maybeNotifier != null) {
+            $maybeNotifier->Post($smarty->getTemplateVars('Error'), "error");
+        }
+        Redirect('/');
     } else {
         if (!$smarty->getTemplateVars('NotFoundError')) {
-            $smarty->assign('NotFoundError', "Page not found");
+            $smarty->assign('NotFoundError', "This page does not seem to exist.");
         }
-        $smarty->display('notfound.tpl');
+        $smarty->assign('Error', $smarty->getTemplateVars('NotFoundError'));
+        $smarty->assign("errorTitle", "404 Page Not Found");
+        $smarty->display('error.tpl');
     }
 }
 
@@ -349,8 +359,8 @@ function Redirect($url, $statuscode = 303) {
 }
 
 SimpleRouter::error(function($exception) use ($smarty) {
-    $smarty->assign('NotFoundError', "Page not found");
-    $smarty->display('notfound.tpl');
+    $smarty->assign('Error', "This page does not seem to exist.");
+    $smarty->display('error.tpl');
 });
 
 SimpleRouter::start();

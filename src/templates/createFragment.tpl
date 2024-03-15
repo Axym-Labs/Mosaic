@@ -1,17 +1,9 @@
 {extends file='base/base.tpl'}
 {block name=content}
 
-<form>
-    SubsiteContentFragmentId,bigint(20)
-    BackgroundColor,varchar(6)
-    Opacity,float
-    ContentTableName,varchar(50) -> a radio field of available options
-    BackgroundImage,blob
-
-    js script here
+<form method="post" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/create-f">    
     
     <div>
-        editfragments input names and ids must be in the form of fragment-tablename-...
         <div class="fragment-type" id="credentials">
             {include file='editFragment/credentials.tpl'}
         </div>

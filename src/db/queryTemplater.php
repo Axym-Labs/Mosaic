@@ -92,9 +92,16 @@ class queryTemplater
     }
 
     public function GetOverwrite($id, $updateSetArray) {
+        // remove id to not cause any problems
+        $updateSetArray = array_filter($updateSetArray, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
+
         // if not all columns are present, throw error
-        if (count(array_diff($this->columnNames, array_keys(array_map(function($x) { return $x->column; }, $updateSetArray)))) > 0) {
-            throw new Exception("Difference in keys of the update set and the table columns.");
+        $testKvArray = array_map(function($x) { return $x->column; }, $updateSetArray);
+        array_push($testKvArray, $this->idIdentifier); // for checking if all columns are present
+
+        if (count(array_diff($this->columnNames, $testKvArray)) > 0) {
+            $diff = array_diff($this->columnNames, $testKvArray);
+            throw new Exception("Difference in keys of the update set and the table columns: " . "--- OLD: " . print_r($this->columnNames, true)  . "--- NEW: " . print_r($testKvArray, true) . "--- DIFF: " . print_r($diff, true) . "<br>");
         }
         $query = $this->queryTemplates["overwrite"];
         $query = $this->ReplaceIdentifier($query, "value", "Id", $id);

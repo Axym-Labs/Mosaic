@@ -7,26 +7,40 @@ class FragmentManager {
     }
 
     // editView-option
-    public function HandleUpdate($fragmentId, $subsiteId, $notifier) {
+    public function HandleUpdate($subsiteCfId, $subsiteId, $notifier) {
         $postData = $_POST;
-        $postData = $this->reduceFragmentSpecificPostData($postData);
-        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $postData, $notifier);
+        $subsiteCf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
+        $tableName = $subsiteCf["ContentTableName"];
+
+        $logger = new FileLogger("Logs/log.txt");
+        $logger->Log("Fragment update attempt: " . json_encode($postData));
+        $logger->Log("Fragment table name: " . $tableName);
+
+        $fragmentId = $subsiteCf["ContentId"];
+        $postData = $this->reduceFragmentSpecificPostData($tableName, $postData);
+        list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId,$postData, $notifier, $subsiteCfId);
         if (!$valid) {
             return array(false, $notifier);
         }
 
-        try {
-            $this->tables->subsitecf->OverwriteFromPostRequest($postData);
-            return true;
-        } catch (Exception $e) {
-            $notifier->Post("Error: Could not update the fragment.", "error");
-            return array(false, $notifier);
-        }
+        $postData["ContentTableName"] = $tableName;
+        $postData["ContentId"] = $fragmentId;
+
+        $this->tables->fragments->GetTableByName($subsiteCf["ContentTableName"])->OverwriteFromPostRequest($fragmentId, $postData);
+
+        $this->tables->subsitecf->OverwriteFromPostRequest($fragmentId, $postData);
+        return array(true, $notifier);
+        // try {
+        // } catch (Exception $e) {
+        //     $notifier->Post("Error: Could not update the fragment.", "error");
+        //     return array(false, $notifier);
+        // }
     }
 
     public function HandleCreate($subsiteId, $notifier) {
         $postData = $_POST;
-        $postData = $this->reduceFragmentSpecificPostData($postData);
+        $tableName = $postData["ContentTableName"];
+        $postData = $this->reduceFragmentSpecificPostData($tableName, $postData);
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId, $postData, $notifier);
         if (!$valid) {
             return array(false, $notifier);
@@ -37,17 +51,18 @@ class FragmentManager {
 
         $postData["ContentId"] = $contentId;
 
-        try {
-            $this->tables->subsitecf->InsertFromPostRequest($postData);
-            return array(true, $notifier);
-        } catch (Exception $e) {
-            $notifier->Post("Error: Could not create your fragment. Try again later or contact support.", "error");
-            return array(true, $notifier);
-        }
+        $this->tables->subsitecf->InsertFromPostRequest($postData);
+        return array(true, $notifier);
+
+        // try {
+        // } catch (Exception $e) {
+        //     $notifier->Post("Error: Could not create your fragment. Try again later or contact support.", "error");
+        //     return array(true, $notifier);
+        // }
     }
 
-    private function reduceFragmentSpecificPostData($postData) {
-        $tableName = $postData["ContentTableName"];
+    private function reduceFragmentSpecificPostData($tableName, $postData) {
+
         $newPostData = array();
         foreach ($postData as $key => $value) {
             if (!str_starts_with($key, "fragment-") || str_starts_with($key, "fragment-" . $tableName . "-")) {
@@ -58,18 +73,18 @@ class FragmentManager {
         return $newPostData;
     }
 
-    private function ValidateAndFillEntity($subsiteId, $postData, $notifier) {
+    private function ValidateAndFillEntity($subsiteId, $postData, $notifier, $subsiteCfId = -1) {
         list($valid, $notifier) = $this->ValidateData($subsiteId, $postData, $notifier);
         if (!$valid) {
             return array($postData, false, $notifier);
         }
-        $postData = $this->DefineAutoValues($postData, $subsiteId);
+        $postData = $this->DefineAutoValues($postData, $subsiteId, $subsiteCfId);
         return array($postData, true, $notifier);
     }
 
-    public function HandleDelete($fragmentId, $notifier) {
-        $subsitecf = $this->tables->subsitecf->SelectById($fragmentId);
-        $this->tables->subsitecf->Delete($fragmentId);
+    public function HandleDelete($subsiteCfId, $notifier) {
+        $subsitecf = $this->tables->subsitecf->SelectById($subsiteCfId);
+        $this->tables->subsitecf->Delete($subsiteCfId);
 
         // TODO: implement news/linksection delete via table
 
@@ -85,9 +100,11 @@ class FragmentManager {
             return array(false, $notifier);
         }
         // numbers positive
-        if ($postData["Position"] < 0) {
-            $notifier->Post("Position must be positive");
-            return array(false, $notifier);
+        if (array_key_exists("Position", $postData)) {
+            if ($postData["Position"] < 0) {
+                $notifier->Post("Position must be positive");
+                return array(false, $notifier);
+            }
         }
         $subsitesWithId = $this->tables->subsite->SelectById($subsiteId);
         // subsiteId exists
@@ -103,7 +120,7 @@ class FragmentManager {
         // $plan = $this->tables->plan->SelectById($planId);
         // $planPermissions = $this->tables->plan->SelectById($plan["PlanPermissionId"]);
         
-        $fragments = $this->tables->subsitecf->Select("SubSiteId = $subsiteId");
+        $fragments = $this->tables->subsitecf->Select("WebsiteId = $subsiteId");
         if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
             $notifier->Post("Maximum fragment count exceeded");
             return array(false, $notifier);
@@ -122,20 +139,54 @@ class FragmentManager {
         return array(true, $notifier);
     }
 
-    private function DefineAutoValues($postData, $subsiteId) {
+    private function DefineAutoValues($postData, $subsiteId, $subsiteCfId = -1) {
         $postData["WebsiteId"] = $subsiteId;
+        $postData["Spannable"] = 1;
+        
+        $subsiteCf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
+        
         if (!array_key_exists("Position", $postData)) {
-            $cfEntries = $this->tables->subsitecf->Select("SubSiteId = " . $postData["SubSiteId"], 1, "MAX(Position)");
+            $cfEntries = $this->tables->subsitecf->Select("WebsiteId = $subsiteId", 1, "Position");
             if (count($cfEntries) == 0) {
                 $postData["Position"] = 1;
             } else {
-                $postData["Position"] = $cfEntries[0]["MAX(Position)"] + 1;
+                $postData["Position"] = $cfEntries[0]["Position"] + 1;
             }
+        } else {
+            $this->EnsurePositionIsUnique($postData["Position"], $subsiteId);
         }
-        $postData["Spannable"] = 1;
+
+        if (!array_key_exists("BackgroundImage", $postData) && $subsiteCfId != -1) {
+            $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
+        }
+
+        if ($subsiteCf["ContentTableName"] == "FragmentCredentials") {
+            $userId = $this->tables->fragments->GetTableByName("FragmentCredentials")->SelectById($subsiteCf["ContentId"])[0]["UserId"];
+            $postData["UserId"] = $userId;
+            $postData = $this->SetUncheckedCheckboxValue("ShowPersonalData", $postData);
+        }
+
         
         return $postData;
     }
+
+    private function SetUncheckedCheckboxValue($checkboxName, $postData) {
+        if (!array_key_exists($checkboxName, $postData)) {
+            $postData[$checkboxName] = false;
+        }
+        return $postData;
+    }
+
+    private function EnsurePositionIsUnique($position, $subsiteId) {
+        $nextProblemCases = $this->tables->subsitecf->Select("WebsiteId = $subsiteId AND Position = $position");
+        while (count($nextProblemCases) > 0) {
+            $this->tables->subsitecf->Update($nextProblemCases[0]["SubsiteContentFragmentId"], "Position", $nextProblemCases[0]["Position"] + 1);
+
+            $nextProblemCases = $this->tables->subsitecf->Select("WebsiteId = $subsiteId AND Position = $position");
+        }
+    }
+
+
 
 }
 ?>

@@ -1,7 +1,6 @@
 
-socials
 
-<div class="bg-gray-100 p-4 rounded-md">
+<div class=" p-4 rounded-md">
     {if $fragmentContent["GithubLink"]}
         <div class="mb-4">
             <span class="font-bold">Github:</span>
@@ -39,6 +38,3 @@ socials
         </div>
     {/if}
 </div>
-
-
-{GenericRender::RenderDict($fragmentContent, $fragmentColumnTypeData)}

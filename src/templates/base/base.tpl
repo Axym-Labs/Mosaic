@@ -28,12 +28,15 @@
     {if !isset($redirectToFront)}
         {assign var="redirectToFront" value=false}
     {/if}
+    {if !isset($maxWidth)}
+        {assign var="maxWidth" value="1200px"}
+    {/if}
 
     {include file="base/header.tpl"}
 
     {include file="base/messages.tpl"}
     <div class="flex justify-center">
-        <div class="mx-4 md:mx-6" style="max-width: 1000px; width: 100%;">
+        <div class="mx-4 md:mx-6" style="max-width: {$maxWidth}; width: 100%;">
             {block name=content}{/block}
         </div>
     </div>

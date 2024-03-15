@@ -69,3 +69,7 @@ a:hover {
 :focus {
     outline: none;
 }
+
+input, textarea {
+    background-color: transparent;
+}

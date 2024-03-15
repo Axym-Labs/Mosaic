@@ -5,11 +5,12 @@
 <div class="flex justify-center">
     <div class="">
         <p class="text text-neutral-400 uppercase">
-            404 Not Found
+            {$errorTitle}
         </p>
         <h1 class="text-2xl md:text-3xl font-semibold">
-            {$NotFoundError|escape}
+            {$Error nofilter}
         </h1>
+        {include file="components/linkbutton.tpl" text="Back to home" route="/" type="primary"}
     </div>
 </div>
 

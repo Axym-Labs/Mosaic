@@ -17,13 +17,19 @@ class SubsiteEditDataRetriever {
 
         $genericFragments = $this->subsiteDataRetriever->GetGenericFragments($subsiteId);
 
+        $subsite = $this->tables->subsite->SelectById($subsiteId)[0];
+        $userId = $subsite["UserId"];
+
         $fragments = array();
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
             $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId)[0];
-            $extraFragmentContent = $this->GetExtraEditFragmentContent($tableName, $fragmentId, $fragmentContent);
-            array_push($fragments, $this->GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent));
+            $extraFragmentContent = $this->GetExtraEditFragmentContent($tableName, $userId, $subsiteId, $fragmentId, $fragmentContent);
+            $editFragment = $this->GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent);
+            $subsiteCf = $this->tables->subsitecf->Select("ContentId = $fragmentId AND ContentTableName = \"$tableName\"")[0];
+            $editFragmentArray = array("FragmentTableName" => $tableName, "FragmentId" => $fragmentId, "FragmentContent" => $editFragment, "SubsiteCfContent" => $subsiteCf);
+            array_push($fragments, $editFragmentArray);
         }
         $smarty->assign('editFragments', $fragments);
 
@@ -42,9 +48,8 @@ class SubsiteEditDataRetriever {
         return $smarty->fetch("$templateName.tpl");
     }
 
-    private function GetExtraEditFragmentContent($tableName, $fragmentId, $fragmentContent) {
+    private function GetExtraEditFragmentContent($tableName, $userId, $subsiteId, $fragmentId, $fragmentContent) {
         if ($tableName == "FragmentCredentials") {
-            $userId = $fragmentContent["UserId"];
             return $this->tables->user->SelectById($userId)[0];
         }
         return array();

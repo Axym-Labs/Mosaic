@@ -14,7 +14,7 @@ class UserManager {
         }
 
         try {
-            $this->tables->user->OverwriteFromPostRequest($postData);
+            $this->tables->user->OverwriteFromPostRequest($userId, $postData);
             return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update your user.", "error");

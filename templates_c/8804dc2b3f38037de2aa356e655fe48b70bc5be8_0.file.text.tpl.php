@@ -24,7 +24,7 @@ function content_65f4565b3d1bc7_43638644 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 text
 
-<div class="bg-gray-100 p-4 rounded-md">
+<div class=" p-4 rounded-md">
     <?php if (strpos($_smarty_tpl->tpl_vars['fragmentContent']->value["Text"],"base64")) {?>
         <img src="data:image/jpeg;base64,<?php echo $_smarty_tpl->tpl_vars['fragmentContent']->value['Text'];?>
 " alt="Image" class="mb-4 rounded-lg">

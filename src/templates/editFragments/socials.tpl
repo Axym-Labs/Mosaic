@@ -1,6 +1,4 @@
 
-socials
-
 <label for="GithubLink">Github Link:</label>
 <input type="text" id="GithubLink" name="GithubLink">
 

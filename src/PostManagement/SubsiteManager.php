@@ -16,7 +16,7 @@ class SubsiteManager {
         }
 
         try {
-            $this->tables->subsite->OverwriteFromPostRequest($_POST);
+            $this->tables->subsite->OverwriteFromPostRequest($subsiteId, $_POST);
             return array(true, $notifier);
         } catch (Exception $e) {
             $notifier->Post("Error: Could not update your site.", "error");

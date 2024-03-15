@@ -1,6 +1,4 @@
 
-link
-
 <label for="Title">Title:</label>
 <input type="text" id="Title" name="Title">
 

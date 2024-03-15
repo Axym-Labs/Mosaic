@@ -1,5 +1,5 @@
 
-<div class="bg-gray-100 p-4 rounded-md">
+<div class=" p-4 rounded-md">
     <div class="mb-4">
         <h1>
             {$fragmentContent["Title"]}

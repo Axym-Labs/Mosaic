@@ -31,9 +31,8 @@ class dbTable
         return $this->queryTemplater->CheckStringLengthLimits($postData);
     }
 
-    public function OverwriteFromPostRequest($postData) {
+    public function OverwriteFromPostRequest($id, $postData) {
         $cvSets = $this->PrepareCvSetArray($postData);
-        $id = $postData[$this->queryTemplater->idIdentifier];
         $this->Overwrite($id, $cvSets);
     }
     
