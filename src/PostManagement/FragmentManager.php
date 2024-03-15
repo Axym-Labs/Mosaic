@@ -172,7 +172,7 @@ class FragmentManager {
 
     private function SetUncheckedCheckboxValue($checkboxName, $postData) {
         if (!array_key_exists($checkboxName, $postData)) {
-            $postData[$checkboxName] = false;
+            $postData[$checkboxName] = 0;
         }
         return $postData;
     }

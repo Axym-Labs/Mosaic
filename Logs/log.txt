@@ -20,3 +20,81 @@ messages: Array
 
 Fragment update attempt: {"Position":"8","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
 Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"9","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
+Fragment table name: FragmentCredentials
+Fragment update attempt: {"Position":"9","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [2] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
+Fragment update attempt: {"Position":"9","BackgroundColor":"","Opacity":"1","BackgroundImage":""}
+Fragment table name: FragmentCredentials
+messages: Array
+(
+    [0] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+    [1] => Array
+        (
+            [message] => You are in dev mode. This is a test
+            [messageType] => info
+            [read] => 
+        )
+
+)
+
