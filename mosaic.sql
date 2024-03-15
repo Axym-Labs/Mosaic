@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 15. Mrz 2024 um 12:20
+-- Erstellungszeit: 15. Mrz 2024 um 15:30
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -115,6 +115,7 @@ INSERT INTO `fragmentnews` (`Id`, `Title`, `Description`, `Link`, `Date`) VALUES
 
 CREATE TABLE `fragmentprojectinfo` (
   `Id` bigint(20) UNSIGNED NOT NULL,
+  `Title` text NOT NULL,
   `Description` int(11) NOT NULL,
   `LogoBlob` blob NOT NULL,
   `CtaLink` text NOT NULL,
@@ -227,8 +228,8 @@ CREATE TABLE `subsite` (
 --
 
 INSERT INTO `subsite` (`SubSiteId`, `UserId`, `Name`, `Route`, `ShortRoute`) VALUES
-(1, 0, 'Subsite Max Mustermann', 'seite', 'maxmustermann'),
-(2, 1, 'Seite Till meier', 'seitetill', 'tillmeier');
+(1, 127, 'Subsite Max Mustermann', 'seite', 'maxmustermann'),
+(2, 127, 'Seite Till meier', 'seitetill', 'tillmeier');
 
 -- --------------------------------------------------------
 
