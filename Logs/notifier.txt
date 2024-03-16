@@ -33,3 +33,4 @@
 [2024-03-16 22:59:45] [error]: Please add an image
 [2024-03-16 23:27:50] [error]: Invalid email format
 [2024-03-16 23:27:51] [error]: Invalid email format
+[2024-03-16 23:48:25] [error]: Invalid email format
