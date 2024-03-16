@@ -12,28 +12,31 @@
 
 <h1>Data</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-</head>
-<body>
-    <form action="submit.php" method="post">
-        <label for="Name">Name:</label>
-        <input type="text" id="Name" name="Name" maxlength="50"><br>
+<div class="flex flex-col items-center justify-center">
+    <div class="max-w-md border border-gray-300 rounded-md p-4 shadow-md">
+        <div>
+            <h2 class="text-lg font-bold mb-2">Page Information</h2>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["Name"]}</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["Route"]}</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["ShortRoute"]}</span>
+            </div>
+        </div>
+        {if isset($extraFragmentContent)}
+            {foreach $extraFragmentContent as $key => $value}
+                <div class="mt-4">
+                    <h2 class="text-lg font-bold mb-2">{$key}</h2>
+                    <span>{$value}</span>
+                </div>
+            {/foreach}
+        {/if}
+    </div>
+</div>
 
-        <label for="Route">Route:</label>
-        <input type="text" id="Route" name="Route" maxlength="50"><br>
-
-        <label for="ShortRoute">Short Route:</label>
-        <input type="text" id="ShortRoute" name="ShortRoute" maxlength="50"><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
 
 
 {/block}
