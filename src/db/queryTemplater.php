@@ -70,6 +70,16 @@ class queryTemplater
         return array(count($exceedingColumns) == 0, $exceedingColumns);
     }
 
+    public function CheckFieldsNull($kvArray) {
+        $nullFields = array();
+        foreach ($kvArray as $key => $value) {
+            if ($value == null) {
+                $nullFields[] = $key;
+            }
+        }
+        return array(count($nullFields) == 0, $nullFields);
+    }
+
     public function GetCount() {
         return "SELECT COUNT(*) FROM " . $this->tableConf->database . "." . $this->tableName;
     }
@@ -80,10 +90,8 @@ class queryTemplater
         }
         // if not all columns are present, throw error
         $testKvArray = $kvArray;
-        $testKvArray[$this->idIdentifier] = 0; // for checking if all columns are present
-        if (count(array_diff($this->columnNames, array_keys($testKvArray))) > 0) {
-            throw new Exception("Difference in keys of the passed set and the table columns.");
-        }
+        $this->ThrowIfAnyFieldsMissing($testKvArray);
+
         $query = $this->queryTemplates["insert"];
         foreach ($kvArray as $key => $value) {
             $query = $this->ReplaceIdentifier($query, "value", $key, $value);
@@ -91,18 +99,14 @@ class queryTemplater
         return $query;
     }
 
-    public function GetOverwrite($id, $updateSetArray) {
+    public function GetOverwriteWithCvSet($id, $updateSetArray) {
         // remove id to not cause any problems
         $updateSetArray = array_filter($updateSetArray, function($x) { return $x->GetColumnPart() != $this->idIdentifier; });
 
         // if not all columns are present, throw error
         $testKvArray = array_map(function($x) { return $x->column; }, $updateSetArray);
-        array_push($testKvArray, $this->idIdentifier); // for checking if all columns are present
-
-        if (count(array_diff($this->columnNames, $testKvArray)) > 0) {
-            $diff = array_diff($this->columnNames, $testKvArray);
-            throw new Exception("Difference in keys of the update set and the table columns: " . "--- OLD: " . print_r($this->columnNames, true)  . "--- NEW: " . print_r($testKvArray, true) . "--- DIFF: " . print_r($diff, true) . "<br>");
-        }
+        $this->ThrowIfAnyFieldsMissing($testKvArray);
+        
         $query = $this->queryTemplates["overwrite"];
         $query = $this->ReplaceIdentifier($query, "value", "Id", $id);
         $query = $this->ReplaceTypelessIdentifier($query, "overwrite", join(", ", array_map(function($x) { return $x->ToUpdateFragment(); }, $updateSetArray)));
@@ -115,14 +119,29 @@ class queryTemplater
         }
         // if not all columns are present, throw error
         $testKvArray = array_map(function($x) { return $x->column; }, $updateSetArray);
-        array_push($testKvArray, $this->idIdentifier); // for checking if all columns are present
-        if (count(array_diff($this->columnNames, $testKvArray)) > 0) {
-            throw new Exception("Difference in keys of the update set and the table columns: " . var_dump($this->columnNames) . " - " . var_dump($testKvArray) . " - " . print_r(array_diff($this->columnNames, $testKvArray), true));
-        }
+        $this->ThrowIfAnyFieldsMissing($testKvArray);
+
         $query = $this->queryTemplates["insertGeneric"];
         $query = $this->ReplaceTypelessIdentifier($query, "columns", join(", ", array_map(function($x) { return $x->GetColumnPart(); }, $updateSetArray)));
         $query = $this->ReplaceTypelessIdentifier($query, "values", join(", ", array_map(function($x) { return $x->GetValuePart(); }, $updateSetArray)));
         return $query;
+    }
+
+    private function ThrowIfAnyFieldsMissing($testKvArray) {
+        array_push($testKvArray, $this->idIdentifier); // for checking if all columns are present
+
+        if (count(array_diff($this->columnNames, $testKvArray)) > 0) {
+            $diff = array_diff($this->columnNames, $testKvArray);
+
+            if (BusinessConstants::$HOSTMODE == "dev") {
+                $logger = new FileLogger("Logs/log.txt");
+                $logger->Log("Difference in keys of the update set and the table columns: ");
+                $logger->Log("--- OLD: " . print_r($this->columnNames, true));
+                $logger->Log("--- NEW: " . print_r($testKvArray, true));
+                $logger->Log("--- DIFF: " . print_r($diff, true));
+            }
+            throw new Exception("Difference in keys of the update set and the table columns: " . "--- OLD: " . print_r($this->columnNames, true)  . "--- NEW: " . print_r($testKvArray, true) . "--- DIFF: " . print_r($diff, true) . "<br>");
+        }
     }
 
     public function GetUpdate($id, $column, $value, $isString = false) {

@@ -1,6 +1,10 @@
 
-<label for="Text">Text:</label>
-<input type="text" id="fragment-text-Text" name="fragment-text-Text">
+<div>
+    <label for="fragment-FragmentText-Title">Title:</label>
+    <input type="text" id="fragment-FragmentText-Title" name="fragment-FragmentText-Title" required>
+</div>
 
-<label for="Title">Title:</label>
-<input type="text" id="fragment-text-Title" name="fragment-text-Title">
+<div>
+    <label for="fragment-FragmentText-Text">Text:</label>
+    <input type="text" id="fragment-FragmentText-Text" name="fragment-FragmentText-Text">
+</div>

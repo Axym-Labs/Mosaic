@@ -15,7 +15,7 @@ class PricingDataRetriever {
         }
         
         $smarty->assign('plans', $plans);
-        $smarty->assign('planperms', $planPerms);
+        $smarty->assign('planperm', $planPerms);
         $smarty->assign('planColumnTypeData', $this->tables->plan->GetColumnTypeData());
         $smarty->assign('planpermColumnTypeData', $this->tables->planperm->GetColumnTypeData());
         return $smarty;

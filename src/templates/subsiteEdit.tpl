@@ -2,6 +2,10 @@
 {block name=content}
 {assign var="subsiteId" value=$subsite["SubSiteId"]}
 
+<div>
+    {include file="site_components/editSubsiteComponent.tpl" subsiteSubmitText="Update subsite" subsiteIsUpdate=true existingSubsiteId=$subsiteId}
+</div>
+
 <div class="lg:grid lg:grid-cols-2 gap-8">
     <div>
         {foreach from=$editFragments item=editFragment}
@@ -22,9 +26,13 @@
                 </h1>
             </div>
         {/foreach}
-        {include file="components/linkbutton.tpl" text="Create fragment" route="/edit/s/$subsiteId/create-f" type="primary"}
-        {if $editFragments}
-        {/if}
+        {if $allowedToCreateFragment}
+            {include file="components/linkbutton.tpl" text="Create fragment" route="/edit/s/$subsiteId/create-f" type="primary"}
+        {else}
+            <p>
+                You have reached the maximum amount of fragments for this subsite. Upgrade your plan.
+            </p>
+        {/if}        
     </div>
     <div>
     {include file='site_components/subsiteView.tpl'}

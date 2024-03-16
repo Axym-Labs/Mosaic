@@ -1,3 +1,7 @@
+{if !isset($type)}
+    {assign var="type" value="primary"}
+{/if}
+
 <a id="primary-button" 
     href="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{$route}" 
     class="inline-block rounded-full p-2 px-6 m-2 md:m-2 text-sm text-white shadow-lg transition duration-500 ease-in-out mr-3 hover:shadow-lg 

@@ -1,6 +1,10 @@
 
-<label for="ImageContent">ImageContent:</label>
-<input type="file" id="fragment-image-ImageContent" name="fragment-image-ImageContent" accept="image/*">
+<div>
+  <label for="ImageContent">ImageContent:</label>
+  <input type="file" id="fragment-FragmentImage-ImageContent" name="fragment-FragmentImage-ImageContent" accept="image/jpeg" required>
+</div>
 
-<label for="Description">Description:</label>
-<textarea id="fragment-image-Description" name="fragment-image-Description"></textarea>
+<div>
+  <label for="Description">Description:</label>
+  <textarea id="fragment-FragmentImage-Description" name="fragment-FragmentImage-Description"></textarea>
+</div>

@@ -1,615 +1,780 @@
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 5
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
 SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 5
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
 SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelala' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelala", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 'subsitelal' AND UserId = 127
+UPDATE mosaic.subsite SET Name = "lala", Route = "subsitelal", ShortRoute = "", UserId = 127 WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
 SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
 SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
 SELECT * FROM mosaic.user WHERE UserId = 1
 SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentImage"
 SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 1
 SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
 SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.subsitecontentfragment SET Position = 3 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.fragmentimage SET ImageContent = "", Description = "asdfasdfasdfasfasfasfasfasdf" WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 0, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentImage", ContentId = 1 WHERE SubsiteContentFragmentId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentImage"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentimage WHERE Id = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentImage"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 6
-UPDATE mosaic.subsitecontentfragment SET Position = 7 WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 6
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 6, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 6
-UPDATE mosaic.subsitecontentfragment SET Position = 7 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 6
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.subsite WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 7
-UPDATE mosaic.subsitecontentfragment SET Position = 8 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 7
-UPDATE mosaic.subsitecontentfragment SET Position = 8 WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 7
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 7, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 7
-UPDATE mosaic.subsitecontentfragment SET Position = 8 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 7
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 8
-UPDATE mosaic.subsitecontentfragment SET Position = 9 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 8
-UPDATE mosaic.subsitecontentfragment SET Position = 9 WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 8
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 8, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 8
-UPDATE mosaic.subsitecontentfragment SET Position = 9 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 8
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-UPDATE mosaic.subsitecontentfragment SET Position = 10 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-UPDATE mosaic.subsitecontentfragment SET Position = 10 WHERE SubsiteContentFragmentId = 5
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET UserId = 1, ShowPersonalData =  WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET UserId = 1, ShowPersonalData = 0 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 9, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-UPDATE mosaic.subsitecontentfragment SET Position = 10 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET UserId = 1, ShowPersonalData = 0 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 9, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-UPDATE mosaic.subsitecontentfragment SET Position = 10 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 9
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 9, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.subsitecontentfragment SET Position = 3 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET UserId = 1, ShowPersonalData = 0 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.subsitecontentfragment SET Position = 3 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.subsitecontentfragment SET Position = 3 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET ShowPersonalData = 1, UserId = 1 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-UPDATE mosaic.subsitecontentfragment SET Position = 3 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 AND Position = 2
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-UPDATE mosaic.fragmentcredentials SET UserId = 1, ShowPersonalData = 0 WHERE Id = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2, BackgroundColor = "", Opacity = 1, BackgroundImage = "", WebsiteId = 1, Spannable = 1, ContentTableName = "FragmentCredentials", ContentId = 1 WHERE SubsiteContentFragmentId = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
-SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
-SELECT * FROM mosaic.fragmenttext WHERE Id = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 ORDER BY Position
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
-SELECT * FROM mosaic.fragmenttext WHERE Id = 1
-SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentText"
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.user WHERE UserId = 127
-SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
-SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 3
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
 SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2
 SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 3
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 AND Position = 1
-UPDATE mosaic.subsitecontentfragment SET Position = 2 WHERE SubsiteContentFragmentId = 3
-SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2 AND Position = 1
+DELETE FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 3
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 2
+DELETE FROM mosaic.subsite WHERE SubSiteId = 2
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.subsite WHERE Route = 's4' AND UserId = 127
+INSERT INTO mosaic.subsite (Name, Route, ShortRoute, UserId) VALUES ("subsite4", "s4", "", 127)
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE Username = "a"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position LIMIT 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = -1
+SELECT * FROM mosaic.user WHERE Username = "a"
+INSERT INTO mosaic.fragmentcredentials (UserId, ShowPersonalData) VALUES (126, NULL)
+INSERT INTO mosaic.subsitecontentfragment (BackgroundColor, Opacity, BackgroundImage, ContentTableName, WebsiteId, Spannable, Position, ContentId) VALUES ("000000", 0, NULL, "FragmentCredentials", 4, 1, 1, 14)
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 14 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE Username = "b"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position LIMIT 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = -1
+SELECT * FROM mosaic.user WHERE Username = "b"
+INSERT INTO mosaic.fragmentcredentials (UserId, ShowPersonalData) VALUES (127, NULL)
+INSERT INTO mosaic.subsitecontentfragment (BackgroundColor, Opacity, BackgroundImage, ContentTableName, WebsiteId, Spannable, Position, ContentId) VALUES ("000000", 0, NULL, "FragmentCredentials", 4, 1, 2, 15)
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 15
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 14 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 15
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 15 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 10
+DELETE FROM mosaic.fragmentcredentials WHERE Id = 15
+DELETE FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 10
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 14 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 14 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 14
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 14 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 4
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 1
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 1
+SELECT * FROM mosaic.user WHERE UserId = 1
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 1 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 3
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 3
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 3 ORDER BY Position
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 11
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 13
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 3 ORDER BY Position
+SELECT * FROM mosaic.subsite WHERE SubSiteId = 3
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 11
+SELECT * FROM mosaic.user WHERE UserId = 126
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 11 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.fragmentcredentials WHERE Id = 13
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsitecontentfragment WHERE ContentId = 13 AND ContentTableName = "FragmentCredentials"
+SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 3
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1

@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
 function content_65f4c28c716a14_73957518 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <label for="ImageContent">ImageContent:</label>
-<input type="file" id="ImageContent" name="ImageContent" accept="image/*">
+<input type="file" id="ImageContent" name="ImageContent" accept="image/jpeg">
 
 <label for="Description">Description:</label>
 <textarea id="Description" name="Description"></textarea><?php }

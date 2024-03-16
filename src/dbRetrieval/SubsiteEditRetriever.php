@@ -32,6 +32,8 @@ class SubsiteEditDataRetriever {
             array_push($fragments, $editFragmentArray);
         }
         $smarty->assign('editFragments', $fragments);
+        $smarty->assign("allowedToCreateFragment", FragmentManager::UserHasNotReachedFragmentLimit($this->tables, $subsiteId, $userId));
+        $smarty->assign("planperm", UserDataRetriever::GetPlanPermissions($this->tables, $userId));
 
         return $smarty;
     }
@@ -50,7 +52,7 @@ class SubsiteEditDataRetriever {
 
     private function GetExtraEditFragmentContent($tableName, $userId, $subsiteId, $fragmentId, $fragmentContent) {
         if ($tableName == "FragmentCredentials") {
-            return $this->tables->user->SelectById($userId)[0];
+            return $this->tables->user->SelectById($fragmentContent["UserId"])[0];
         }
         return array();
     }

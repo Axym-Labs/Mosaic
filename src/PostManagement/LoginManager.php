@@ -33,14 +33,20 @@ class LoginManager {
             $notifier->Post("No user with this email found");
             return array(false, $notifier, null);
         }
+
         $user = $usersWithEmail[0];
+
         // password matches
-        if (!AuthorizationCheck::PasswordMatch($user, $postData["Password"])) {
-            $notifier->Post("Password does not match");
+        $valid = LoginManager::PasswordCorrect($user, $postData["Password"]);
+        if (!$valid) {
+            $notifier->Post("Password is not correct");
             return array(false, $notifier, null);
         }
-
         return array(true, $notifier, $user);
+    }
+
+    public static function PasswordCorrect($user, $password) {
+        return AuthorizationCheck::PasswordMatch($user["Password"], $password);
     }
 
 }

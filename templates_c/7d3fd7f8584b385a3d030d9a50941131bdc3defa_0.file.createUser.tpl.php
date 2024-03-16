@@ -64,7 +64,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         <input class="bg-bgcol border-b border-white" type="password" id="ConfirmPassword" name="ConfirmPassword" required><br>
 
         <label for="ProfilePicture">Profile Picture:</label>
-        <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept="image/*"><br>
+        <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept="image/jpeg"><br>
 
         <label for="Username">Username:</label>
         <input class="bg-bgcol border-b border-white" type="text" id="Username" name="Username" required><br>

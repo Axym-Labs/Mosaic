@@ -1,65 +1,80 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 01:32:53
+/* Smarty version 4.4.1, created on 2024-03-16 17:28:02
   from 'C:\xampp\htdocs\Mosaic\src\templates\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f3973547c617_24809277',
+  'unifunc' => 'content_65f5c8925431d9_41458367',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '279ab27ba31d83f2e8517fa5884190e8dda1b574' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\user.tpl',
-      1 => 1710462720,
+      1 => 1710605643,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:user/editUserComponent.tpl' => 1,
     'file:user/userProfile.tpl' => 1,
+    'file:components/linkbutton.tpl' => 2,
     'file:user/subsiteList.tpl' => 1,
   ),
 ),false)) {
-function content_65f3973547c617_24809277 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f5c8925431d9_41458367 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3327933965f39735474ad4_44952921', 'content');
-$_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_190716115365f5c892539bc2_53593594', 'content');
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_3327933965f39735474ad4_44952921 extends Smarty_Internal_Block
+class Block_190716115365f5c892539bc2_53593594 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_3327933965f39735474ad4_44952921',
+    0 => 'Block_190716115365f5c892539bc2_53593594',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-<?php if (!(isset($_smarty_tpl->tpl_vars['isOwner']->value))) {?>
-    <?php $_smarty_tpl->_assignInScope('isOwner', false);
+<?php if (!(isset($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value))) {?>
+    <?php $_smarty_tpl->_assignInScope('isVisitingAccountPage', false);
+}
+if (!(isset($_smarty_tpl->tpl_vars['isThisUser']->value))) {?>
+    <?php $_smarty_tpl->_assignInScope('isThisUser', false);
 }?>
 
-
-<?php $_smarty_tpl->_subTemplateRender('file:user/userProfile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<?php if ($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value) {?>
+    <div>
+        <?php $_smarty_tpl->_subTemplateRender("file:user/editUserComponent.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('userSubmitText'=>"Update user",'userIsUpdate'=>true), 0, false);
 ?>
+    </div>
+<?php } else { ?>
+    <?php $_smarty_tpl->_subTemplateRender('file:user/userProfile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}?>
+
+<?php if ($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value) {?>
+    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Logout",'type'=>"warn",'route'=>"/create/subsite"), 0, false);
+} else { ?>
+    <?php if ($_smarty_tpl->tpl_vars['isThisUser']->value) {?>
+        <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Manage your profile",'type'=>"primary",'route'=>"/a"), 0, true);
+?>
+    <?php }
+}?>
 
 <?php $_smarty_tpl->_subTemplateRender('file:user/subsiteList.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-<?php if ($_smarty_tpl->tpl_vars['isOwner']->value) {?>
-    <a href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
-/logout">
-        Logout
-    </a>
-<?php }?>
 
 <?php
 }

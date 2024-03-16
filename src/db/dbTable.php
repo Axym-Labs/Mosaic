@@ -31,9 +31,16 @@ class dbTable
         return $this->queryTemplater->CheckStringLengthLimits($postData);
     }
 
+    public function CheckFieldsNull($postData, $filterData = false) {
+        if ($filterData) {
+            $postData = $this->queryTemplater->FilterForColumnNames($postData, true);
+        }
+        return $this->queryTemplater->CheckFieldsNull($postData);
+    }
+
     public function OverwriteFromPostRequest($id, $postData) {
         $cvSets = $this->PrepareCvSetArray($postData);
-        $this->Overwrite($id, $cvSets);
+        $this->OverwriteWithCvSet($id, $cvSets);
     }
     
     public function InsertFromPostRequest($postData) {
@@ -57,8 +64,8 @@ class dbTable
         return $this->returnRawResultWithExecution($query);
     }
     
-    public function Overwrite($id, $cvSet) {
-        $query = $this->queryTemplater->GetOverwrite($id, $cvSet);
+    public function OverwriteWithCvSet($id, $cvSet) {
+        $query = $this->queryTemplater->GetOverwriteWithCvSet($id, $cvSet);
         return $this->returnRawResultWithExecution($query);
     }
 

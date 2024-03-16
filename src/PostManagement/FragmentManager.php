@@ -47,7 +47,7 @@ class FragmentManager {
         }
 
         $this->tables->fragments->GetTableByName($postData["ContentTableName"])->InsertFromPostRequest($postData);
-        $contentId = $this->tables->fragments->GetTableByName($postData["ContentTableName"])->GetDbCon()->lastInsertId();
+        $contentId = $this->tables->fragments->GetTableByName($postData["ContentTableName"])->GetDbCon()->GetLastInsertId();
 
         $postData["ContentId"] = $contentId;
 
@@ -74,25 +74,32 @@ class FragmentManager {
     }
 
     private function ValidateAndFillEntity($subsiteId, $postData, $notifier, $subsiteCfId = -1) {
-        list($valid, $notifier) = $this->ValidateData($subsiteId, $postData, $notifier);
+        $tableName = $this->GetTableName($postData, $subsiteCfId);
+        list($valid, $notifier) = $this->ValidateData($subsiteId, $postData, $notifier, $subsiteCfId, $tableName);
         if (!$valid) {
             return array($postData, false, $notifier);
         }
-        $postData = $this->DefineAutoValues($postData, $subsiteId, $subsiteCfId);
+        $postData = $this->DefineAutoValues($postData, $subsiteId, $subsiteCfId, $tableName);
         return array($postData, true, $notifier);
     }
 
+    private function GetTableName($postData, $subsiteCfId) {
+        if (array_key_exists("ContentTableName", $postData)) {
+            return $postData["ContentTableName"];
+        }
+        $subsiteCf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
+        return $subsiteCf["ContentTableName"];
+    }
+
     public function HandleDelete($subsiteCfId, $notifier) {
-        $subsitecf = $this->tables->subsitecf->SelectById($subsiteCfId);
+        $subsitecf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
+        $this->tables->fragments->GetTableByName($subsitecf["ContentTableName"])->Delete($subsitecf["ContentId"]);
         $this->tables->subsitecf->Delete($subsiteCfId);
 
-        // TODO: implement news/linksection delete via table
-
-        $this->tables->fragments->GetTableByName($subsitecf["ContentTableName"])->Delete($subsitecf["ContentId"]);
         return array(true, $notifier);
     }
 
-    private function ValidateData($subsiteId, $postData, $notifier) {
+    private function ValidateData($subsiteId, $postData, $notifier, $subsiteCfId, $tableName) {
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->subsitecf->CheckStringLengthLimits($postData);
         if (!$success) {
@@ -113,21 +120,22 @@ class FragmentManager {
             return array(false, $notifier);
         }
 
-        // maximum fragment count not exceeded
-        // leave this out since its not bound to plan permission - can be implemented later
-        // $subsite = $subsitesWithId[0];
-        // $planId = $this->tables->subsite->SelectById($subsite["userId"])["PlanId"];
-        // $plan = $this->tables->plan->SelectById($planId);
-        // $planPermissions = $this->tables->plan->SelectById($plan["PlanPermissionId"]);
+        $subsite = $this->tables->subsite->SelectById($subsiteId)[0];
+        $userId = $subsite["UserId"];
         
-        $fragments = $this->tables->subsitecf->Select("WebsiteId = $subsiteId");
-        if (count($fragments) >= BusinessConstants::$MAX_FRAGMENTS_PER_SUBSITE) {
+        if (!FragmentManager::UserHasNotReachedFragmentLimit($this->tables, $subsiteId, $userId)) {
             $notifier->Post("Maximum fragment count exceeded");
             return array(false, $notifier);
         }
 
+        $checkPostData = $this->RemoveNullAllowedFields($tableName, $postData);
+        list($success, $undefinedColumns) = $this->tables->subsitecf->CheckFieldsNull($checkPostData);
+        if (!$success) {
+            $notifier->Post("The following fields must have a value: " . implode(", ", $undefinedColumns));
+            return array(false, $notifier);
+        }
+
         // if includes userid: user exists
-        // not a user bound field
         if (array_key_exists("UserId", $postData)) {
             $usersWithId = $this->tables->user->SelectById($postData["UserId"]);
             if (count($usersWithId) == 0) {
@@ -136,14 +144,23 @@ class FragmentManager {
             }
         }
 
+        if ($tableName == "FragmentCredentials") {
+            if (array_key_exists("Username", $postData)) {
+                $usersWithId = $this->tables->user->Select("Username = \"" . $postData["Username"] . "\"");
+                if (count($usersWithId) == 0) {
+                    $notifier->Post("No user with this username found");
+                    return array(false, $notifier);
+                }
+            }
+        }
+
         return array(true, $notifier);
     }
 
-    private function DefineAutoValues($postData, $subsiteId, $subsiteCfId = -1) {
+    private function DefineAutoValues($postData, $subsiteId, $subsiteCfId, $tableName) {
+        // ----- General data -----
         $postData["WebsiteId"] = $subsiteId;
         $postData["Spannable"] = 1;
-        
-        $subsiteCf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
         
         if (!array_key_exists("Position", $postData)) {
             $cfEntries = $this->tables->subsitecf->Select("WebsiteId = $subsiteId", 1, "Position");
@@ -155,19 +172,94 @@ class FragmentManager {
         } else {
             $this->EnsurePositionIsUnique($postData["Position"], $subsiteId);
         }
+        
+        $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
 
-        if (!array_key_exists("BackgroundImage", $postData) && $subsiteCfId != -1) {
-            $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
+        if (count($subsiteCfsWithId) > 0) {
+            $subsiteCf = $subsiteCfsWithId[0];
+    
+            if (!array_key_exists("BackgroundImage", $postData)) {
+                $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
+            }
         }
-
-        if ($subsiteCf["ContentTableName"] == "FragmentCredentials") {
-            $userId = $this->tables->fragments->GetTableByName("FragmentCredentials")->SelectById($subsiteCf["ContentId"])[0]["UserId"];
-            $postData["UserId"] = $userId;
+        
+        if ($tableName == "FragmentCredentials") {
+            $usersWithId = $this->tables->user->Select("Username = \"" . $postData["Username"] . "\"");
+            $postData["UserId"] = $usersWithId[0]["UserId"];
             $postData = $this->SetUncheckedCheckboxValue("ShowPersonalData", $postData);
         }
 
+        if (!array_key_exists("BackgroundColor", $postData) || $postData["BackgroundColor"] == "") {
+            $postData["Opacity"] = "0";
+            $postData["BackgroundColor"] = "000000";
+        }
+
+        if (!array_key_exists("Opacity", $postData) || $postData["Opacity"] == "") {
+            $postData["Opacity"] = "1";
+        }
+
+        # ----- Fragment-specific data -----
+        if ($tableName == "FragmentLinkProjectinfo") {
+            if ($postData["CtaLinkDescription"] == "") {
+                $postData["CtaLinkDescription"] = "Get started";
+            }
+        }
+
+        if ($tableName == "FragmentNews") {
+            $postData["Date"] = date('Y-m-d H:i:s');
+            if ($postData["LinkDescription"] == "") {
+                $postData["LinkDescription"] = "Read more";
+            }
+        }
+
+        if ($tableName == "FragmentIframe") {
+            $postData = $this->SetUncheckedCheckboxValue("MorePermissions", $postData);
+            if ($postData["Width"] == "") {
+                $postData["Width"] = "100%";
+            }
+            if ($postData["´Height"] == "") {
+                $postData["´Height"] = "400px";
+            }
+        }
         
         return $postData;
+    }
+
+    private function RemoveNullAllowedFields($tableName, $testPostData) {
+        unset($testPostData["BackgroundColor"]);
+        unset($testPostData["Opacity"]);
+        unset($testPostData["BackgroundImage"]);
+
+        if ($tableName == "FragmentCredentials") {
+            unset($testPostData["UserId"]);
+        } else {
+            unset($testPostData["Username"]);
+        }
+        if ($tableName == "FragmentImage") {
+            unset($testPostData["Description"]);
+        }
+        if ($tableName == "FragmentSocials") {
+            foreach (array("Github", "Gitlab", "X", "Facebook", "Reddit", "Discord") as $link) {
+                unset($testPostData[$link . "Link"]);
+            }
+            unset($testPostData["RelativeOrder"]);
+        }
+        if ($tableName == "FragmentText") {
+            unset($testPostData["Text"]);
+        }
+        if ($tableName == "FragmentLinkProjectinfo") {
+            unset($testPostData["CtaLink"]);
+        }
+        if ($tableName == "FragmentNews") {
+            unset($testPostData["Link"]);
+        }
+        if ($tableName == "FragmentIframe") {
+            unset($testPostData["Title"]);
+            unset($testPostData["Width"]);
+            unset($testPostData["Height"]);
+        }
+        
+        return $testPostData;
     }
 
     private function SetUncheckedCheckboxValue($checkboxName, $postData) {
@@ -186,6 +278,13 @@ class FragmentManager {
         }
     }
 
+    public static function UserHasNotReachedFragmentLimit($tables, $subsiteId, $userId) {
+        $fragmentCount = count($tables->subsitecf->Select("WebsiteId = $subsiteId"));
+
+        $planperm = UserDataRetriever::GetPlanPermissions($tables, $userId);
+
+        return $fragmentCount < $planperm["FragmentLimit"];
+    }
 
 
 }

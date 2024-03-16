@@ -24,5 +24,24 @@ class GenericRender {
             echo $value . "<br>";
         }
     }
+
+    public static function InsertValueAttribute($maybeArrray, $key) {
+        if (!isset($maybeArrray)) {
+            return "";
+        } else {
+            return " value=\"" . $maybeArrray[$key] . "\" ";
+        }
+    }
+
+    public static function InsertValuePlainly($maybeArrray, $key, $type = "text") {
+        if (!isset($maybeArrray)) {
+            return "";
+        } else {
+            if ($type == "img") {
+                return base64_encode($maybeArrray[$key]);
+            } 
+            return $maybeArrray[$key];
+        }
+    }
 }
 ?>

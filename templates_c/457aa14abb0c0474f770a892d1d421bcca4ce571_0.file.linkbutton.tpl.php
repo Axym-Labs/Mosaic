@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-06 18:02:07
+/* Smarty version 4.4.1, created on 2024-03-16 12:59:37
   from 'C:\xampp\htdocs\Mosaic\src\templates\components\linkbutton.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65e8a18fba5fd1_14695584',
+  'unifunc' => 'content_65f589a970e948_27089305',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '457aa14abb0c0474f770a892d1d421bcca4ce571' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\components\\linkbutton.tpl',
-      1 => 1709744527,
+      1 => 1710590364,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65e8a18fba5fd1_14695584 (Smarty_Internal_Template $_smarty_tpl) {
-?><a id="primary-button" 
+function content_65f589a970e948_27089305 (Smarty_Internal_Template $_smarty_tpl) {
+if (!(isset($_smarty_tpl->tpl_vars['type']->value))) {?>
+    <?php $_smarty_tpl->_assignInScope('type', "primary");
+}?>
+
+<a id="primary-button" 
     href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
 echo $_smarty_tpl->tpl_vars['route']->value;?>
 " 

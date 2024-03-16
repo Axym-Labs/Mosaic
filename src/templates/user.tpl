@@ -1,18 +1,29 @@
 {extends file='base/base.tpl'}
 {block name=content}
-{if !isset($isOwner)}
-    {assign var="isOwner" value=false}
+{if !isset($isVisitingAccountPage)}
+    {assign var="isVisitingAccountPage" value=false}
+{/if}
+{if !isset($isThisUser)}
+    {assign var="isThisUser" value=false}
 {/if}
 
+{if $isVisitingAccountPage}
+    <div>
+        {include file="user/editUserComponent.tpl" userSubmitText="Update user" userIsUpdate=true}
+    </div>
+{else}
+    {include file='user/userProfile.tpl'}
+{/if}
 
-{include file='user/userProfile.tpl'}
+{if $isVisitingAccountPage}
+    {include file="components/linkbutton.tpl" text="Logout" type="warn" route="/create/subsite"}
+{else}
+    {if $isThisUser}
+        {include file="components/linkbutton.tpl" text="Manage your profile" type="primary" route="/a"}
+    {/if}
+{/if}
 
 {include file='user/subsiteList.tpl'}
 
-{if $isOwner}
-    <a href="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/logout">
-        Logout
-    </a>
-{/if}
 
 {/block}

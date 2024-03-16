@@ -21,8 +21,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
 ),false)) {
 function content_65eafa6525a632_52136603 (Smarty_Internal_Template $_smarty_tpl) {
-if (!(isset($_smarty_tpl->tpl_vars['isOwner']->value))) {?>
-    <?php $_smarty_tpl->_assignInScope('isOwner', false);
+if (!(isset($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value))) {?>
+    <?php $_smarty_tpl->_assignInScope('isVisitingAccountPage', false);
 }?>
 
 <div>

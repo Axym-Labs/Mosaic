@@ -14,5 +14,5 @@
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>
-    <input type="file" id="BackgroundImage" name="BackgroundImage" accept="image/*">
+    <input type="file" id="BackgroundImage" name="BackgroundImage" accept="image/jpeg">
 </div>

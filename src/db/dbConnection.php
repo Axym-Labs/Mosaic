@@ -14,5 +14,9 @@ class dbConnection {
         $this->logger->Log($query);
         return $this->con->query($query);
     }
+
+    public function GetLastInsertId() {
+        return $this->con->insert_id;
+    }
 }
 ?>

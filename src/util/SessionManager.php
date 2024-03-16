@@ -30,6 +30,10 @@ class SessionManager {
         return $_SESSION['userId'];
     }
 
+    public function LogOut() {
+        $_SESSION['userId'] = null;
+    }
+
     public function SetUserId($userId) {
         $_SESSION['userId'] = $userId;
     }
