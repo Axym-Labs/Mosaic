@@ -264,12 +264,31 @@ class FragmentManager {
             }
         }
 
-        if ($tableName == "FragmentImage" && isset($_FILES["fragment-FragmentImage-ImageContent"]) && isset($_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"]) && $_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"] != "") {
-            $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-ImageContent"]);
+        if ($tableName == "FragmentImage") {
+            if (isset($_FILES["fragment-FragmentImage-ImageContent"]) && isset($_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"]) && $_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"] != "") {
+                $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-ImageContent"]);
+            } else {
+                $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
+                if (count($subsiteCfsWithId) == 0) {
+                    $postData["ImageContent"] = "NULL";
+                } else {
+                    $postData["ImageContent"] = $subsiteCfsWithId[0]["ImageContent"];
+                }
+            }
         }
 
-        if ($tableName == "FragmentProjectinfo" && isset($_FILES["fragment-FragmentImage-LogoBlob"]) && isset($_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"]) && $_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"] != "") {
-            $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-LogoBlob"]);
+        if ($tableName == "FragmentProjectinfo") {
+            if (isset($_FILES["fragment-FragmentImage-LogoBlob"]) && isset($_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"]) && $_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"] != "") {
+                $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-LogoBlob"]);
+            } else {
+                $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
+                if (count($subsiteCfsWithId) == 0) {
+                    $postData["LogoBlob"] = "NULL";
+                } else {
+                    $postData["LogoBlob"] = $subsiteCfsWithId[0]["LogoBlob"];
+                }
+            
+            }
         }
         
         
