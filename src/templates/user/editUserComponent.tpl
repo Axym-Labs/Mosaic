@@ -9,7 +9,7 @@
 {/if}
 
 <div>
-    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{if !$userIsUpdate}/create/user{else}/a{/if}" method="POST">
+    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{if !$userIsUpdate}/create/user{else}/a{/if}" method="POST" enctype="multipart/form-data">
         <div>
             <label for="Email">Email:</label>
             <input class="bg-bgcol border-b border-white" type="text" id="Email" name="Email" required {GenericRender::InsertValueAttribute($user, 'Email')}>

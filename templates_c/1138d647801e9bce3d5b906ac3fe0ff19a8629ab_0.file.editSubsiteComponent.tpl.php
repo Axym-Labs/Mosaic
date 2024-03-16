@@ -32,7 +32,7 @@ if (!(isset($_smarty_tpl->tpl_vars['subsite']->value))) {?>
     <?php $_smarty_tpl->_assignInScope('subsite', null);
 }?>
 
-<form method="post" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
+<form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
 if (!$_smarty_tpl->tpl_vars['subsiteIsUpdate']->value) {?>/create/subsite<?php } else { ?>/edit/s/<?php echo $_smarty_tpl->tpl_vars['existingSubsiteId']->value;
 }?>">
     <div>

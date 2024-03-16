@@ -34,7 +34,7 @@ if (!(isset($_smarty_tpl->tpl_vars['user']->value))) {?>
 
 <div>
     <form action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
-if (!$_smarty_tpl->tpl_vars['userIsUpdate']->value) {?>/create/user<?php } else { ?>/a<?php }?>" method="POST">
+if (!$_smarty_tpl->tpl_vars['userIsUpdate']->value) {?>/create/user<?php } else { ?>/a<?php }?>" method="POST" enctype="multipart/form-data">
         <div>
             <label for="Email">Email:</label>
             <input class="bg-bgcol border-b border-white" type="text" id="Email" name="Email" required <?php echo GenericRender::InsertValueAttribute($_smarty_tpl->tpl_vars['user']->value,'Email');?>

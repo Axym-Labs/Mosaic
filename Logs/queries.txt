@@ -778,3 +778,36 @@ SELECT * FROM mosaic.subsite WHERE UserId = '127'
 SELECT * FROM mosaic.user WHERE UserId = 127
 SELECT * FROM mosaic.plan WHERE PlanId = 1
 SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE Username = "b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE Email = "b@b.b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE Username = "b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE Email = "b@b.b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE Username = "b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE Email = "b@b.b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE Username = "b" AND UserId != 127
+SELECT * FROM mosaic.user WHERE Email = "b@b.b" AND UserId != 127

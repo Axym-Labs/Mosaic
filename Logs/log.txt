@@ -366,3 +366,65 @@ SubsiteCount: 2
 SubsiteLimit: 3
 SubsiteCount: 2
 SubsiteLimit: 3
+Difference in keys of the update set and the table columns: 
+--- OLD: Array
+(
+    [0] => UserId
+    [1] => Email
+    [2] => LastName
+    [3] => FirstName
+    [4] => PlanId
+    [5] => Password
+    [6] => Salt
+    [7] => ProfilePicture
+    [8] => Username
+)
+
+--- NEW: Array
+(
+    [0] => Email
+    [1] => LastName
+    [2] => FirstName
+    [3] => Username
+    [4] => Password
+    [5] => PlanId
+    [6] => Salt
+    [7] => UserId
+)
+
+--- DIFF: Array
+(
+    [7] => ProfilePicture
+)
+
+Difference in keys of the update set and the table columns: 
+--- OLD: Array
+(
+    [0] => UserId
+    [1] => Email
+    [2] => LastName
+    [3] => FirstName
+    [4] => PlanId
+    [5] => Password
+    [6] => Salt
+    [7] => ProfilePicture
+    [8] => Username
+)
+
+--- NEW: Array
+(
+    [0] => Email
+    [1] => LastName
+    [2] => FirstName
+    [3] => Username
+    [4] => Password
+    [5] => PlanId
+    [6] => Salt
+    [7] => UserId
+)
+
+--- DIFF: Array
+(
+    [7] => ProfilePicture
+)
+

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 20:59:39
+/* Smarty version 4.4.1, created on 2024-03-16 20:52:31
   from 'C:\xampp\htdocs\Mosaic\src\templates\base\base.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f4a8ab5e93d8_64322133',
+  'unifunc' => 'content_65f5f87fed5e31_45634344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7cebd1f6edd633a81c4d68cb06c79ac0e9616c4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\base\\base.tpl',
-      1 => 1710532733,
+      1 => 1710617110,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:base/footer.tpl' => 1,
   ),
 ),false)) {
-function content_65f4a8ab5e93d8_64322133 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f5f87fed5e31_45634344 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -45,8 +45,8 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Merriweather:wght@300;400;700;900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@200;300;400;500;600&family=Merriweather:wght@300;400;700;900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">        
 
     <?php echo '<script'; ?>
  src="https://cdn.tailwindcss.com"><?php echo '</script'; ?>
@@ -57,7 +57,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 >
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_186952376165f4a8ab537633_56375285', 'head');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_47999761465f5f87fecd020_66016349', 'head');
 ?>
 
     
@@ -80,7 +80,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_186952376165f4a8ab
         <div class="mx-4 md:mx-6" style="max-width: <?php echo $_smarty_tpl->tpl_vars['maxWidth']->value;?>
 ; width: 100%;">
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_110051197865f4a8ab5e7cf2_69415075', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_146599143365f5f87fed5140_79303174', 'content');
 ?>
 
         </div>
@@ -96,12 +96,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_110051197865f4a8ab
 
 </html><?php }
 /* {block 'head'} */
-class Block_186952376165f4a8ab537633_56375285 extends Smarty_Internal_Block
+class Block_47999761465f5f87fecd020_66016349 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'head' => 
   array (
-    0 => 'Block_186952376165f4a8ab537633_56375285',
+    0 => 'Block_47999761465f5f87fecd020_66016349',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -109,12 +109,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'head'} */
 /* {block 'content'} */
-class Block_110051197865f4a8ab5e7cf2_69415075 extends Smarty_Internal_Block
+class Block_146599143365f5f87fed5140_79303174 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_110051197865f4a8ab5e7cf2_69415075',
+    0 => 'Block_146599143365f5f87fed5140_79303174',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

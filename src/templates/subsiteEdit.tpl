@@ -10,12 +10,12 @@
     <div>
         {foreach from=$editFragments item=editFragment}
             <div class="p-4 border-2 border-primary m-4 rounded-xl">
-                <form method="post" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/update-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
+                <form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/update-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
                     {include file="fragment_components/editContentFragment.tpl" subsiteCf=$editFragment["SubsiteCfContent"]}
                     {$editFragment["FragmentContent"] nofilter}
                     {include file="components/submitbutton.tpl" text="Update" type="primary"}
                 </form>
-                <form method="post" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/delete-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
+                <form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/delete-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
                     {include file="components/submitbutton.tpl" text="Delete" type="warn"}
                 </form>
             </div>

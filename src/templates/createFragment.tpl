@@ -1,7 +1,7 @@
 {extends file='base/base.tpl'}
 {block name=content}
 
-<form method="post" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/create-f">    
+<form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/create-f">    
     
     <div>
         {include file="fragment_components/createContentFragment.tpl"}

@@ -51,7 +51,7 @@ $_smarty_tpl->tpl_vars['subsite']->do_else = false;
             <?php if ($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value) {?>
                 <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Edit",'type'=>"primary",'route'=>"/edit/s/".((string)$_smarty_tpl->tpl_vars['subsite']->value["SubSiteId"])), 0, true);
 ?>
-                <form method="POST" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
+                <form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /delete/s/<?php echo $_smarty_tpl->tpl_vars['subsite']->value['SubSiteId'];?>
 ">
                     <?php $_smarty_tpl->_subTemplateRender("file:components/submitbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Delete",'type'=>"warn"), 0, true);

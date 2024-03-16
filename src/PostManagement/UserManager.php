@@ -91,6 +91,14 @@ class UserManager {
             return array(false, $notifier);
         }
 
+        if (array_key_exists("ProfilePicture", $postData) && $postData["ProfilePicture"] != "") {
+            list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["ProfilePicture"]);
+            if (!$success) {
+                $notifier->Post("Please change your background image input: " . $errMsg, "error");
+                return array(false, $notifier);
+            }
+        }
+
         // if existing user: validate new password input fields, if they are filled
         if ($existingUserId == -1) {
             $user = $this->tables->user->SelectById($existingUserId)[0];
@@ -113,6 +121,10 @@ class UserManager {
     }
 
     private function DefineAutoValues($postData, $existingUserId = -1) {
+        if (!array_key_exists("ProfilePicture", $postData) || $postData["ProfilePicture"] == "") {
+            $postData["ProfilePicture"] = ImageHandler::ConvertImageToJPGBase64($_FILES["ProfilePicture"]);
+        }
+
         if ($existingUserId != -1) {
             $user = $this->tables->user->SelectById($existingUserId)[0];
             $postData["PlanId"] = $user["PlanId"];

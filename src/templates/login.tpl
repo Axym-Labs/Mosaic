@@ -2,7 +2,7 @@
 {block name=content}
 
 <div>
-    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/login" method="POST">
+    <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/login" method="POST" enctype="multipart/form-data">
         <input type="text" name="Email" id="Email" placeholder="Email">
         <input type="password" name="Password" id="Password" placeholder="Password">
         <input type="submit" value="Login">

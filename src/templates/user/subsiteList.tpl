@@ -12,7 +12,7 @@
             {/if}
             {if $isVisitingAccountPage}
                 {include file="components/linkbutton.tpl" text="Edit" type="primary" route="/edit/s/{$subsite["SubSiteId"]}"}
-                <form method="POST" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/delete/s/{$subsite['SubSiteId']}">
+                <form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/delete/s/{$subsite['SubSiteId']}">
                     {include file="components/submitbutton.tpl" text="Delete" type="warn"}
                 </form>
             {/if}

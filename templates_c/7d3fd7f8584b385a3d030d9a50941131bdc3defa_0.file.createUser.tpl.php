@@ -47,7 +47,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 <div>
     <form action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
-/create/user" method="POST">
+/create/user" method="POST" enctype="multipart/form-data">
         <label for="Email">Email:</label>
         <input class="bg-bgcol border-b border-white" type="text" id="Email" name="Email" required><br>
 

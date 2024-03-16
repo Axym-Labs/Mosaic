@@ -100,6 +100,7 @@ class FragmentManager {
     }
 
     private function ValidateData($subsiteId, $postData, $notifier, $subsiteCfId, $tableName) {
+        // general data validation
         // varchars dont exceed db limits
         list($success, $exceededColumns) = $this->tables->subsitecf->CheckStringLengthLimits($postData);
         if (!$success) {
@@ -128,6 +129,14 @@ class FragmentManager {
             return array(false, $notifier);
         }
 
+        if (array_key_exists("BackgroundImage", $postData) && $postData["BackgroundImage"] != "") {
+            list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["BackgroundImage"]);
+            if (!$success) {
+                $notifier->Post("Please change your background image input: " . $errMsg, "error");
+                return array(false, $notifier);
+            }
+        }
+
         $checkPostData = $this->RemoveNullAllowedFields($tableName, $postData);
         list($success, $undefinedColumns) = $this->tables->subsitecf->CheckFieldsNull($checkPostData);
         if (!$success) {
@@ -135,6 +144,7 @@ class FragmentManager {
             return array(false, $notifier);
         }
 
+        // fragment specific validation
         // if includes userid: user exists
         if (array_key_exists("UserId", $postData)) {
             $usersWithId = $this->tables->user->SelectById($postData["UserId"]);
@@ -149,6 +159,26 @@ class FragmentManager {
                 $usersWithId = $this->tables->user->Select("Username = \"" . $postData["Username"] . "\"");
                 if (count($usersWithId) == 0) {
                     $notifier->Post("No user with this username found");
+                    return array(false, $notifier);
+                }
+            }
+        }
+
+        if ($tableName == "FragmentImage") {
+            if (array_key_exists("ImageContent", $postData)) {
+                list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["ImageContent"]);
+                if (!$success) {
+                    $notifier->Post("Please change your image input: " . $errMsg, "error");
+                    return array(false, $notifier);
+                }
+            }
+        }
+
+        if ($tableName == "FragmentProjectinfo") {
+            if (array_key_exists("LogoBlob", $postData)) {
+                list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["LogoBlob"]);
+                if (!$success) {
+                    $notifier->Post("Please change your image input: " . $errMsg, "error");
                     return array(false, $notifier);
                 }
             }
@@ -198,6 +228,10 @@ class FragmentManager {
             $postData["Opacity"] = "1";
         }
 
+        if (array_key_exists("BackgroundImage", $postData) && $postData["BackgroundImage"] != "") {
+            $postData["BackgroundImage"] = ImageHandler::ConvertImageToJPGBase64($_FILES["BackgroundImage"]);
+        }
+
         # ----- Fragment-specific data -----
         if ($tableName == "FragmentLinkProjectinfo") {
             if ($postData["CtaLinkDescription"] == "") {
@@ -221,6 +255,15 @@ class FragmentManager {
                 $postData["´Height"] = "400px";
             }
         }
+
+        if ($tableName == "FragmentImage") {
+            $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["ImageContent"]);
+        }
+
+        if ($tableName == "FragmentProjectinfo") {
+            $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["LogoBlob"]);
+        }
+        
         
         return $postData;
     }

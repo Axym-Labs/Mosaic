@@ -43,7 +43,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
-<form method="post" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
+<form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /create/subsite">
     <div>
         <label for="Name">Name:</label>

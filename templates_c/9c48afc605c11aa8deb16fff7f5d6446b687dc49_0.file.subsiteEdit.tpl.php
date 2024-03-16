@@ -62,7 +62,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['editFragment']->
 $_smarty_tpl->tpl_vars['editFragment']->do_else = false;
 ?>
             <div class="p-4 border-2 border-primary m-4 rounded-xl">
-                <form method="post" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
+                <form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /edit/s/<?php echo $_smarty_tpl->tpl_vars['subsiteId']->value;?>
 /update-f/<?php echo $_smarty_tpl->tpl_vars['editFragment']->value['SubsiteCfContent']['SubsiteContentFragmentId'];?>
 ">
@@ -73,7 +73,7 @@ $_smarty_tpl->tpl_vars['editFragment']->do_else = false;
                     <?php $_smarty_tpl->_subTemplateRender("file:components/submitbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Update",'type'=>"primary"), 0, true);
 ?>
                 </form>
-                <form method="post" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
+                <form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /edit/s/<?php echo $_smarty_tpl->tpl_vars['subsiteId']->value;?>
 /delete-f/<?php echo $_smarty_tpl->tpl_vars['editFragment']->value['SubsiteCfContent']['SubsiteContentFragmentId'];?>
 ">

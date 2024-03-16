@@ -8,7 +8,7 @@
     {assign var="subsite" value=null}
 {/if}
 
-<form method="post" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{if !$subsiteIsUpdate}/create/subsite{else}/edit/s/{$existingSubsiteId}{/if}">
+<form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{if !$subsiteIsUpdate}/create/subsite{else}/edit/s/{$existingSubsiteId}{/if}">
     <div>
         <label for="Name">Name:</label>
         <input type="text" id="Name" name="Name" maxlength="50" placeholder="My subsite" required {GenericRender::InsertValueAttribute($subsite, 'Name')}>
