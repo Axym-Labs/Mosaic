@@ -20,6 +20,7 @@ class ImageHandler {
         // convert to jpg
         $exploded = explode('.',$image["name"]);
         $ext = strtolower($exploded[count($exploded) - 1]); 
+        $image = $image["tmp_name"];
 
         if (preg_match('/jpg|jpeg/i',$ext)) {
             $imageTmp=imagecreatefromjpeg($image);
@@ -37,6 +38,7 @@ class ImageHandler {
 
         $imageStr = base64_encode($image_data);
         imagedestroy($imageTmp);
+
 
         return base64_encode($imageStr);
     }
