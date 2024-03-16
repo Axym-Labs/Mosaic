@@ -8,7 +8,7 @@ tailwind.config = {
                 secondary: '#0c1f99',
                 secondarySoft: '#0c1f9950',
                 clifford: '#da373d',
-                bgcol: '#020202',
+                bgcol: '#090c12',
                 focusColor: '#ffffff',
                 btnPrimary: '#3e09b8',
                 btnSecondary: '#7a6007',
