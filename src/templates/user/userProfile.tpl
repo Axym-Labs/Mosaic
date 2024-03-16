@@ -3,33 +3,35 @@
 {/if}
 
 
-<div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Form</title>
-</head>
-<body>
-    <form action="submit.php" method="post">
-        <label for="Email">Email:</label>
-        <input type="email" id="Email" name="Email" maxlength="50" required><br>
-
-        <label for="LastName">Last Name:</label>
-        <input type="text" id="LastName" name="LastName" maxlength="50" required><br>
-
-        <label for="FirstName">First Name:</label>
-        <input type="text" id="FirstName" name="FirstName" maxlength="50" required><br>
-
-        <label for="ProfilePicture">Profile Picture (JPG String):</label>
-        <input type="text" id="ProfilePicture" name="ProfilePicture" maxlength="255" required><br>
-
-        <label for="Username">Username:</label>
-        <input type="text" id="Username" name="Username" maxlength="50" required><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
+<div class="flex flex-col items-center justify-center">
+    <div class="max-w-md border border-gray-300 rounded-md p-4 shadow-md">
+        <div class="mb-4">
+            <h2 class="text-lg font-bold mb-2">User Information</h2>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["Email"]}</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["LastName"]}</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["FirstName"]}</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span>{$fragmentContent["Username"]}</span>
+            </div>
+        </div>
+        {if isset($fragmentContent["ProfilePicture"]) && $fragmentContent["ProfilePicture"] neq ''}
+            <div class="mb-4">
+                <img src="data:image/jpeg;base64,{$fragmentContent["ProfilePicture"]}" alt="Profile Picture" class="max-w-full h-auto">
+            </div>
+        {/if}
+        {if isset($extraFragmentContent)}
+            {foreach $extraFragmentContent as $key => $value}
+                <div class="mb-4">
+                    <h2 class="text-lg font-bold mb-2">{$key}</h2>
+                    <span>{$value}</span>
+                </div>
+            {/foreach}
+        {/if}
+    </div>
 </div>
