@@ -2,18 +2,18 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                primary: '#804004',
-                primaryLight: '#b85c06',
-                primarySoft: '#80400450',
-                secondary: '#0c1f99',
-                secondarySoft: '#0c1f9950',
+                primary: '#49e4f5',
+                primaryLight: '#49e4f5',
+                primarySoft: '#49e4f5',
+                secondary: '#3f858a',
+                secondarySoft: '#3f858a',
                 clifford: '#da373d',
                 bgcol: '#090c12',
                 focusColor: '#ffffff',
-                btnPrimary: '#3e09b8',
-                btnSecondary: '#7a6007',
-                warn: '#5c0b0b',
-                warnSoft: '#5c0b0b60',
+                btnPrimary: '#49e4f5',
+                btnSecondary: '#49e4f5',
+                warn: '#f29696',
+                warnSoft: '#f29696',
             }
         }
     }

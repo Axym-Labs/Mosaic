@@ -24,7 +24,7 @@
     
 </head>
 
-<body class="bg-bgcol text-gray-200">
+<body class="bg-bgcol text-gray-400">
     {if !isset($redirectToFront)}
         {assign var="redirectToFront" value=false}
     {/if}
