@@ -1,6 +1,6 @@
 {
     "require": {
-        "smarty/smarty": "*",
-        "pecee/simple-router": "*"
+        "smarty/smarty": "^4.4",
+        "pecee/simple-router": "^5.4"
     }
 }

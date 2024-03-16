@@ -428,3 +428,63 @@ SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 11
 SELECT * FROM mosaic.subsitecontentfragment WHERE WebsiteId = 4 AND Position = 3
 SELECT * FROM mosaic.subsitecontentfragment WHERE SubsiteContentFragmentId = 11
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
