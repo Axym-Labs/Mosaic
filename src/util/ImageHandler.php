@@ -18,27 +18,36 @@ class ImageHandler {
 
     public static function ConvertImageToJPGBase64($image) {
         // convert to jpg
-        $exploded = explode('.',$image["name"]);
-        $ext = strtolower($exploded[count($exploded) - 1]); 
 
-        if (preg_match('/jpg|jpeg/i',$ext)) {
-            $imageTmp=imagecreatefromjpeg($image);
-        } else if (preg_match('/png/i',$ext)) {
-            $imageTmp=imagecreatefrompng($image);
-        } else if (preg_match('/webp/i',$ext)) {
-            $imageTmp=imagecreatefromwebp($image);
-        }
+        // return file_get_contents($image["tmp_name"]);
+        
+        return "0x" . bin2hex(file_get_contents($image["tmp_name"]));
 
-        ob_start(); 
+        // $image_data = file_get_contents($image["tmp_name"]);
+        // return $image_data;
 
-        imagejpeg($imageTmp);
-        $image_data = ob_get_contents(); 
-        ob_end_clean(); 
+        // $exploded = explode('.',$image["name"]);
+        // $ext = strtolower($exploded[count($exploded) - 1]); 
 
-        $imageStr = base64_encode($image_data);
-        imagedestroy($imageTmp);
 
-        return base64_encode($imageStr);
+        // if (preg_match('/jpg|jpeg/i',$ext)) {
+        //     $imageTmp=imagecreatefromjpeg($image);
+        // } else if (preg_match('/png/i',$ext)) {
+        //     $imageTmp=imagecreatefrompng($image);
+        // } else if (preg_match('/webp/i',$ext)) {
+        //     $imageTmp=imagecreatefromwebp($image);
+        // }
+
+        // ob_start(); 
+
+        // imagejpeg($imageTmp);
+        // $image_data = ob_get_contents(); 
+        // ob_end_clean(); 
+
+        // $imageStr = base64_encode($image_data);
+        // imagedestroy($imageTmp);
+
+        // return base64_encode($imageStr);
     }
 }
 ?>

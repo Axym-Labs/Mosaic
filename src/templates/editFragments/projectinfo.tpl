@@ -11,7 +11,7 @@
 
 <div>
     <label for="LogoBlob">Logo:</label>
-    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept="image/jpeg" {GenericRender::InsertValueAttribute($fragmentContent, 'LogoBlob')}>
+    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg" {GenericRender::InsertValueAttribute($fragmentContent, 'LogoBlob')}>
   </div>
 
 <div>

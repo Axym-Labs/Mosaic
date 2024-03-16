@@ -60,7 +60,7 @@ if (!$_smarty_tpl->tpl_vars['userIsUpdate']->value) {?>/create/user<?php } else 
 " alt="Profile picture">
             <?php }?>
             <br>
-            <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept="image/jpeg">
+            <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept=".jpg, .jpeg">
         </div>
         
         <div>
