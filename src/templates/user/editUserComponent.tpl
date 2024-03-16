@@ -31,7 +31,7 @@
             <img class="w-12 h-12 inline-block" src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($user, 'ProfilePicture', 'img')}" alt="Profile picture">
             {/if}
             <br>
-            <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept="image/jpeg">
+            <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept=".jpg, .jpeg">
         </div>
         
         <div>

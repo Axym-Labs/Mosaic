@@ -165,10 +165,16 @@ class FragmentManager {
         }
 
         if ($tableName == "FragmentImage") {
-            if (array_key_exists("ImageContent", $postData)) {
-                list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["ImageContent"]);
+            if (array_key_exists("fragment-FragmentImage-ImageContent", $_FILES) && $_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"] != "") {
+                list($success, $errMsg) = ImageHandler::ValidateImageInput($_FILES["fragment-FragmentImage-ImageContent"]);
                 if (!$success) {
                     $notifier->Post("Please change your image input: " . $errMsg, "error");
+                    return array(false, $notifier);
+                }
+            } else {
+                $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
+                if (count($subsiteCfsWithId) == 0) {
+                    $notifier->Post("Please add an image", "error");
                     return array(false, $notifier);
                 }
             }
@@ -204,13 +210,9 @@ class FragmentManager {
         }
         
         $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
-
         if (count($subsiteCfsWithId) > 0) {
             $subsiteCf = $subsiteCfsWithId[0];
-    
-            if (!array_key_exists("BackgroundImage", $postData)) {
-                $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
-            }
+            $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
         }
         
         if ($tableName == "FragmentCredentials") {
@@ -228,8 +230,14 @@ class FragmentManager {
             $postData["Opacity"] = "1";
         }
 
-        if (array_key_exists("BackgroundImage", $postData) && $postData["BackgroundImage"] != "") {
-            $postData["BackgroundImage"] = ImageHandler::ConvertImageToJPGBase64($_FILES["BackgroundImage"]);
+        if (!array_key_exists("BackgroundImage", $postData) || $postData["BackgroundImage"] == "") {
+            if (isset($_FILES["BackgroundImage"]) && isset($_FILES["BackgroundImage"]["tmp_name"]) && $_FILES["BackgroundImage"]["tmp_name"] != "") {
+                $logger = new FileLogger("Logs/log.txt");
+                $logger->Log(print_r($_FILES["BackgroundImage"], true));
+                $postData["BackgroundImage"] = ImageHandler::ConvertImageToJPGBase64($_FILES["BackgroundImage"]);
+            } else {
+                $postData["BackgroundImage"] = "NULL";
+            }
         }
 
         # ----- Fragment-specific data -----
@@ -256,12 +264,12 @@ class FragmentManager {
             }
         }
 
-        if ($tableName == "FragmentImage") {
-            $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["ImageContent"]);
+        if ($tableName == "FragmentImage" && isset($_FILES["fragment-FragmentImage-ImageContent"]) && isset($_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"]) && $_FILES["fragment-FragmentImage-ImageContent"]["tmp_name"] != "") {
+            $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-ImageContent"]);
         }
 
-        if ($tableName == "FragmentProjectinfo") {
-            $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["LogoBlob"]);
+        if ($tableName == "FragmentProjectinfo" && isset($_FILES["fragment-FragmentImage-LogoBlob"]) && isset($_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"]) && $_FILES["fragment-FragmentImage-LogoBlob"]["tmp_name"] != "") {
+            $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-LogoBlob"]);
         }
         
         

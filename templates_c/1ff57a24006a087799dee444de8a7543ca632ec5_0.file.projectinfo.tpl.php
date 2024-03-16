@@ -34,7 +34,7 @@ function content_65f5ca86a2fce1_95739150 (Smarty_Internal_Template $_smarty_tpl)
 
 <div>
     <label for="LogoBlob">Logo:</label>
-    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept="image/jpeg">
+    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg">
   </div>
 
 <div>

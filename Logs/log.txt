@@ -1,169 +1,57 @@
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => SubSiteId
-    [1] => UserId
-    [2] => Name
-    [3] => Route
-    [4] => ShortRoute
-)
-
---- NEW: Array
-(
-    [0] => Name
-    [1] => Route
-    [2] => SubSiteId
-)
-
---- DIFF: Array
-(
-    [1] => UserId
-    [4] => ShortRoute
-)
-
-SubsiteCount: 2
-SubsiteLimit: 3
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => SubSiteId
-    [1] => UserId
-    [2] => Name
-    [3] => Route
-    [4] => ShortRoute
-)
-
---- NEW: Array
-(
-    [0] => Name
-    [1] => Route
-    [2] => SubSiteId
-)
-
---- DIFF: Array
-(
-    [1] => UserId
-    [4] => ShortRoute
-)
-
-SubsiteCount: 2
-SubsiteLimit: 3
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => SubSiteId
-    [1] => UserId
-    [2] => Name
-    [3] => Route
-    [4] => ShortRoute
-)
-
---- NEW: Array
-(
-    [0] => Name
-    [1] => Route
-    [2] => SubSiteId
-)
-
---- DIFF: Array
-(
-    [1] => UserId
-    [4] => ShortRoute
-)
-
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
+Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":""}
+Fragment table name: FragmentImage
+Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":""}
+Fragment table name: FragmentImage
 Difference in keys of the update set and the table columns: 
 --- OLD: Array
 (
     [0] => Id
-    [1] => UserId
-    [2] => ShowPersonalData
+    [1] => ImageContent
+    [2] => Description
 )
 
 --- NEW: Array
 (
-    [0] => ShowPersonalData
+    [0] => Description
     [1] => Id
 )
 
 --- DIFF: Array
 (
-    [1] => UserId
+    [1] => ImageContent
 )
 
+Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":""}
+Fragment table name: FragmentImage
+Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":""}
+Fragment table name: FragmentImage
+Fragment update attempt: {"Position":"3","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":"222"}
+Fragment table name: FragmentImage
+Fragment update attempt: {"Position":"3","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":"aaa"}
+Fragment table name: FragmentImage
+Fragment update attempt: {"Position":"3","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":"aaa"}
+Fragment table name: FragmentImage
 Difference in keys of the update set and the table columns: 
 --- OLD: Array
 (
     [0] => Id
-    [1] => UserId
-    [2] => ShowPersonalData
+    [1] => ImageContent
+    [2] => Description
 )
 
 --- NEW: Array
 (
-    [0] => ShowPersonalData
+    [0] => Description
     [1] => Id
 )
 
 --- DIFF: Array
 (
-    [1] => UserId
+    [1] => ImageContent
 )
 
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => SubsiteContentFragmentId
-    [1] => WebsiteId
-    [2] => Position
-    [3] => BackgroundColor
-    [4] => Opacity
-    [5] => Spannable
-    [6] => ContentTableName
-    [7] => ContentId
-    [8] => BackgroundImage
-)
-
---- NEW: Array
-(
-    [0] => BackgroundColor
-    [1] => Opacity
-    [2] => BackgroundImage
-    [3] => ContentTableName
-    [4] => WebsiteId
-    [5] => Spannable
-    [6] => ContentId
-    [7] => SubsiteContentFragmentId
-)
-
---- DIFF: Array
-(
-    [2] => Position
-)
-
-Fragment update attempt: {"Position":"2","BackgroundColor":"000001","Opacity":"0","BackgroundImage":"","Username":""}
-Fragment table name: FragmentCredentials
+Fragment update attempt: {"Position":"3","BackgroundColor":"000000","Opacity":"0","fragment-FragmentImage-Description":"aaa"}
+Fragment table name: FragmentImage
 Difference in keys of the update set and the table columns: 
 --- OLD: Array
 (
@@ -174,257 +62,12 @@ Difference in keys of the update set and the table columns:
 
 --- NEW: Array
 (
-    [0] => Id
+    [0] => Description
+    [1] => Id
 )
 
 --- DIFF: Array
 (
     [1] => ImageContent
-    [2] => Description
-)
-
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => Id
-    [1] => ImageContent
-    [2] => Description
-)
-
---- NEW: Array
-(
-    [0] => Id
-)
-
---- DIFF: Array
-(
-    [1] => ImageContent
-    [2] => Description
-)
-
-Fragment update attempt: {"Position":"2","BackgroundColor":"000001","Opacity":"0","BackgroundImage":"","Username":""}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"1","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":"a"}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"4","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":"b"}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"4","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":"b"}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":""}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"1","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":"b"}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"1","BackgroundImage":"","Username":""}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"2","BackgroundColor":"000000","Opacity":"0","BackgroundImage":"","Username":"b","fragment-FragmentCredentials-ShowPersonalData":"1"}
-Fragment table name: FragmentCredentials
-Fragment update attempt: {"Position":"0","BackgroundColor":"000000","Opacity":"0.05","BackgroundImage":"","Username":"b","fragment-FragmentCredentials-ShowPersonalData":"1"}
-Fragment table name: FragmentCredentials
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => ProfilePicture
-    [4] => Username
-    [5] => Password
-    [6] => UserId
-)
-
---- DIFF: Array
-(
-    [4] => PlanId
-    [6] => Salt
-)
-
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => ProfilePicture
-    [4] => Username
-    [5] => Password
-    [6] => UserId
-)
-
---- DIFF: Array
-(
-    [4] => PlanId
-    [6] => Salt
-)
-
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => ProfilePicture
-    [4] => Username
-    [5] => Password
-    [6] => UserId
-)
-
---- DIFF: Array
-(
-    [4] => PlanId
-    [6] => Salt
-)
-
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => ProfilePicture
-    [4] => Username
-    [5] => Password
-    [6] => PlanId
-    [7] => UserId
-)
-
---- DIFF: Array
-(
-    [6] => Salt
-)
-
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 3
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-SubsiteCount: 2
-SubsiteLimit: 3
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => Username
-    [4] => Password
-    [5] => PlanId
-    [6] => Salt
-    [7] => UserId
-)
-
---- DIFF: Array
-(
-    [7] => ProfilePicture
-)
-
-Difference in keys of the update set and the table columns: 
---- OLD: Array
-(
-    [0] => UserId
-    [1] => Email
-    [2] => LastName
-    [3] => FirstName
-    [4] => PlanId
-    [5] => Password
-    [6] => Salt
-    [7] => ProfilePicture
-    [8] => Username
-)
-
---- NEW: Array
-(
-    [0] => Email
-    [1] => LastName
-    [2] => FirstName
-    [3] => Username
-    [4] => Password
-    [5] => PlanId
-    [6] => Salt
-    [7] => UserId
-)
-
---- DIFF: Array
-(
-    [7] => ProfilePicture
 )
 

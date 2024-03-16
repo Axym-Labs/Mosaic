@@ -1,7 +1,7 @@
 
 <div>
     <label for="Username">Username:</label>
-    <input type="text" id="Username" name="Username" required {GenericRender::InsertValueAttribute($fragmentContent, 'Username')}>
+    <input type="text" id="Username" name="Username" required {GenericRender::InsertValueAttribute($extraFragmentContent, 'Username')}>
 </div>
 <div>
     <label for="ShowPersonalData">ShowPersonalData:</label>

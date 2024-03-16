@@ -1,7 +1,13 @@
 
 <div>
   <label for="ImageContent">ImageContent:</label>
-  <input type="file" id="fragment-FragmentImage-ImageContent" name="fragment-FragmentImage-ImageContent" accept="image/jpeg" required {GenericRender::InsertValueAttribute($fragmentContent, 'ImageContent')}>
+  <input type="file" id="fragment-FragmentImage-ImageContent" name="fragment-FragmentImage-ImageContent" accept=".jpg, .jpeg">
+</div>
+
+<div>
+    {if GenericRender::InsertValuePlainly($fragmentContent, 'ImageContent') != ""}
+        <img class="w-12 h-12 inline-block" src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($fragmentContent, 'ImageContent', 'img')}" alt="Image content">
+    {/if}
 </div>
 
 <div>

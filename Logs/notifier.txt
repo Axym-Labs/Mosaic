@@ -28,3 +28,6 @@
 [2024-03-16 17:03:57] [error]: Passwords do not match
 [2024-03-16 17:29:25] [error]: You reached your subsite limit. Please upgrade your plan to create more subsites.
 [2024-03-16 17:53:09] [error]: The following fields must have a value: Description, LinkDescription
+[2024-03-16 22:58:32] [error]: Please add an image
+[2024-03-16 22:58:37] [error]: Please add an image
+[2024-03-16 22:59:45] [error]: Please add an image

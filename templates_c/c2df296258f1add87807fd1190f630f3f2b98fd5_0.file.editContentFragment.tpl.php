@@ -40,6 +40,6 @@ function content_65f4d614d999c0_87440977 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>
-    <input type="file" id="BackgroundImage" name="BackgroundImage" accept="image/jpeg">
+    <input type="file" id="BackgroundImage" name="BackgroundImage" accept=".jpg, .jpeg">
 </div><?php }
 }

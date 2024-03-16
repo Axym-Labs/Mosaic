@@ -24,7 +24,7 @@ function content_65f5ca8695ed70_09631622 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 <div>
   <label for="ImageContent">ImageContent:</label>
-  <input type="file" id="fragment-FragmentImage-ImageContent" name="fragment-FragmentImage-ImageContent" accept="image/jpeg" required>
+  <input type="file" id="fragment-FragmentImage-ImageContent" name="fragment-FragmentImage-ImageContent" accept=".jpg, .jpeg" required>
 </div>
 
 <div>
