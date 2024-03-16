@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 14:18:46
+/* Smarty version 4.4.1, created on 2024-03-17 00:25:31
   from 'C:\xampp\htdocs\Mosaic\src\templates\base\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f44ab643bf14_93890236',
+  'unifunc' => 'content_65f62a6b082d27_97889600',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '820829a637abc0f8ea61a57db05089cab2710b39' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\base\\header.tpl',
-      1 => 1710508701,
+      1 => 1710631530,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:components/linkbutton.tpl' => 3,
   ),
 ),false)) {
-function content_65f44ab643bf14_93890236 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f62a6b082d27_97889600 (Smarty_Internal_Template $_smarty_tpl) {
 if (!(isset($_smarty_tpl->tpl_vars['redirectToFront']->value))) {?>
     <?php $_smarty_tpl->_assignInScope('redirectToFront', false);
 }?>
@@ -32,8 +32,8 @@ if (!(isset($_smarty_tpl->tpl_vars['redirectToFront']->value))) {?>
             <a href="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;
 if ($_smarty_tpl->tpl_vars['redirectToFront']->value) {?>/front<?php } else { ?>/<?php }?>" class="flex items-center">
                 <img src="<?php echo BusinessConstants::$STATIC_URL_PREFIX;?>
-/assets/logo.png" alt="Mosaic" class="w-12 ml-4 md:ml-0">
-                <p class="text-lg text-b500 p-4" >Mosaic</p>
+/assets/logo.png" alt="Mosaic" class="w-10 ml-4 md:ml-0">
+                <p class="text-xl font-extrabold p-4 text-primary" style="font-family: 'JetBrains Mono', 'Inter Tight', 'Inter', 'Roboto', 'Helvetica', 'Inter-Tight';">Mosaic</p>
             </a>
             <div id="toggle-mobile-nav" class="md:hidden">
                 <button id="toggle-nav-mobile-btn" class="relative group" data-active="0" onclick="toggleNavMobile(this);">

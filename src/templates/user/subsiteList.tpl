@@ -4,7 +4,7 @@
 
 <div class="w-full">
     {foreach from=$subsites item=subsite}
-        <div class="p-4 border-2 border-primary m-4 rounded-xl w-full">
+        <div class="p-4 bg-highlightedbg m-4 rounded-xl w-full">
             <h2>{$subsite["Name"]}</h2>
             <p>Route: <a class="underline" href="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/u/{$user["Username"]}/{$subsite["Route"]}">{$subsite["Route"]}</a></p>
             {if ($planperm["ShortLinkOption"] && $isVisitingAccountPage) || !$isVisitingAccountPage}
