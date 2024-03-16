@@ -9,7 +9,7 @@
 <div class="lg:grid lg:grid-cols-2 gap-8">
     <div>
         {foreach from=$editFragments item=editFragment}
-            <div class="p-4 border-2 border-primary m-4 rounded-xl">
+            <div class="p-4 border-r-2 border-primary m-4 rounded-xl">
                 <form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/update-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
                     {include file="fragment_components/editContentFragment.tpl" subsiteCf=$editFragment["SubsiteCfContent"]}
                     {$editFragment["FragmentContent"] nofilter}

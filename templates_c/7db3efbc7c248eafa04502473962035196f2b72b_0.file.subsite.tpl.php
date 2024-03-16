@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 15:07:55
+/* Smarty version 4.4.1, created on 2024-03-16 23:59:57
   from 'C:\xampp\htdocs\Mosaic\src\templates\subsite.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f4563b5aef89_35865757',
+  'unifunc' => 'content_65f6246d7fffd6_04127129',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7db3efbc7c248eafa04502473962035196f2b72b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\subsite.tpl',
-      1 => 1710503131,
+      1 => 1710629942,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:site_components/subsiteView.tpl' => 1,
   ),
 ),false)) {
-function content_65f4563b5aef89_35865757 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f6246d7fffd6_04127129 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_157318050965f4563b5ac484_21886570', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9550385465f6246d7fd519_67101381', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_157318050965f4563b5ac484_21886570 extends Smarty_Internal_Block
+class Block_9550385465f6246d7fd519_67101381 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_157318050965f4563b5ac484_21886570',
+    0 => 'Block_9550385465f6246d7fd519_67101381',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -56,7 +56,29 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 <br>
 
 <h1>Data</h1>
-<?php echo GenericRender::RenderDict($_smarty_tpl->tpl_vars['subsite']->value,$_smarty_tpl->tpl_vars['subsiteColumnTypeData']->value);?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="submit.php" method="post">
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" maxlength="50"><br>
+
+        <label for="Route">Route:</label>
+        <input type="text" id="Route" name="Route" maxlength="50"><br>
+
+        <label for="ShortRoute">Short Route:</label>
+        <input type="text" id="ShortRoute" name="ShortRoute" maxlength="50"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
 
 
 <?php

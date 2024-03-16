@@ -24,42 +24,42 @@
         Fragment Type
     </h1>
     <div class="flex">
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Credentials" name="ContentTableName" value="FragmentCredentials" checked>
             <label for="ContentTableName_Credentials">Credentials</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Iframe" name="ContentTableName" value="FragmentIframe">
             <label for="ContentTableName_Iframe">Iframe</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Image" name="ContentTableName" value="FragmentImage">
             <label for="ContentTableName_Image">Image</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Link" name="ContentTableName" value="FragmentLink">
             <label for="ContentTableName_Link">Link</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_News" name="ContentTableName" value="FragmentNews">
             <label for="ContentTableName_News">News</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Projectinfo" name="ContentTableName" value="FragmentProjectinfo">
             <label for="ContentTableName_Projectinfo">Project Info</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Socials" name="ContentTableName" value="FragmentSocials">
             <label for="ContentTableName_Socials">Socials</label>
         </div>
     
-        <div class="m-2 p-2 px-4 border-2 border-secondary rounded-full">
+        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
             <input type="radio" id="ContentTableName_Text" name="ContentTableName" value="FragmentText">
             <label for="ContentTableName_Text">Text</label>
         </div>
