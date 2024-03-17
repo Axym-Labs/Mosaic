@@ -5,7 +5,7 @@
             {$fragmentContent["Title"]}
         </h1>
         {if $fragmentContent["LogoBlob"]}
-            <img src="data:image/jpeg;base64,{$fragmentContent['LogoBlob']}" alt="Logo" class="mb-2 rounded-lg">
+            <img src="data:image/jpeg;base64,{base64_encode($fragmentContent['LogoBlob'])}" alt="Logo" class="mb-2 rounded-lg">
         {/if}
         <p class="text-lg">{$fragmentContent["Description"]}</p>
     </div>

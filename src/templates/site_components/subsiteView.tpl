@@ -10,11 +10,7 @@
                 {$fragment["Content"] nofilter}
             </div>
         {foreachelse}
+            {include file="components/empty.tpl"}
+        {/foreach}
     </div>
 </div>
-<div>
-    <h1>
-        Nothing here yet.
-    </h1>
-</div>
-{/foreach}

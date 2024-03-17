@@ -28,10 +28,10 @@ class SubsiteEditDataRetriever {
             $fragmentContentWithId = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
 
             // for whatever reason, duplicates are being returned from the query sometimes
-            if (in_array($fragmentId, $fragmentIds)) {
+            if (in_array($fragment["SubsiteContentFragmentId"], $fragmentIds)) {
                 continue;
             }
-            array_push($fragmentIds, $fragmentId);
+            array_push($fragmentIds, $fragment["SubsiteContentFragmentId"]);
             
             
             if (count($fragmentContentWithId) == 0) {
