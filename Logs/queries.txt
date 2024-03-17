@@ -987,3 +987,38 @@ SELECT * FROM mosaic.plan WHERE 1
 SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
 SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
 SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
+SELECT COUNT(*) FROM mosaic.subsite
+SELECT * FROM mosaic.plan WHERE 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 2
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 3
