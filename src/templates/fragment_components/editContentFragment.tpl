@@ -6,11 +6,11 @@
 </div>
 <div>
     <label for="BackgroundColor">Background Color (HEX):</label>
-    <input type="text" id="BackgroundColor" name="BackgroundColor" maxlength="6" value="{$subsiteCf['BackgroundColor']}">
+    <input type="color" id="BackgroundColor" name="BackgroundColor" value="#{$subsiteCf['BackgroundColor']}">
 </div>
 <div>
-    <label for="Opacity">Opacity (0-1):</label>
-    <input type="number" id="Opacity" name="Opacity" step="0.01" value="{$subsiteCf['Opacity']}">
+    <label for="Opacity">Background Opacity:</label>
+    <input type="range" min="0.0" max="1.0" id="Opacity" name="Opacity" step="0.01" value="{if (isset($subsiteCf['Opacity']) && $subsiteCf['Opacity'] != '')}{$subsiteCf['Opacity']}{else}0{/if}">
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>

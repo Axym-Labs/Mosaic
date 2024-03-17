@@ -1,27 +1,31 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-15 21:09:20
+/* Smarty version 4.4.1, created on 2024-03-17 15:20:20
   from 'C:\xampp\htdocs\Mosaic\src\templates\fragments\credentials.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f4aaf0d49256_13172408',
+  'unifunc' => 'content_65f6fc24735c60_28854556',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9040270f748900256c22e7637347b8157c879c1b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\fragments\\credentials.tpl',
-      1 => 1710533357,
+      1 => 1710685219,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:../user/userProfile.tpl' => 1,
   ),
 ),false)) {
-function content_65f4aaf0d49256_13172408 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class=" p-4 rounded-md">
+function content_65f6fc24735c60_28854556 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:../user/userProfile.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('user'=>$_smarty_tpl->tpl_vars['extraFragmentContent']->value), 0, false);
+?>
+
+<!-- <div class=" p-4 rounded-md">
     <?php if ($_smarty_tpl->tpl_vars['extraFragmentContent']->value["ProfilePicture"]) {?>
         <div class="mt-4">
             <span class="font-bold">Profile Picture:</span>
@@ -49,6 +53,6 @@ function content_65f4aaf0d49256_13172408 (Smarty_Internal_Template $_smarty_tpl)
 </a>
         </div>
     <?php }?>
-</div>
+</div> -->
 <?php }
 }

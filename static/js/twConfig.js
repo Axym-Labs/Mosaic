@@ -9,7 +9,7 @@ tailwind.config = {
                 secondarySoft: '#3f858a',
                 clifford: '#da373d',
                 bgcol: '#090c12',
-                highlightedbg: '#091119',
+                highlightedbg: '#121924',
                 focusColor: '#ffffff',
                 btnPrimary: '#49e4f5',
                 btnSecondary: '#49e4f5',

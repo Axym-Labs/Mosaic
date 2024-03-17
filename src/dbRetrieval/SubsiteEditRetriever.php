@@ -8,8 +8,8 @@ class SubsiteEditDataRetriever {
         $this->subsiteDataRetriever = new SubsiteDataRetriever($tables);
     }
 
-    public function AssignData($smarty, $subsiteId) {
-        $smarty = $this->subsiteDataRetriever->AssignData($smarty, $subsiteId, false);
+    public function AssignData($smarty, $subsiteId, $userId) {
+        $smarty = $this->subsiteDataRetriever->AssignData($smarty, $subsiteId, false, $userId);
 
         if ($smarty->getTemplateVars('NotFoundError')) {
             return $smarty;
@@ -20,11 +20,26 @@ class SubsiteEditDataRetriever {
         $subsite = $this->tables->subsite->SelectById($subsiteId)[0];
         $userId = $subsite["UserId"];
 
+        $fragmentIds = array();
         $fragments = array();
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
-            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId)[0];
+            $fragmentContentWithId = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
+
+            // for whatever reason, duplicates are being returned from the query sometimes
+            if (in_array($fragmentId, $fragmentIds)) {
+                continue;
+            }
+            array_push($fragmentIds, $fragmentId);
+            
+            
+            if (count($fragmentContentWithId) == 0) {
+                FragmentManager::HandleDeleteUnstableFragment($fragment["SubsiteContentFragmentId"], $this->tables);
+                continue;
+            }
+            $fragmentContent = $fragmentContentWithId[0];
+
             $extraFragmentContent = $this->GetExtraEditFragmentContent($tableName, $userId, $subsiteId, $fragmentId, $fragmentContent);
             $editFragment = $this->GetTemplatedEditFragment($tableName, $fragmentContent, $extraFragmentContent);
             $subsiteCf = $this->tables->subsitecf->Select("ContentId = $fragmentId AND ContentTableName = \"$tableName\"")[0];

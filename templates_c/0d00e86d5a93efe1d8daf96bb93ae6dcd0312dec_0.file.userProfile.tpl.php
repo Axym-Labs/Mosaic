@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 4.4.1, created on 2024-03-08 12:45:41
-  from 'C:\xampp\htdocs\Mosaic\src\templates\account\userProfile.tpl' */
+  from 'C:\xampp\htdocs\Mosaic\src\templates\account\userProfileWrapper.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '0d00e86d5a93efe1d8daf96bb93ae6dcd0312dec' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\account\\userProfile.tpl',
+      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\account\\userProfileWrapper.tpl',
       1 => 1709898340,
       2 => 'file',
     ),

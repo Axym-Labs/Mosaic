@@ -31,8 +31,16 @@
     {if !isset($maxWidth)}
         {assign var="maxWidth" value="1200px"}
     {/if}
+    {if !isset($withNav)}
+        {assign var="withNav" value=true}
+    {/if}
+    {if !isset($withFooter)}
+        {assign var="withFooter" value=true}
+    {/if}
 
-    {include file="base/header.tpl"}
+    {if $withNav}
+        {include file="base/header.tpl"}
+    {/if}
 
     {include file="base/messages.tpl"}
     <div class="flex justify-center">
@@ -40,7 +48,10 @@
             {block name=content}{/block}
         </div>
     </div>
-    {include file="base/footer.tpl"}
+
+    {if $withFooter}
+        {include file="base/footer.tpl"}
+    {/if}
 
     <script src="{BusinessConstants::$STATIC_URL_PREFIX}/js/baseDomManagement.js"></script>
 </body>

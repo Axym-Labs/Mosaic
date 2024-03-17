@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-16 22:42:01
+/* Smarty version 4.4.1, created on 2024-03-17 13:46:56
   from 'C:\xampp\htdocs\Mosaic\src\templates\createFragment.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f6122925a1d2_75807504',
+  'unifunc' => 'content_65f6e640b36194_12737216',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a40155ecccb44d9485ba40a5e223f7fa84931f0d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\createFragment.tpl',
-      1 => 1710618995,
+      1 => 1710679616,
       2 => 'file',
     ),
   ),
@@ -30,24 +30,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:components/submitbutton.tpl' => 1,
   ),
 ),false)) {
-function content_65f6122925a1d2_75807504 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f6e640b36194_12737216 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_112414866865f612292539c5_04986264', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12393290065f6e640b30263_37760527', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_112414866865f612292539c5_04986264 extends Smarty_Internal_Block
+class Block_12393290065f6e640b30263_37760527 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_112414866865f612292539c5_04986264',
+    0 => 'Block_12393290065f6e640b30263_37760527',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -64,56 +64,56 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     </div>
     <div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentCredentials">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Credentials
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/credentials.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentIframe">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Iframe
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/iframe.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentImage">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Image
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/image.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentLink">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Link
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/link.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentNews">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 News
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/news.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentProjectinfo">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Project Info
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/projectinfo.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentSocials">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Socials
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/socials.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
         </div>
         <div class="fragment-type m-4 border-l-2 border-primary p-2 pl-4" id="FragmentText">
-            <h1 class="text-3xl font-bold">
+            <h1 class="text-2xl font-bold mb-2">
                 Text
             </h1>
             <?php $_smarty_tpl->_subTemplateRender('file:editFragments/text.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

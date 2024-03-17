@@ -1,4 +1,7 @@
-<div class=" p-4 rounded-md">
+
+{include file="../user/userProfile.tpl" user=$extraFragmentContent}
+
+<!-- <div class=" p-4 rounded-md">
     {if $extraFragmentContent["ProfilePicture"]}
         <div class="mt-4">
             <span class="font-bold">Profile Picture:</span>
@@ -20,4 +23,4 @@
             <a href="mailto:{$extraFragmentContent["Email"]}">{$extraFragmentContent["Email"]}</a>
         </div>
     {/if}
-</div>
+</div> -->

@@ -99,6 +99,20 @@ class FragmentManager {
         return array(true, $notifier);
     }
 
+    public static function HandleDeleteUnstableFragment($subsiteCfId, $tables) {
+        $subsitecf = $tables->subsitecf->SelectById($subsiteCfId)[0];
+
+        // fragment may no exist - if it does, delete it
+        try {
+            $tables->fragments->GetTableByName($subsitecf["ContentTableName"])->Delete($subsitecf["ContentId"]);
+        } catch (Exception $e) {
+        }
+
+        $tables->subsitecf->Delete($subsiteCfId);
+
+        return true;
+    }
+
     private function ValidateData($subsiteId, $postData, $notifier, $subsiteCfId, $tableName) {
         // general data validation
         // varchars dont exceed db limits
@@ -222,9 +236,13 @@ class FragmentManager {
         }
 
         if (!array_key_exists("BackgroundColor", $postData) || $postData["BackgroundColor"] == "") {
-            $postData["Opacity"] = "0";
-            $postData["BackgroundColor"] = "000000";
+            if (!array_key_exists("Opacity", $postData) || $postData["Opacity"] == "") {
+                $postData["Opacity"] = "0";
+            }
+            $postData["BackgroundColor"] = "#000000";
         }
+
+        $postData["BackgroundColor"] = str_replace("#", "", $postData["BackgroundColor"]);
 
         if (!array_key_exists("Opacity", $postData) || $postData["Opacity"] == "") {
             $postData["Opacity"] = "1";
@@ -257,10 +275,10 @@ class FragmentManager {
         if ($tableName == "FragmentIframe") {
             $postData = $this->SetUncheckedCheckboxValue("MorePermissions", $postData);
             if ($postData["Width"] == "") {
-                $postData["Width"] = "100%";
+                $postData["Width"] = "400";
             }
-            if ($postData["´Height"] == "") {
-                $postData["´Height"] = "400px";
+            if ($postData["Height"] == "") {
+                $postData["Height"] = "400";
             }
         }
 
@@ -334,7 +352,7 @@ class FragmentManager {
 
     private function SetUncheckedCheckboxValue($checkboxName, $postData) {
         if (!array_key_exists($checkboxName, $postData)) {
-            $postData[$checkboxName] = 0;
+            $postData[$checkboxName] = "0";
         }
         return $postData;
     }

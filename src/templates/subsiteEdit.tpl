@@ -11,6 +11,7 @@
         {foreach from=$editFragments item=editFragment}
             <div class="p-4 border-l-2 border-primary rounded-r-xl m-4 md:m-6 bg-highlightedbg">
                 <form method="POST" enctype="multipart/form-data" action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}/edit/s/{$subsiteId}/update-f/{$editFragment['SubsiteCfContent']['SubsiteContentFragmentId']}">
+                    {include file="components/smallerHeader.tpl" text=$editFragment["SubsiteCfContent"]["ContentTableName"]}
                     {include file="fragment_components/editContentFragment.tpl" subsiteCf=$editFragment["SubsiteCfContent"]}
                     {$editFragment["FragmentContent"] nofilter}
                     {include file="components/submitbutton.tpl" text="Update" type="primary"}
@@ -36,13 +37,13 @@
             {/if}        
         </div>
     </div>
-    <div class="lg:max-h-screen">
-        <div class="">
+    <div class="">
+        <div class="mb-1">
             <h1 class="uppercase text-gray-600 font-extrabold">
-                Live Preview
+                Preview
             </h1>
         </div>
-        <div class="border border-2 rounded-xl p-4 border-gray-600 h-full">
+        <div class="border border-2 rounded-xl p-4 border-gray-600 lg:max-h-screen overflow-y-scroll">
             {include file='site_components/subsiteView.tpl'}
         </div>
     </div>
