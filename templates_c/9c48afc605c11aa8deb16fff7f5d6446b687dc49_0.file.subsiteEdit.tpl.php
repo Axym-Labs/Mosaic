@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-16 17:19:11
+/* Smarty version 4.4.1, created on 2024-03-17 02:16:53
   from 'C:\xampp\htdocs\Mosaic\src\templates\subsiteEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f5c67f845ce9_69844799',
+  'unifunc' => 'content_65f644852e7953_25619848',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9c48afc605c11aa8deb16fff7f5d6446b687dc49' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\subsiteEdit.tpl',
-      1 => 1710605948,
+      1 => 1710638212,
       2 => 'file',
     ),
   ),
@@ -25,22 +25,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:site_components/subsiteView.tpl' => 1,
   ),
 ),false)) {
-function content_65f5c67f845ce9_69844799 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f644852e7953_25619848 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_214334208165f5c67f839161_53178097', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_25786504365f644852dab51_95600539', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_214334208165f5c67f839161_53178097 extends Smarty_Internal_Block
+class Block_25786504365f644852dab51_95600539 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_214334208165f5c67f839161_53178097',
+    0 => 'Block_25786504365f644852dab51_95600539',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -61,7 +61,7 @@ $_smarty_tpl->tpl_vars['editFragment']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['editFragment']->value) {
 $_smarty_tpl->tpl_vars['editFragment']->do_else = false;
 ?>
-            <div class="p-4 border-2 border-primary m-4 rounded-xl">
+            <div class="p-4 border-l-2 border-primary rounded-r-xl m-4 md:m-6 bg-highlightedbg">
                 <form method="POST" enctype="multipart/form-data" action="<?php echo BusinessConstants::$UNIVERSAL_ROUTE_PREFIX;?>
 /edit/s/<?php echo $_smarty_tpl->tpl_vars['subsiteId']->value;?>
 /update-f/<?php echo $_smarty_tpl->tpl_vars['editFragment']->value['SubsiteCfContent']['SubsiteContentFragmentId'];?>
@@ -81,7 +81,7 @@ $_smarty_tpl->tpl_vars['editFragment']->do_else = false;
 ?>
                 </form>
             </div>
-            <?php
+        <?php
 }
 if ($_smarty_tpl->tpl_vars['editFragment']->do_else) {
 ?>
@@ -93,18 +93,27 @@ if ($_smarty_tpl->tpl_vars['editFragment']->do_else) {
         <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        <?php if ($_smarty_tpl->tpl_vars['allowedToCreateFragment']->value) {?>
-            <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Create fragment",'route'=>"/edit/s/".((string)$_smarty_tpl->tpl_vars['subsiteId']->value)."/create-f",'type'=>"primary"), 0, false);
+        <div class="flex justify-center">
+            <?php if ($_smarty_tpl->tpl_vars['allowedToCreateFragment']->value) {?>
+                <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Create fragment",'route'=>"/edit/s/".((string)$_smarty_tpl->tpl_vars['subsiteId']->value)."/create-f",'type'=>"primary"), 0, false);
 ?>
-        <?php } else { ?>
-            <p>
-                You have reached the maximum amount of fragments for this subsite. Upgrade your plan.
-            </p>
-        <?php }?>        
+            <?php } else { ?>
+                <p>
+                    You have reached the maximum amount of fragments for this subsite. Upgrade your plan.
+                </p>
+            <?php }?>        
+        </div>
     </div>
-    <div>
-    <?php $_smarty_tpl->_subTemplateRender('file:site_components/subsiteView.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <div class="lg:max-h-screen">
+        <div class="">
+            <h1 class="uppercase text-gray-600 font-extrabold">
+                Live Preview
+            </h1>
+        </div>
+        <div class="border border-2 rounded-xl p-4 border-gray-600 h-full">
+            <?php $_smarty_tpl->_subTemplateRender('file:site_components/subsiteView.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+        </div>
     </div>
 </div>
 

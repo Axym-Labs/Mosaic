@@ -29,11 +29,17 @@
         <div id="navbar-links" class="bg-bgcol backdrop-blur-md absolute md:relative md:top-0 w-full md:w-auto md:block hidden md:grow mr-2">
             <div class="flex flex-col md:flex-row justify-end h-full items-center bg-bgcol">
                 {if $sessionManager->IsUserLoggedIn()}
-                    <div id="welcome-msg" class="flex flex-col justify-center mx-4 text-b500 text-lg">
-                        Welcome, {$maybeUsername}!
+                    <div id="welcome-msg" class="mx-4 text-b500 text-lg text-gray-100">
+                        Welcome, <span class="text-primary">{$maybeUsername}</span>!
                     </div>
+                    <p class="mx-4 text-lg">
+                        {include file="components/textlink.tpl" text="Pricing" route="/pricing"}
+                    </p>
                     {include file="components/linkbutton.tpl" text="My Account" route="/a" type="primary"}
                 {else}
+                    <p>
+                        {include file="components/textlink.tpl" text="Pricing" route="/pricing"}
+                    </p>
                     {include file="components/linkbutton.tpl" text="Get Started" route="/create/user" type="primary"}
                     {include file="components/linkbutton.tpl" text="Login" route="/login" type="secondary"}
                 {/if}

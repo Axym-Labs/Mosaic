@@ -84,3 +84,17 @@ button, input[type="submit"], a#primary-button, a#primary-button p {
     font-weight: 900 !important;
     border-radius: 0.3rem !important;
 }
+
+.jbmono {
+    font-family: "JetBrains Mono", "Inter", "Roboto", "Helvetica", sans-serif;
+}
+
+table#pricingtable {
+	display: table;
+}
+table#pricingtable tr {
+	display: table-cell;
+}
+table#pricingtable tr td {
+	display: block;
+}

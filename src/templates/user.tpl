@@ -16,10 +16,14 @@
 {/if}
 
 {if $isVisitingAccountPage}
-    {include file="components/linkbutton.tpl" text="Logout" type="warn" route="/create/subsite"}
+    <div class="flex justify-end">
+        {include file="components/linkbutton.tpl" text="Logout" type="warn" route="/create/subsite"}
+    </div>
 {else}
     {if $isThisUser}
-        {include file="components/linkbutton.tpl" text="Manage your profile" type="primary" route="/a"}
+        <div class="flex justify-center">
+            {include file="components/linkbutton.tpl" text="Manage your profile" type="primary" route="/a"}
+        </div>
     {/if}
 {/if}
 
