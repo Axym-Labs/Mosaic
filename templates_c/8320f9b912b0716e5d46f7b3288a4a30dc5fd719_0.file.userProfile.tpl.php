@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-12 12:02:11
-  from 'C:\xampp\htdocs\Mosaic\src\templates\user\userProfile.tpl' */
+/* Smarty version 4.4.1, created on 2024-03-17 15:04:47
+  from 'C:\xampp\htdocs\Mosaic\src\templates\user\userProfileWrapper.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f0363301cd19_25177083',
+  'unifunc' => 'content_65f6f87f5fed34_17828340',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8320f9b912b0716e5d46f7b3288a4a30dc5fd719' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\user\\userProfile.tpl',
-      1 => 1710241330,
+      0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\user\\userProfileWrapper.tpl',
+      1 => 1710684286,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,40 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65f0363301cd19_25177083 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f6f87f5fed34_17828340 (Smarty_Internal_Template $_smarty_tpl) {
 if (!(isset($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value))) {?>
     <?php $_smarty_tpl->_assignInScope('isVisitingAccountPage', false);
 }?>
 
-<div>
-    <h1 class="text-3xl md:text-4xl font-extrabold intertight"><?php echo $_smarty_tpl->tpl_vars['user']->value["Username"];?>
-</h1>
+
+<div class="flex flex-col items-center justify-center">
+    <div class="max-w-md rounded-md p-4 shadow-md">
+        <div class="mb-4">
+            <h2 class="text-lg font-bold mb-2">User Information</h2>
+            <div class="flex flex-col mb-2">
+                <span><?php echo $_smarty_tpl->tpl_vars['user']->value["Email"];?>
+</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span><?php echo $_smarty_tpl->tpl_vars['user']->value["LastName"];?>
+</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span><?php echo $_smarty_tpl->tpl_vars['user']->value["FirstName"];?>
+</span>
+            </div>
+            <div class="flex flex-col mb-2">
+                <span><?php echo $_smarty_tpl->tpl_vars['user']->value["Username"];?>
+</span>
+            </div>
+        </div>
+        <?php if ((isset($_smarty_tpl->tpl_vars['user']->value["ProfilePicture"])) && $_smarty_tpl->tpl_vars['user']->value["ProfilePicture"] != '') {?>
+            <div class="mb-4">
+                <img class="w-20 h-20 rounded-2xl border-2 border-highlightedbg" src="data:image/jpeg;base64,<?php echo base64_encode($_smarty_tpl->tpl_vars['user']->value['ProfilePicture']);?>
+" alt="Profile Picture" class="max-w-full h-auto">
+            </div>
+        <?php }?>
+    </div>
 </div>
-
-<div>
-    <?php echo htmlspecialchars((string)GenericRender::RenderDict($_smarty_tpl->tpl_vars['user']->value,$_smarty_tpl->tpl_vars['userColumnTypeData']->value), ENT_QUOTES, 'UTF-8', true);?>
-
-</div>
-
-<div>
-    <h1 class="text-3xl font-bold text-primary"><?php echo $_smarty_tpl->tpl_vars['user']->value["LastName"];?>
-</h1>
-</div><?php }
+<?php }
 }

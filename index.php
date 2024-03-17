@@ -148,13 +148,18 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s-id/{sid}', fu
     Redirect("/u/" . $username . '/' . $subsitesWithId[0]["Route"]);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
-    $smarty = $subsiteDataRetriever->AssignDataByShortRoute($smarty, $subsiteShortRoute, false);
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier, $sessionManager) {
+    $smarty = $subsiteDataRetriever->AssignDataByShortRoute($smarty, $subsiteShortRoute, false, $sessionManager->GetUserId());
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
-SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty, $notifier) {
-    $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false);
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/s-compact/{sroute}', function($subsiteShortRoute) use ($subsiteDataRetriever, $smarty, $notifier, $sessionManager) {
+    $smarty = $subsiteDataRetriever->AssignDataByShortRoute($smarty, $subsiteShortRoute, true, $sessionManager->GetUserId());
+    DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
+});
+
+SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/u/{uname}/{sroute}', function($userName, $subsiteRoute) use ($subsiteDataRetriever, $smarty, $notifier, $sessionManager) {
+    $smarty = $subsiteDataRetriever->AssignDataByRoute($smarty, $userName, $subsiteRoute, false, $sessionManager->GetUserId());
     DisplayTemplateOrNotFound($smarty, 'subsite.tpl', $notifier);
 });
 
@@ -169,7 +174,7 @@ SimpleRouter::get(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}', 
         Redirect('/s-id/' . $subsiteId);
     }
     $smarty->assign("contentMaxWidth", "2000px"); // allow for horizontal layout
-    $smarty = $subsiteEditDataRetriever->AssignData($smarty, $subsiteId, true);
+    $smarty = $subsiteEditDataRetriever->AssignData($smarty, $subsiteId, true, $userId);
     DisplayTemplateOrNotFound($smarty, 'subsiteEdit.tpl', $notifier);
 });
 
@@ -239,7 +244,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/edit/s/{sid}',
     }
     list($editSuccess, $notifier) = $subsiteManager->HandleUpdate($subsiteId, $userId, $notifier);
 
-    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, true);
+    $smarty = $subsiteDataRetriever->AssignData($smarty, $subsiteId, false, $userId);
     Redirect("/edit/s/" . $subsiteId);
 });
 

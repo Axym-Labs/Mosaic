@@ -6,7 +6,7 @@ class SubsiteDataRetriever {
         $this->tables = $tables;
     }
 
-    public function AssignData($smarty, $subsiteId, $isShort) {
+    public function AssignData($smarty, $subsiteId, $isCompactVerison, $userId) {
         if (!is_numeric($subsiteId) || (int)$subsiteId < 0) {
             $smarty->assign('NotFoundError', "Subsite id must be a number");
             return $smarty;
@@ -16,10 +16,10 @@ class SubsiteDataRetriever {
             $smarty->assign('NotFoundError', "No subsite with this id found");
             return $smarty;
         }
-        return $this->AssignDataShared($smarty, $subsitesWithId[0], $isShort);
+        return $this->AssignDataShared($smarty, $subsitesWithId[0], $isCompactVerison, $userId);
     }
 
-    public function AssignDataByRoute($smarty, $userName, $subsiteRoute, $isShort) {
+    public function AssignDataByRoute($smarty, $userName, $subsiteRoute, $isCompactVerison) {
         $usersWithId = $this->tables->user->Select("UserName = '$userName'");
         if (count($usersWithId) == 0) {
             $smarty->assign('NotFoundError', "No user with this username found");
@@ -32,29 +32,52 @@ class SubsiteDataRetriever {
             $smarty->assign('NotFoundError', "No subsite with this route found");
             return $smarty;
         }
-        return $this->AssignDataShared($smarty, $subsitesWithRoute[0], $isShort);
+        return $this->AssignDataShared($smarty, $subsitesWithRoute[0], $isCompactVerison, $userId);
     }
 
-    public function AssignDataByShortRoute($smarty, $subsiteShortRoute, $isShort) {
+    public function AssignDataByShortRoute($smarty, $subsiteShortRoute, $isCompactVerison, $userId) {
         $subsitesWithRoute = $this->tables->subsite->Select("ShortRoute = '$subsiteShortRoute'");
         if (count($subsitesWithRoute) == 0) {
             $smarty->assign('NotFoundError', "No subsite with this short route found");
             return $smarty;
         }
-        return $this->AssignDataShared($smarty, $subsitesWithRoute[0], $isShort);
+        $subsite = $subsitesWithRoute[0];
+        $planperm = UserDataRetriever::GetPlanPermissions($this->tables, $subsite["UserId"]);
+        if (!$planperm["ShortLinkOption"]) {
+            $smarty->assign('NotFoundError', "No subsite with this short route found");
+            return $smarty;
+        }
+        return $this->AssignDataShared($smarty, $subsite, $isCompactVerison, $userId);
     }
 
-    private function AssignDataShared($smarty, $subsite, $isShort) {
+    private function AssignDataShared($smarty, $subsite, $isCompactVerison, $userId) {
         $smarty->assign('subsite', $subsite);
-        $smarty->assign('isShort', $isShort);
+        $smarty->assign('isCompactVerison', $isCompactVerison);
+        $smarty->assign('owner', $this->tables->user->SelectById($subsite["UserId"])[0]);
+        $smarty->assign('isOwner', $subsite["UserId"] == $userId);
 
         $genericFragments = $this->GetGenericFragments($subsite["SubSiteId"]);
 
+        $fragmentIds = array();
         $fragments = array();
         foreach ($genericFragments as $fragment) {
             $tableName = $fragment["ContentTableName"];
             $fragmentId = $fragment["ContentId"];
-            $fragmentContent = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId)[0];
+            $fragmentContentWithId = $this->tables->fragments->GetTableByName($tableName)->SelectById($fragmentId);
+            
+            // for whatever reason, duplicates are being returned from the query sometimes
+            if (in_array($fragmentId, $fragmentIds)) {
+                continue;
+            }
+            array_push($fragmentIds, $fragmentId);
+            
+            if (count($fragmentContentWithId) == 0) {
+                FragmentManager::HandleDeleteUnstableFragment($fragment["SubsiteContentFragmentId"], $this->tables);
+                continue;
+            }
+            
+            $fragmentContent = $fragmentContentWithId[0];
+            
             $extraFragmentContent = $this->GetExtraFragmentContent($tableName, $fragmentId, $fragmentContent);
             array_push($fragments, $this->GetTemplatedFragment($tableName, $fragmentContent, $extraFragmentContent));
         }

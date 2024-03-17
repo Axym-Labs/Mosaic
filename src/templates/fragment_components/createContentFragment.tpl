@@ -74,8 +74,10 @@
             fragmentTypeDivs[i].style.display = 'none';
             let inputs = fragmentTypeDivs[i].querySelectorAll('input,textarea');
             for (let j = 0; j < inputs.length; j++) {
+                if (inputs[j].required)
+                    inputs[j].classList.add('requiredIfSelected');
+                
                 inputs[j].required = false;
-                inputs[j].classList.add('requiredIfSelected');
             }
         }
         let fragmentTypeDiv = document.getElementById(fragmentType);

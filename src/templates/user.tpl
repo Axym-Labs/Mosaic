@@ -12,7 +12,7 @@
         {include file="user/editUserComponent.tpl" userSubmitText="Update user" userIsUpdate=true}
     </div>
 {else}
-    {include file='user/userProfile.tpl'}
+    {include file='user/userProfileWrapper.tpl'}
 {/if}
 
 {if $isVisitingAccountPage}
