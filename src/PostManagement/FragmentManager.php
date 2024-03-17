@@ -224,10 +224,6 @@ class FragmentManager {
         }
         
         $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
-        if (count($subsiteCfsWithId) > 0) {
-            $subsiteCf = $subsiteCfsWithId[0];
-            $postData["BackgroundImage"] = $subsiteCf["BackgroundImage"];
-        }
         
         if ($tableName == "FragmentCredentials") {
             $usersWithId = $this->tables->user->Select("Username = \"" . $postData["Username"] . "\"");
@@ -248,11 +244,12 @@ class FragmentManager {
             $postData["Opacity"] = "1";
         }
 
-        if (!array_key_exists("BackgroundImage", $postData) || $postData["BackgroundImage"] == "") {
-            if (isset($_FILES["BackgroundImage"]) && isset($_FILES["BackgroundImage"]["tmp_name"]) && $_FILES["BackgroundImage"]["tmp_name"] != "") {
-                $logger = new FileLogger("Logs/log.txt");
-                $logger->Log(print_r($_FILES["BackgroundImage"], true));
-                $postData["BackgroundImage"] = ImageHandler::ConvertImageToJPGBase64($_FILES["BackgroundImage"]);
+        if (isset($_FILES["BackgroundImage"]) && isset($_FILES["BackgroundImage"]["tmp_name"]) && $_FILES["BackgroundImage"]["tmp_name"] != "") {
+            $postData["BackgroundImage"] = ImageHandler::ConvertImageToJPGBase64($_FILES["BackgroundImage"]);
+        } else {
+            if (count($subsiteCfsWithId) > 0 && $subsiteCfsWithId[0]["BackgroundImage"] != "" && $subsiteCfsWithId[0]["BackgroundImage"] != "NULL") {
+                $subsiteCf = $subsiteCfsWithId[0];
+                $postData["BackgroundImage"] = ImageHandler::ConvertBlobToJPGBase64($subsiteCf["BackgroundImage"]);
             } else {
                 $postData["BackgroundImage"] = "NULL";
             }

@@ -121,8 +121,16 @@ class UserManager {
     }
 
     private function DefineAutoValues($postData, $existingUserId = -1) {
-        if (!array_key_exists("ProfilePicture", $postData) || $postData["ProfilePicture"] == "") {
+
+        if (isset($_FILES["ProfilePicture"]) && isset($_FILES["ProfilePicture"]["tmp_name"]) && $_FILES["ProfilePicture"]["tmp_name"] != "") {
             $postData["ProfilePicture"] = ImageHandler::ConvertImageToJPGBase64($_FILES["ProfilePicture"]);
+        } else {
+            $usersWithId = $this->tables->user->SelectById($existingUserId);
+            if (count($usersWithId) > 0 && $usersWithId[0]["ProfilePicture"] != "" && $usersWithId[0]["ProfilePicture"] != "NULL") {
+                $postData["ProfilePicture"] = ImageHandler::ConvertBlobToJPGBase64($usersWithId[0]["ProfilePicture"]);
+            } else {
+                $postData["ProfilePicture"] = "NULL";
+            }
         }
 
         if ($existingUserId != -1) {

@@ -14,5 +14,10 @@
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>
+    {if (isset($subsiteCf['BackgroundImage']) && $subsiteCf['BackgroundImage'] != '')}
+        {if GenericRender::InsertValuePlainly($subsiteCf, 'BackgroundImage') != ""}
+            <img class="h-12 inline-block" src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($subsiteCf, 'BackgroundImage', 'img')}" alt="Background Image">
+        {/if}
+    {/if}
     <input type="file" id="BackgroundImage" name="BackgroundImage" accept=".jpg, .jpeg">
 </div>
