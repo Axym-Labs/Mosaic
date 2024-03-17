@@ -10,30 +10,25 @@
 <br>
 <br>
 
-<h1>Data</h1>
-
-<div class="flex flex-col items-center justify-center">
-    <div class="max-w-md border border-gray-300 rounded-md p-4 shadow-md">
+<div class="">
+    <div class="max-w-md p-6 bg-highlightedbg rounded-xl shadow-lg">
         <div>
-            <h2 class="text-lg font-bold mb-2">Page Information</h2>
-            <div class="flex flex-col mb-2">
-                <span>{$fragmentContent["Name"]}</span>
+            <p class="text-lg font-bold mb-4">Page Information</p>
+            <div class="flex justify-between mb-2">
+                <p>Name:</p>
+                <p>{$subsite["Name"]}</p>
             </div>
-            <div class="flex flex-col mb-2">
-                <span>{$fragmentContent["Route"]}</span>
+            <div class="flex justify-between mb-2">
+                <p>Route:</p>
+                <p>{$subsite["Route"]}</p>
             </div>
-            <div class="flex flex-col mb-2">
-                <span>{$fragmentContent["ShortRoute"]}</span>
+            {if $subsite["ShortRoute"] != ""}
+            <div class="flex justify-between mb-2">
+                <p>ShortRoute:</p>
+                <p>{$subsite["ShortRoute"]}</p>
             </div>
+            {/if}
         </div>
-        {if isset($extraFragmentContent)}
-            {foreach $extraFragmentContent as $key => $value}
-                <div class="mt-4">
-                    <h2 class="text-lg font-bold mb-2">{$key}</h2>
-                    <span>{$value}</span>
-                </div>
-            {/foreach}
-        {/if}
     </div>
 </div>
 

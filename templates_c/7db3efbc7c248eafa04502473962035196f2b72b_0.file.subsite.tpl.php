@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-16 23:59:57
+/* Smarty version 4.4.1, created on 2024-03-17 01:48:26
   from 'C:\xampp\htdocs\Mosaic\src\templates\subsite.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f6246d7fffd6_04127129',
+  'unifunc' => 'content_65f63dda9555d4_63490297',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7db3efbc7c248eafa04502473962035196f2b72b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\subsite.tpl',
-      1 => 1710629942,
+      1 => 1710636504,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:site_components/subsiteView.tpl' => 1,
   ),
 ),false)) {
-function content_65f6246d7fffd6_04127129 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f63dda9555d4_63490297 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9550385465f6246d7fd519_67101381', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_188986428065f63dda94ee67_19235693', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_9550385465f6246d7fd519_67101381 extends Smarty_Internal_Block
+class Block_188986428065f63dda94ee67_19235693 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_9550385465f6246d7fd519_67101381',
+    0 => 'Block_188986428065f63dda94ee67_19235693',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -55,30 +55,31 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 <br>
 <br>
 
-<h1>Data</h1>
+<div class="">
+    <div class="max-w-md p-6 bg-highlightedbg rounded-xl shadow-lg">
+        <div>
+            <p class="text-lg font-bold mb-4">Page Information</p>
+            <div class="flex justify-between mb-2">
+                <p>Name:</p>
+                <p><?php echo $_smarty_tpl->tpl_vars['subsite']->value["Name"];?>
+</p>
+            </div>
+            <div class="flex justify-between mb-2">
+                <p>Route:</p>
+                <p><?php echo $_smarty_tpl->tpl_vars['subsite']->value["Route"];?>
+</p>
+            </div>
+            <?php if ($_smarty_tpl->tpl_vars['subsite']->value["ShortRoute"] != '') {?>
+            <div class="flex justify-between mb-2">
+                <p>ShortRoute:</p>
+                <p><?php echo $_smarty_tpl->tpl_vars['subsite']->value["ShortRoute"];?>
+</p>
+            </div>
+            <?php }?>
+        </div>
+    </div>
+</div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-</head>
-<body>
-    <form action="submit.php" method="post">
-        <label for="Name">Name:</label>
-        <input type="text" id="Name" name="Name" maxlength="50"><br>
-
-        <label for="Route">Route:</label>
-        <input type="text" id="Route" name="Route" maxlength="50"><br>
-
-        <label for="ShortRoute">Short Route:</label>
-        <input type="text" id="ShortRoute" name="ShortRoute" maxlength="50"><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
 
 
 <?php

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-16 17:28:02
+/* Smarty version 4.4.1, created on 2024-03-17 01:29:57
   from 'C:\xampp\htdocs\Mosaic\src\templates\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f5c8925431d9_41458367',
+  'unifunc' => 'content_65f63985b616c7_78145463',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '279ab27ba31d83f2e8517fa5884190e8dda1b574' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\user.tpl',
-      1 => 1710605643,
+      1 => 1710635396,
       2 => 'file',
     ),
   ),
@@ -24,24 +24,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:user/subsiteList.tpl' => 1,
   ),
 ),false)) {
-function content_65f5c8925431d9_41458367 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f63985b616c7_78145463 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_190716115365f5c892539bc2_53593594', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_91002912265f63985b58a07_30586562', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_190716115365f5c892539bc2_53593594 extends Smarty_Internal_Block
+class Block_91002912265f63985b58a07_30586562 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_190716115365f5c892539bc2_53593594',
+    0 => 'Block_91002912265f63985b58a07_30586562',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -64,11 +64,16 @@ if (!(isset($_smarty_tpl->tpl_vars['isThisUser']->value))) {?>
 }?>
 
 <?php if ($_smarty_tpl->tpl_vars['isVisitingAccountPage']->value) {?>
-    <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Logout",'type'=>"warn",'route'=>"/create/subsite"), 0, false);
-} else { ?>
-    <?php if ($_smarty_tpl->tpl_vars['isThisUser']->value) {?>
-        <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Manage your profile",'type'=>"primary",'route'=>"/a"), 0, true);
+    <div class="flex justify-end">
+        <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Logout",'type'=>"warn",'route'=>"/create/subsite"), 0, false);
 ?>
+    </div>
+<?php } else { ?>
+    <?php if ($_smarty_tpl->tpl_vars['isThisUser']->value) {?>
+        <div class="flex justify-center">
+            <?php $_smarty_tpl->_subTemplateRender("file:components/linkbutton.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Manage your profile",'type'=>"primary",'route'=>"/a"), 0, true);
+?>
+        </div>
     <?php }
 }?>
 
