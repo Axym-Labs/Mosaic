@@ -37,9 +37,9 @@
         </div>
     </div>
     <div class="lg:max-h-screen">
-        <div class="">
+        <div class="mb-1">
             <h1 class="uppercase text-gray-600 font-extrabold">
-                Live Preview
+                Preview
             </h1>
         </div>
         <div class="border border-2 rounded-xl p-4 border-gray-600 h-full">

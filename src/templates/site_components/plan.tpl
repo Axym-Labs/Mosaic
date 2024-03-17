@@ -38,17 +38,20 @@
     </td>
     <td class="p-2 md:p-4">
         <p>
-            {if ($planperm["SocialsOrderOption"])}✅{else}-{/if}
+            <!-- {if ($planperm["SocialsOrderOption"])}✅{else}-{/if} -->
+            {if ($planperm["SocialsOrderOption"])}Soon{else}-{/if}
         </p>
     </td>
     <td class="p-2 md:p-4">
         <p>
-            {if ($planperm["TextColorOption"])}✅{else}-{/if}
+            <!-- {if ($planperm["TextColorOption"])}✅{else}-{/if} -->
+            {if ($planperm["TextColorOption"])}Soon{else}-{/if}
         </p>
     </td>
     <td class="p-2 md:p-4">
         <p>
-            {if ($planperm["FontOption"])}✅{else}-{/if}
+            <!-- {if ($planperm["FontOption"])}✅{else}-{/if} -->
+            {if ($planperm["FontOption"])}Soon{else}-{/if}
         </p>
     </td>
     <td class="p-2 md:p-4">

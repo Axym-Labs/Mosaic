@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-17 02:16:53
+/* Smarty version 4.4.1, created on 2024-03-17 13:15:27
   from 'C:\xampp\htdocs\Mosaic\src\templates\subsiteEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f644852e7953_25619848',
+  'unifunc' => 'content_65f6dedfe8dc36_92138694',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9c48afc605c11aa8deb16fff7f5d6446b687dc49' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\subsiteEdit.tpl',
-      1 => 1710638212,
+      1 => 1710677332,
       2 => 'file',
     ),
   ),
@@ -25,22 +25,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:site_components/subsiteView.tpl' => 1,
   ),
 ),false)) {
-function content_65f644852e7953_25619848 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f6dedfe8dc36_92138694 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_25786504365f644852dab51_95600539', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12552006965f6dedfe761e5_08584509', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_25786504365f644852dab51_95600539 extends Smarty_Internal_Block
+class Block_12552006965f6dedfe761e5_08584509 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_25786504365f644852dab51_95600539',
+    0 => 'Block_12552006965f6dedfe761e5_08584509',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -105,9 +105,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
     </div>
     <div class="lg:max-h-screen">
-        <div class="">
+        <div class="mb-1">
             <h1 class="uppercase text-gray-600 font-extrabold">
-                Live Preview
+                Preview
             </h1>
         </div>
         <div class="border border-2 rounded-xl p-4 border-gray-600 h-full">

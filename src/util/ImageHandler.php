@@ -3,15 +3,15 @@ class ImageHandler {
 
     public static function ValidateImageInput($image) {
 
-        if ($image["size"] > 1024 * 1024 && !(BusinessConstants::$HOSTMODE == "dev")) {
-            return array(false, "Sorry, your file is too large.");
+        if ($image["size"] > 1024 * 1024 * 4) {
+            return array(false, "Images must be less than 4MB in size.");
         }
 
         $exploded = explode('.',$image["name"]);
         $ext = strtolower($exploded[count($exploded) - 1]);
 
-        if ($ext != "jpg" && $ext != "png" && $ext != "jpeg" && $ext != "webp") {
-            return array(false, "Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+        if ($ext != "jpg" && $ext != "jpeg") { // && $ext != "png" && $ext != "webp"
+            return array(false, "Only JPG images are allowed. Please convert your image to JPG and try again.");
         }
         return array(true, "");
     }

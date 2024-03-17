@@ -32,14 +32,10 @@
                     <div id="welcome-msg" class="mx-4 text-b500 text-lg text-gray-100">
                         Welcome, <span class="text-primary">{$maybeUsername}</span>!
                     </div>
-                    <p class="mx-4 text-lg">
-                        {include file="components/textlink.tpl" text="Pricing" route="/pricing"}
-                    </p>
+                    {include file="components/navlink.tpl" text="Pricing" route="/pricing"}
                     {include file="components/linkbutton.tpl" text="My Account" route="/a" type="primary"}
                 {else}
-                    <p>
-                        {include file="components/textlink.tpl" text="Pricing" route="/pricing"}
-                    </p>
+                    {include file="components/navlink.tpl" text="Pricing" route="/pricing"}
                     {include file="components/linkbutton.tpl" text="Get Started" route="/create/user" type="primary"}
                     {include file="components/linkbutton.tpl" text="Login" route="/login" type="secondary"}
                 {/if}

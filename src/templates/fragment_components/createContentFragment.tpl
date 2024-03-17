@@ -1,16 +1,16 @@
 
-<div class="m-4 border-l-2 border-primary p-2 pl-4">
-    <h1 class="text-3xl font-bold">
+<div class="m-4 mb-8 border-l-2 border-primary p-2 pl-4 bg-highlightedbg">
+    <h1 class="text-2xl font-bold mb-2">
         Base settings
     </h1>
     <div>
         <label for="BackgroundColor">Background Color (HEX):</label>
-        <input type="text" id="BackgroundColor" name="BackgroundColor" maxlength="6">
+        <input type="color" id="BackgroundColor" name="BackgroundColor" value="#000000">
     </div>
     
     <div>
-        <label for="Opacity">Opacity (0-1):</label>
-        <input type="number" id="Opacity" name="Opacity" min="0.0" max="1.0" step="0.1">
+        <label for="Opacity">Background Opacity:</label>
+        <input type="range" id="Opacity" name="Opacity" min="0.0" max="1.0" step="0.01" value="0">
     </div>
     
     <div>
@@ -19,47 +19,47 @@
     </div>
 </div>
 
-<div>
+<div class="mb-8">
     <h1>
         Fragment Type
     </h1>
     <div class="flex">
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Credentials" name="ContentTableName" value="FragmentCredentials" checked>
             <label for="ContentTableName_Credentials">Credentials</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Iframe" name="ContentTableName" value="FragmentIframe">
             <label for="ContentTableName_Iframe">Iframe</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Image" name="ContentTableName" value="FragmentImage">
             <label for="ContentTableName_Image">Image</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Link" name="ContentTableName" value="FragmentLink">
             <label for="ContentTableName_Link">Link</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_News" name="ContentTableName" value="FragmentNews">
             <label for="ContentTableName_News">News</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Projectinfo" name="ContentTableName" value="FragmentProjectinfo">
             <label for="ContentTableName_Projectinfo">Project Info</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Socials" name="ContentTableName" value="FragmentSocials">
             <label for="ContentTableName_Socials">Socials</label>
         </div>
     
-        <div class="m-2 p-2 px-4 bg-primarySoft rounded-full">
+        <div class="m-2 p-2 px-4 bg-highlightedbg rounded-full">
             <input type="radio" id="ContentTableName_Text" name="ContentTableName" value="FragmentText">
             <label for="ContentTableName_Text">Text</label>
         </div>

@@ -1,25 +1,25 @@
 
 <div>
     <label for="fragment-FragmentProjectinfo-Title">Title:</label>
-    <input type="text" id="fragment-FragmentProjectinfo-Title" name="fragment-FragmentProjectinfo-Title" {GenericRender::InsertValueAttribute($fragmentContent, 'Title')}>
+    <input type="text" id="fragment-FragmentProjectinfo-Title" name="fragment-FragmentProjectinfo-Title" {if (isset($fragmentContent))}{GenericRender::InsertValueAttribute($fragmentContent, 'Title')}{/if}>
 </div>
 
 <div>
     <label for="fragment-FragmentProjectinfo-Description">Description:</label>
-    <textarea id="fragment-FragmentProjectinfo-Description" name="fragment-FragmentProjectinfo-Description" {GenericRender::InsertValueAttribute($fragmentContent, 'Description')}></textarea>
+    <textarea id="fragment-FragmentProjectinfo-Description" name="fragment-FragmentProjectinfo-Description">{if (isset($fragmentContent))}{GenericRender::InsertValuePlainly($fragmentContent, 'Description')}{/if}</textarea>
 </div>
 
 <div>
     <label for="LogoBlob">Logo:</label>
-    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg" {GenericRender::InsertValueAttribute($fragmentContent, 'LogoBlob')}>
+    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg" {if (isset($fragmentContent))}{GenericRender::InsertValueAttribute($fragmentContent, 'LogoBlob')}{/if}>
   </div>
 
 <div>
     <label for="fragment-FragmentProjectinfo-CtaLink">CtaLink:</label>
-    <input type="text" id="fragment-FragmentProjectinfo-CtaLink" name="fragment-FragmentProjectinfo-CtaLink" required {GenericRender::InsertValueAttribute($fragmentContent, 'CtaLink')}>
+    <input type="text" id="fragment-FragmentProjectinfo-CtaLink" name="fragment-FragmentProjectinfo-CtaLink" required {if (isset($fragmentContent))}{GenericRender::InsertValueAttribute($fragmentContent, 'CtaLink')}{/if}>
 </div>
 
 <div>
     <label for="fragment-FragmentProjectinfo-CtaLinkDescription">CtaLinkDescription:</label>
-    <input type="text" id="fragment-FragmentProjectinfo-CtaLinkDescription" name="fragment-FragmentProjectinfo-CtaLinkDescription" {GenericRender::InsertValueAttribute($fragmentContent, 'CtaLinkDescription')}>
+    <input type="text" id="fragment-FragmentProjectinfo-CtaLinkDescription" name="fragment-FragmentProjectinfo-CtaLinkDescription" {if (isset($fragmentContent))}{GenericRender::InsertValueAttribute($fragmentContent, 'CtaLinkDescription')}{/if}>
 </div>

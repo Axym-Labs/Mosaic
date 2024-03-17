@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-16 00:13:24
+/* Smarty version 4.4.1, created on 2024-03-17 13:38:39
   from 'C:\xampp\htdocs\Mosaic\src\templates\fragment_components\editContentFragment.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f4d614d999c0_87440977',
+  'unifunc' => 'content_65f6e44f74e390_65263715',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c2df296258f1add87807fd1190f630f3f2b98fd5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\fragment_components\\editContentFragment.tpl',
-      1 => 1710544399,
+      1 => 1710679118,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65f4d614d999c0_87440977 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f6e44f74e390_65263715 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <div>
@@ -30,13 +30,14 @@ function content_65f4d614d999c0_87440977 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <div>
     <label for="BackgroundColor">Background Color (HEX):</label>
-    <input type="text" id="BackgroundColor" name="BackgroundColor" maxlength="6" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundColor'];?>
+    <input type="color" id="BackgroundColor" name="BackgroundColor" value="#<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundColor'];?>
 ">
 </div>
 <div>
-    <label for="Opacity">Opacity (0-1):</label>
-    <input type="number" id="Opacity" name="Opacity" step="0.01" value="<?php echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'];?>
-">
+    <label for="Opacity">Background Opacity:</label>
+    <input type="range" min="1" max="100" id="Opacity" name="Opacity" step="0.01" value="<?php if (((isset($_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'])) && $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'] != '')) {
+echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'];
+} else { ?>0<?php }?>">
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>
