@@ -17,7 +17,7 @@
 
 {if $isVisitingAccountPage}
     <div class="flex justify-end">
-        {include file="components/linkbutton.tpl" text="Logout" type="warn" route="/create/subsite"}
+        {include file="components/linkbutton.tpl" text="Logout" type="warn" route="/logout"}
     </div>
 {else}
     {if $isThisUser}

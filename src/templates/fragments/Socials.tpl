@@ -1,39 +1,33 @@
 
 
 <div class=" p-4 rounded-md">
-    {if $fragmentContent["GithubLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["GithubLink"] && $fragmentContent["GithubLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">Github:</span>
             <a href="{$fragmentContent['GithubLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Github</a>
         </div>
     {/if}
-    {if $fragmentContent["GitlabLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["GitlabLink"] && $fragmentContent["GitlabLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">Gitlab:</span>
             <a href="{$fragmentContent['GitlabLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Gitlab</a>
         </div>
     {/if}
-    {if $fragmentContent["XLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["XLink"] && $fragmentContent["XLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">X:</span>
             <a href="{$fragmentContent['XLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">X</a>
         </div>
     {/if}
-    {if $fragmentContent["FacebookLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["FacebookLink"] && $fragmentContent["FacebookLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">Facebook:</span>
             <a href="{$fragmentContent['FacebookLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Facebook</a>
         </div>
     {/if}
-    {if $fragmentContent["RedditLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["RedditLink"] && $fragmentContent["RedditLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">Reddit:</span>
             <a href="{$fragmentContent['RedditLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Reddit</a>
         </div>
     {/if}
-    {if $fragmentContent["DiscordLink"] && $fragmentContent[""] != "NULL"}
+    {if $fragmentContent["DiscordLink"] && $fragmentContent["DiscordLink"] != "NULL"}
         <div class="mb-4">
-            <span class="font-bold">Discord:</span>
             <a href="{$fragmentContent['DiscordLink']}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Discord</a>
         </div>
     {/if}

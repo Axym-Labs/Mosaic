@@ -46,7 +46,7 @@ class LoginManager {
     }
 
     public static function PasswordCorrect($user, $password) {
-        return AuthorizationCheck::PasswordMatch($user["Password"], $password);
+        return AuthorizationCheck::PasswordMatch($user, $password);
     }
 
 }
