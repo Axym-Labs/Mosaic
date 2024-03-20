@@ -21,19 +21,17 @@
                 </form>
             </div>
         {foreachelse}
-            <div>
-                <h1>
-                    Nothing here yet.
-                </h1>
-            </div>
+            {include file="components/empty.tpl"}
         {/foreach}
         <div class="flex justify-center">
             {if $allowedToCreateFragment}
-                {include file="components/linkbutton.tpl" text="Create fragment" route="/edit/s/$subsiteId/create-f" type="primary"}
+                {include file="components/linkbutton.tpl" text="Create Fragment" route="/edit/s/$subsiteId/create-f" type="primary"}
             {else}
-                <p>
-                    You have reached the maximum amount of fragments for this subsite. Upgrade your plan.
-                </p>
+                <div class="text-center h-16">
+                    <p>
+                        You have reached the maximum amount of fragments for this subsite. Upgrade your plan.
+                    </p>
+                </div>
             {/if}        
         </div>
     </div>

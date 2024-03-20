@@ -11,8 +11,11 @@
 
 <div>
     <label for="LogoBlob">Logo:</label>
-    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg" {if (isset($fragmentContent))}{GenericRender::InsertValueAttribute($fragmentContent, 'LogoBlob')}{/if}>
-  </div>
+    <input type="file" id="fragment-FragmentImage-LogoBlob" name="fragment-FragmentImage-LogoBlob" accept=".jpg, .jpeg">
+    {if isset($fragmentContent["LogoBlob"])}
+        <img src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($fragmentContent, 'LogoBlob', 'img')}" alt="Logo" class="mb-2 rounded-lg">
+    {/if}
+</div>
 
 <div>
     <label for="fragment-FragmentProjectinfo-CtaLink">CtaLink:</label>

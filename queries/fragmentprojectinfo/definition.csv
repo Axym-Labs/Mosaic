@@ -1,6 +1,6 @@
 Id,bigint(20)
 Title,text
-Description,int(11)
+Description,text
 LogoBlob,blob
 CtaLink,text
 CtaLinkDescription,text

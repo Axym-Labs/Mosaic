@@ -12,10 +12,6 @@ class FragmentManager {
         $subsiteCf = $this->tables->subsitecf->SelectById($subsiteCfId)[0];
         $tableName = $subsiteCf["ContentTableName"];
 
-        $logger = new FileLogger("Logs/log.txt");
-        $logger->Log("Fragment update attempt: " . json_encode($postData));
-        $logger->Log("Fragment table name: " . $tableName);
-
         $fragmentId = $subsiteCf["ContentId"];
         $postData = $this->reduceFragmentSpecificPostData($tableName, $postData);
         list($postData, $valid, $notifier) = $this->ValidateAndFillEntity($subsiteId,$postData, $notifier, $subsiteCfId);
@@ -212,15 +208,15 @@ class FragmentManager {
         $postData["WebsiteId"] = $subsiteId;
         $postData["Spannable"] = 1;
         
-        if (!array_key_exists("Position", $postData)) {
+        if (array_key_exists("Position", $postData)) {
+            $postData["Position"] = $this->EnsurePositionIsUnique($postData["Position"], $subsiteId);
+        } else {
             $cfEntries = $this->tables->subsitecf->Select("WebsiteId = $subsiteId", 1, "Position");
             if (count($cfEntries) == 0) {
                 $postData["Position"] = 1;
             } else {
-                $postData["Position"] = $cfEntries[0]["Position"] + 1;
+                $postData["Position"] = $cfEntries[count($cfEntries)-1]["Position"] + 1;
             }
-        } else {
-            $this->EnsurePositionIsUnique($postData["Position"], $subsiteId);
         }
         
         $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
@@ -284,10 +280,10 @@ class FragmentManager {
                 $postData["ImageContent"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-ImageContent"]);
             } else {
                 $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
-                if (count($subsiteCfsWithId) == 0) {
-                    $postData["ImageContent"] = "NULL";
+                if (count($subsiteCfsWithId) > 0 && $subsiteCfsWithId[0]["ImageContent"] != "" && $subsiteCfsWithId[0]["ImageContent"] != "NULL") {
+                    $postData["ImageContent"] = ImageHandler::ConvertBlobToJPGBase64($subsiteCfsWithId[0]["ImageContent"]);
                 } else {
-                    $postData["ImageContent"] = $subsiteCfsWithId[0]["ImageContent"];
+                    $postData["ImageContent"] = "NULL";
                 }
             }
         }
@@ -297,16 +293,37 @@ class FragmentManager {
                 $postData["LogoBlob"] = ImageHandler::ConvertImageToJPGBase64($_FILES["fragment-FragmentImage-LogoBlob"]);
             } else {
                 $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
-                if (count($subsiteCfsWithId) == 0) {
-                    $postData["LogoBlob"] = "NULL";
+                if (count($subsiteCfsWithId) > 0 && $subsiteCfsWithId[0]["LogoBlob"] != "" && $subsiteCfsWithId[0]["LogoBlob"] != "NULL") {
+                    $postData["LogoBlob"] = ImageHandler::ConvertBlobToJPGBase64($subsiteCfsWithId[0]["LogoBlob"]);
                 } else {
-                    $postData["LogoBlob"] = $subsiteCfsWithId[0]["LogoBlob"];
+                    $postData["LogoBlob"] = "NULL";
                 }
             
             }
         }
+
+        if ($tableName == "FragmentSocials") {
+            $subsiteCfsWithId = $this->tables->subsitecf->SelectById($subsiteCfId);
+            $postData = $this->FillWithPreviousIfNull($postData, "GithubLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "GitlabLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "XLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "FacebookLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "RedditLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "DiscordLink", $subsiteCfsWithId);
+            $postData = $this->FillWithPreviousIfNull($postData, "RelativeOrder", $subsiteCfsWithId);
+        }
         
-        
+        return $postData;
+    }
+
+    private function FillWithPreviousIfNull($postData, $key, $subsiteCfsWithId = array()) {
+        if ($postData[$key] == "") {
+            if (count($subsiteCfsWithId) > 0) {
+                $postData[$key] = $subsiteCfsWithId[0][$key];
+            } else {
+                $postData[$key] = "NULL";
+            }
+        }
         return $postData;
     }
 
@@ -358,9 +375,12 @@ class FragmentManager {
         $nextProblemCases = $this->tables->subsitecf->Select("WebsiteId = $subsiteId AND Position = $position");
         while (count($nextProblemCases) > 0) {
             $this->tables->subsitecf->Update($nextProblemCases[0]["SubsiteContentFragmentId"], "Position", $nextProblemCases[0]["Position"] + 1);
-
+            
+            $position++;
             $nextProblemCases = $this->tables->subsitecf->Select("WebsiteId = $subsiteId AND Position = $position");
         }
+
+        return $position;
     }
 
     public static function UserHasNotReachedFragmentLimit($tables, $subsiteId, $userId) {

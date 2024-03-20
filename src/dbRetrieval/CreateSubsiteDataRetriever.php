@@ -12,8 +12,8 @@ class CreateSubsiteDataRetriever {
         }
         $planPerm = UserDataRetriever::GetPlanPermissions($this->tables, $userId);
         $smarty->assign("planperm", $planPerm);
+        $smarty->assign("owner", $this->tables->user->SelectById($userId)[0]);
         return $smarty;
     }
-
 }
 ?>
