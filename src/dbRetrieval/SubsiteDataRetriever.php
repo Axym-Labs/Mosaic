@@ -79,7 +79,8 @@ class SubsiteDataRetriever {
             $fragmentContent = $fragmentContentWithId[0];
             
             $extraFragmentContent = $this->GetExtraFragmentContent($tableName, $fragmentId, $fragmentContent);
-            array_push($fragments, $this->GetTemplatedFragment($tableName, $fragmentContent, $extraFragmentContent));
+            $fragmentArr = array("Content" => $this->GetTemplatedFragment($tableName, $fragmentContent, $extraFragmentContent), "subsiteCf" => $fragment);
+            array_push($fragments, $fragmentArr);
         }
 
         $smarty->assign('fragments', $fragments);

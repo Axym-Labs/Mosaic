@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-17 15:22:02
+/* Smarty version 4.4.1, created on 2024-03-17 16:57:05
   from 'C:\xampp\htdocs\Mosaic\src\templates\fragment_components\editContentFragment.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f6fc8aec2401_56177483',
+  'unifunc' => 'content_65f712d19b3d32_12694089',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c2df296258f1add87807fd1190f630f3f2b98fd5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\fragment_components\\editContentFragment.tpl',
-      1 => 1710685287,
+      1 => 1710691011,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65f6fc8aec2401_56177483 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f712d19b3d32_12694089 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <div>
@@ -41,6 +41,12 @@ echo $_smarty_tpl->tpl_vars['subsiteCf']->value['Opacity'];
 </div>
 <div>
     <label for="BackgroundImage">Background Image:</label>
+    <?php if (((isset($_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundImage'])) && $_smarty_tpl->tpl_vars['subsiteCf']->value['BackgroundImage'] != '')) {?>
+        <?php if (GenericRender::InsertValuePlainly($_smarty_tpl->tpl_vars['subsiteCf']->value,'BackgroundImage') != '') {?>
+            <img class="h-12 inline-block" src="data:image/jpeg;base64,<?php echo GenericRender::InsertValuePlainly($_smarty_tpl->tpl_vars['subsiteCf']->value,'BackgroundImage','img');?>
+" alt="Background Image">
+        <?php }?>
+    <?php }?>
     <input type="file" id="BackgroundImage" name="BackgroundImage" accept=".jpg, .jpeg">
 </div><?php }
 }

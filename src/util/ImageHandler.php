@@ -18,8 +18,6 @@ class ImageHandler {
 
     public static function ConvertImageToJPGBase64($image) {
         // convert to jpg
-
-        // return file_get_contents($image["tmp_name"]);
         
         return "0x" . bin2hex(file_get_contents($image["tmp_name"]));
 
@@ -28,7 +26,6 @@ class ImageHandler {
 
         // $exploded = explode('.',$image["name"]);
         // $ext = strtolower($exploded[count($exploded) - 1]); 
-
 
         // if (preg_match('/jpg|jpeg/i',$ext)) {
         //     $imageTmp=imagecreatefromjpeg($image);
@@ -44,10 +41,14 @@ class ImageHandler {
         // $image_data = ob_get_contents(); 
         // ob_end_clean(); 
 
-        // $imageStr = base64_encode($image_data);
+        // $imageStr = $image_data;
         // imagedestroy($imageTmp);
 
-        // return base64_encode($imageStr);
+        // return 0x" . bin2hex(($imageStr);
+    }
+
+    public static function ConvertBlobToJPGBase64($base64) {
+        return "0x" . bin2hex($base64);
     }
 }
 ?>

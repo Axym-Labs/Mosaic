@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.4.1, created on 2024-03-17 14:57:06
+/* Smarty version 4.4.1, created on 2024-03-17 19:33:19
   from 'C:\xampp\htdocs\Mosaic\src\templates\subsite.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.4.1',
-  'unifunc' => 'content_65f6f6b2882e43_02841534',
+  'unifunc' => 'content_65f7376f2884a2_55606767',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7db3efbc7c248eafa04502473962035196f2b72b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Mosaic\\src\\templates\\subsite.tpl',
-      1 => 1710683825,
+      1 => 1710700398,
       2 => 'file',
     ),
   ),
@@ -23,25 +23,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:components/linkbutton.tpl' => 1,
   ),
 ),false)) {
-function content_65f6f6b2882e43_02841534 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65f7376f2884a2_55606767 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 $_smarty_tpl->_assignInScope('subsiteNav', true);
 $_smarty_tpl->_assignInScope('withFooter', false);?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_32499195865f6f6b287a2e6_88986033', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_104982371065f7376f280079_92399408', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'base/base.tpl');
 }
 /* {block 'content'} */
-class Block_32499195865f6f6b287a2e6_88986033 extends Smarty_Internal_Block
+class Block_104982371065f7376f280079_92399408 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_32499195865f6f6b287a2e6_88986033',
+    0 => 'Block_104982371065f7376f280079_92399408',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -58,7 +58,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
  <?php echo ucfirst($_smarty_tpl->tpl_vars['owner']->value["LastName"]);?>
 .
             <br>
-            <?php $_smarty_tpl->_subTemplateRender("file:components/textlink.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Create your own subsite with Mosaic →",'route'=>"/create/account",'class'=>"font-bold"), 0, false);
+            <?php $_smarty_tpl->_subTemplateRender("file:components/textlink.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('text'=>"Create your own subsite with Mosaic →",'route'=>"/create/user",'class'=>"font-bold"), 0, false);
 ?>
         </p>
     </div>

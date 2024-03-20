@@ -15,6 +15,7 @@ tailwind.config = {
                 btnSecondary: '#49e4f5',
                 warn: '#f29696',
                 warnSoft: '#f29696',
+                calloutbg: '#faf44d20',
             }
         }
     }

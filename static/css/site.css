@@ -53,13 +53,15 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(180, 180, 180, 0.3);
-    border-left: 1px solid rgb(182, 182, 182);
+    background: transparent;
+    /* border-left: 1px solid rgb(182, 182, 182); */
+    border-radius: 100px;
     backdrop-filter: blur(20px);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(182, 182, 182);
+    background: rgb(64, 66, 70);
+    border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

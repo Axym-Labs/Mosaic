@@ -201,7 +201,7 @@ SimpleRouter::post(BusinessConstants::$UNIVERSAL_ROUTE_PREFIX . '/a', function()
         $notifier->Post("Log in, then visit the url again", "error");
         Redirect('/login');
     }
-    list($updateSuccess, $notifier) = $userManager->HandleUpdate($userId, $notifier);
+    list($updateSuccess, $notifier) = $userManager->HandleUpdate($userId, $notifier, $userId);
 
     $smarty = $userDataRetriever->AssignData($smarty, $userId, true, $sessionManager->GetUserId());
     DisplayTemplateOrNotFound($smarty, 'user.tpl', $notifier);

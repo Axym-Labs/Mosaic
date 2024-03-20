@@ -10,66 +10,117 @@
 
 <div>
     <form action="{BusinessConstants::$UNIVERSAL_ROUTE_PREFIX}{if !$userIsUpdate}/create/user{else}/a{/if}" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="Email">Email:</label>
-            <input class="bg-bgcol border-b border-white" type="text" id="Email" name="Email" required {GenericRender::InsertValueAttribute($user, 'Email')}>
-        </div>
-        
-        <div>
-            <label for="LastName">Last Name:</label>
-            <input class="bg-bgcol border-b border-white" type="text" id="LastName" name="LastName" required {GenericRender::InsertValueAttribute($user, 'LastName')}>
-        </div>
-        
-        <div>
-            <label for="FirstName">First Name:</label>
-            <input class="bg-bgcol border-b border-white" type="text" id="FirstName" name="FirstName" required {GenericRender::InsertValueAttribute($user, 'FirstName')}>
-        </div>
-        
-        <div>
-            <label for="ProfilePicture">Profile Picture:</label>
-            {if GenericRender::InsertValuePlainly($user, 'ProfilePicture') != ""}
-            <img class="w-12 h-12 inline-block" src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($user, 'ProfilePicture', 'img')}" alt="Profile picture">
+        <table>
+            <tr>
+                <td class="p-3">
+                    {include file="components/input/label.tpl" for="Email" required=true}
+                </td>
+                <td class="p-3">
+                    {include file="components/input/input.tpl" type="email" id="Email" required=true value=GenericRender::InsertValueAttribute($user, 'Email')}
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="p-3">
+                    {include file="components/input/label.tpl" for="FirstName" text="First name" required=true}
+                </td>
+                <td class="p-3">
+                    {include file="components/input/input.tpl" id="FirstName" required=true value=GenericRender::InsertValueAttribute($user, 'FirstName')}                    
+                </td>
+            </tr>
+
+            <tr>
+                <td class="p-3">
+                    {include file="components/input/label.tpl" for="LastName" text="Last name" required=true}
+                </td>
+                <td class="p-3">
+                    {include file="components/input/input.tpl" id="LastName" required=true value=GenericRender::InsertValueAttribute($user, 'LastName')}
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="p-3">
+                    {include file="components/input/label.tpl" for="ProfilePicture" text="Profile Picture"}
+                </td>
+                <td class="p-3">
+                    {include file="components/input/input.tpl" type="file" id="ProfilePicture" otherAttributes="accept='.jpg, .jpeg'"}
+                    {if GenericRender::InsertValuePlainly($user, 'ProfilePicture') != ""}
+                    <img class="w-12 h-12 inline-block" src="data:image/jpeg;base64,{GenericRender::InsertValuePlainly($user, 'ProfilePicture', 'img')}" alt="Profile picture">
+                    {/if}
+                </td>
+                <br>
+            </tr>
+            
+            <tr>
+                <td class="p-3">
+                    {include file="components/input/label.tpl" for="Username" required=true}
+                </td>
+                <td class="p-3">
+                    {include file="components/input/input.tpl" id="Username" required=true value=GenericRender::InsertValueAttribute($user, 'Username')}
+                </td>
+            </tr>
+            
+            {if !$userIsUpdate}
+                <tr>
+                    <td class="p-3">
+                        {include file="components/input/label.tpl" for="Password" required=true}
+                    </td>
+                    <td class="p-3">
+                        {include file="components/input/label.tpl" type="password" for="Password" required=true}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-3">
+                        {include file="components/input/label.tpl" for="ConfirmPassword" text="Confirm Password" required=true}
+                    </td>
+                    <td class="p-3">
+                        {include file="components/input/input.tpl" type="password" id="ConfirmPassword" required=true}
+                    </td>
+                </tr>
+            {else}
+                <tr>
+                    <td class="p-3">
+                        <p>
+                            Optional: Change password
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-3 pl-8">
+                        <div class="">
+                            {include file="components/input/label.tpl" for="NewPassword" text="New password"}
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        {include file="components/input/input.tpl" type="password" id="NewPassword"}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-3 pl-8">
+                        <div class="">
+                            {include file="components/input/label.tpl" for="ConfirmNewPassword" text="Confirm new password"}
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        {include file="components/input/input.tpl" type="password" id="ConfirmNewPassword"}
+                    </td>
+                </tr>
             {/if}
-            <br>
-            <input class="bg-bgcol border-b border-white" type="file" id="ProfilePicture" name="ProfilePicture" accept=".jpg, .jpeg">
-        </div>
-        
-        <div>
-            <label for="Username">Username:</label>
-            <input class="bg-bgcol border-b border-white" type="text" id="Username" name="Username" required {GenericRender::InsertValueAttribute($user, 'Username')}>
-        </div>
-        
-        {if !$userIsUpdate}
-        <div>
-            <label for="Password">Password:</label>
-            <input class="bg-bgcol border-b border-white" type="password" id="Password" name="Password" required>
-        </div>
-        <div>
-            <label for="ConfirmPassword">Confirm password:</label>
-            <input class="bg-bgcol border-b border-white" type="password" id="ConfirmPassword" name="ConfirmPassword" required>
-        </div>
-        {else}
-        <div>
-            <p1>
-                Optional: Change password
-            </p1>
-            <div>
-                <label for="NewPassword">New password:</label>
-                <input class="bg-bgcol border-b border-white" type="password" id="NewPassword" name="NewPassword">
-            </div>
-            <div>
-                <label for="ConfirmNewPassword">Confirm new password:</label>
-                <input class="bg-bgcol border-b border-white" type="password" id="ConfirmNewPassword" name="ConfirmNewPassword">
-            </div>
-        </div>
-        {/if}
-        
-        {if $userIsUpdate}
-        <div>
-            <label for="Password">Password:</label>
-            <input class="bg-bgcol border-b border-white" type="password" id="Password" name="Password" required>
-        </div>
-        {/if}
-        {include file='components/submitbutton.tpl' text=$userSubmitText type="primary"}
+            {if $userIsUpdate}
+                <tr>
+                    <td class="p-3">
+                        {include file="components/input/label.tpl" for="Password" text="Current password" required=true}
+                    </td>
+                    <td class="p-3">
+                        {include file="components/input/input.tpl" type="password" id="Password" required=true}
+                    </td>
+                </tr>
+            {/if}
+            <tr>
+                <td class="p-3">
+                    {include file='components/submitbutton.tpl' text=$userSubmitText type="primary"}
+                </td>
+            </tr>
+        </table>
     </form>
 </div>

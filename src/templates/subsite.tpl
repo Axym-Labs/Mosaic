@@ -10,7 +10,7 @@
         <p class="text-center">
             This subsite was created by {ucfirst($owner["FirstName"])} {ucfirst($owner["LastName"])}.
             <br>
-            {include file="components/textlink.tpl" text="Create your own subsite with Mosaic →" route="/create/account" class="font-bold"}
+            {include file="components/textlink.tpl" text="Create your own subsite with Mosaic →" route="/create/user" class="font-bold"}
         </p>
     </div>
 </div>
