@@ -67,7 +67,7 @@ class UserManager {
             return array(false, $notifier);
         }
         // password matches
-        if ($existingUserId == -1) {
+        if ($existingUserId == -1 && isset($postData["ConfirmPassword"]) && $postData["ConfirmPassword"] != "") {
             if ($postData["Password"] != $postData["ConfirmPassword"]) {
                 $notifier->Post("Passwords do not match");
                 return array(false, $notifier);
