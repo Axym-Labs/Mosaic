@@ -1,0 +1,3 @@
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
