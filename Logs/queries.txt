@@ -1,0 +1,7 @@
+SELECT * FROM mosaic.user WHERE Email = 'b@b.b' LIMIT 1
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.subsite WHERE UserId = '127'
+SELECT * FROM mosaic.user WHERE UserId = 127
+SELECT * FROM mosaic.plan WHERE PlanId = 1
+SELECT * FROM mosaic.planpermission WHERE PlanPermissionId = 1
